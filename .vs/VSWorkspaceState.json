@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\database",
+    "\\database\\migrations",
+    "\\database\\seeds"
+  ],
+  "SelectedNode": "\\.env.example",
+  "PreviewInSolutionExplorer": true
+}
