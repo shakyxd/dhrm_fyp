@@ -6,6 +6,6 @@
     "\\database\\migrations",
     "\\database\\seeds"
   ],
-  "SelectedNode": "\\.env.example",
+  "SelectedNode": "\\database\\migrations\\users_table.php",
   "PreviewInSolutionExplorer": true
 }
