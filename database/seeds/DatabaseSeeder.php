@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $seeders = array ('accountseeder','materialseeder','patientseeder','profileseeder','serviceplanseeder','staffseeder','treatmentseeder');
+
+        foreach ($seeders as $seeder)
+        { 
+           $this->call($seeder);
+        }
     }
 }

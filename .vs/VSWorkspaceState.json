@@ -2,10 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
     "\\database",
+    "\\database\\factories",
     "\\database\\migrations",
     "\\database\\seeds"
   ],
-  "SelectedNode": "\\database\\migrations\\users_table.php",
+  "SelectedNode": "\\database\\migrations\\2022_12_07_060920_create_treatments_table.php",
   "PreviewInSolutionExplorer": true
 }

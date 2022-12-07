@@ -14,7 +14,7 @@ class CreateTreatmentsTable extends Migration
     public function up()
     {
         Schema::create('treatments', function (Blueprint $table) {
-            $table->integer('treadmentID')->primary();
+            $table->integer('treatmentID')->primary();
             $table->string('treatmentName',100)->unique();
             $table->timestamp('lastVisited');
         });
