@@ -66,6 +66,6 @@ class accountseeder extends Seeder
             'deactivated' => 0,
         ]
         ];
-        DB::table('accounts')->insert($acc);
+        DB::table('users')->insert($acc);
     }
 }
