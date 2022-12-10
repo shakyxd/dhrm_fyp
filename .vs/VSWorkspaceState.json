@@ -5,10 +5,11 @@
     "\\app\\Http",
     "\\app\\Http\\Controllers",
     "\\database",
-    "\\database\\factories",
     "\\database\\migrations",
-    "\\database\\seeds"
+    "\\database\\seeds",
+    "\\resources",
+    "\\resources\\views"
   ],
-  "SelectedNode": "\\database\\migrations\\2022_12_07_060920_create_treatments_table.php",
-  "PreviewInSolutionExplorer": true
+  "SelectedNode": "\\resources\\views\\welcome.blade.php",
+  "PreviewInSolutionExplorer": false
 }

@@ -34,3 +34,4 @@ class materialseeder extends Seeder
         DB::table('materials')->insert($mat);
     }
 }
+
