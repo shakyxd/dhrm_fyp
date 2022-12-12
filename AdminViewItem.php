@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>View All Profiles</title>
+        <title>View Inventory</title>
         <link rel="stylesheet" href="profilestyle.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     </head>
@@ -21,16 +21,16 @@
     </br></br>
     <div class="profile">
         <ul class="profile-menu">
-            <li><a href="CreateProfile.php" class="profile-menu-item">Create a new User Profile</a></li>
+            <li><a href="CreateItem.php" class="profile-menu-item">Create a new Item</a></li>
         </ul>
     </div>
     </br></br>
     <table>
         <thead>
             <tr>
-                <th>Profile ID</th>
-                <th>Name</th>
-                <th>Deactivated</th>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
                 <th>modify</th>
             </tr>
         </thead>
@@ -45,19 +45,18 @@
             if($data===false){
                 die("connection error");
             }
-            $sql="SELECT * from profiles";
+            $sql="SELECT * from material";
             $result=mysqli_query($data,$sql);
             while($row=$result->fetch_assoc()){
                 echo "<tr>
-                        <td>$row[profileID]</td>
-                        <td>$row[profileName]</td>
-                        <td>$row[deactivated]</td>";
-                        if($row["deactivated"]==0){
-                            echo"<td><a href='suspendProfile.php?pid=$row[profileID]' class='modbtn'>Suspend</a></td></tr>";
-                        }
-                        else{
-                            echo"<td><a href='suspendProfile.php?pid=$row[profileID]' class='modbtn'>Activate</a></td></tr>";
-                        }
+                        <td>$row[itemID]</td>
+                        <td>$row[itemName]</td>
+                        <td>$row[itemQty]</td>
+                        <td>
+                            <a href='UpdateItem.php?id=$row[itemID]' class='modbtn'>Update</a>
+                            <a href='DeleteItem.php?id=$row[itemID]' class='delbtn'>Delete</a>
+                        </td>
+                     </tr>";
             }?>
         </tbody>
     </table>

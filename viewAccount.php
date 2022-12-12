@@ -14,7 +14,7 @@
     <header>
         <nav>
             <div>
-                <h3><a href=index.php>Dental Health Record Management System - (All Accounts)</a></h3>
+                <h3><a href=index.php>Dental Health Record Management System</a></h3>
             </div>
         </nav>
     </header>

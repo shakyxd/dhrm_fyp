@@ -111,7 +111,7 @@ INSERT INTO `Treatments` (`treatmentID`, `treatmentName`, `lastVisited`) VALUES
 
 DROP TABLE IF EXISTS `Material`;
 CREATE TABLE IF NOT EXISTS `Material` (
-  `itemID` int NOT NULL,
+  `itemID` int NOT NULL AUTO_INCREMENT,
   `itemName` varchar(100) NOT NULL,
   `itemQty` int NOT NULL,
   PRIMARY KEY (`itemID`),
