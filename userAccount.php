@@ -2,19 +2,15 @@
 
     class userAccount
     {
-        public function validateLogin($username, $password)
+        public function validateLogin($user, $password)
         {
             //read from database 
-            $mysqli = new mysqli('localhost', 'root', '','fyp');
-            $query = "select * from userAccount where username = '$username'";
+            $mysqli = new mysqli('localhost','root','','fyp');
+            $query = "SELECT * from accounts where username = '$user'";
             $result = $mysqli->query($query);
             $rows = mysqli_num_rows($result);
-            
-    
-            // debug
-            //echo "<script>alert('$username')</script>";
-            //echo "<script>alert('$password')</script>";
-    
+        
+                
             if ( $rows > 0 )
             {
                 // debug
@@ -40,19 +36,19 @@
     
         }
     
-        public function getUserProfile($username)
+        public function getUserProfile($user)
         {
             //read from database 
-            $query = "SELECT * FROM userAccount JOIN userProfile ON userAccount.profileID=userProfile.profileID  where userAccount.username = '$username' limit 1";
-            $result = mysqli_query(mysqli_connect('localhost', 'root', '','fyp'), $query);
+            $query = "SELECT * FROM accounts JOIN profiles ON accounts.profileID=profiles.profileID  where accounts.username = '$user' limit 1";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
     
             return $result;
         }
 
-        public function validateUserSuspended($username)
+        public function validateUserSuspended($user)
         {
-            $query = "select * from userAccount where username = '$username' and userSuspended=1";
-            $result = mysqli_query(mysqli_connect('localhost', 'root', '','fyp'), $query);
+            $query = "SELECT * from accounts where username = '$user' and deactivated=1";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
             $rows = mysqli_num_rows($result);
 
             if($rows > 0)
@@ -67,19 +63,19 @@
         }
 
         
-        public function insert($profileID, $username, $lastName, $firstName)
+        public function insert($profileID, $user, $lastName, $firstName)
         {
-            $query = "insert into userAccount (profileID, username, lastName, firstName) values ('$profileID', '$username', '$lastName', '$firstName')";
-            $result = mysqli_query(mysqli_connect('localhost', 'root', '', ), $query); 
+            $query = "INSERT into accounts (profileID, username) values ('$profileID', '$user')";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query); 
 
             return $result;
         }
 
-        //check duplicate username
-        public function ValidateUsername($username)
+        //check duplicate user
+        public function Validateuser($user)
         {
-            $query = "select username from userAccount where username='$username'";
-            $result = mysqli_num_rows(mysqli_query(mysqli_connect('localhost', 'root', '','fyp'), $query)); 
+            $query = "SELECT username from accounts where username='$user'";
+            $result = mysqli_num_rows(mysqli_query(mysqli_connect('localhost','root','','fyp'), $query)); 
 
             if($result > 0)
             {
@@ -95,34 +91,34 @@
         public function dblists_accounts()
         {
             $query = "SELECT * FROM accounts;";
-            $result = mysqli_query(mysqli_connect('localhost', 'root', '', 'fyp'), $query);
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
 
             return $result;
         }
 
         //select everything from database to list the user details from sql with restaurant account code id
-        public function dblists_account_details_with_name($username)
+        public function dblists_account_details_with_name($user)
         {
-            $query = "SELECT * FROM userAccount where username='$username';";
-            $result = mysqli_query(mysqli_connect('localhost', 'root', '', 'fyp'), $query);
+            $query = "SELECT * FROM accounts where username='$user';";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
 
             return $result;
         }
 
-        //filter by username input
-        public function dbfilter_accounts($username)
+        //filter by user input
+        public function dbfilter_accounts($user)
         {
-            $query = "select * from userAccount where username like '%".$username."%'";
-            $result = mysqli_query(mysqli_connect('localhost', 'root', '', 'fyp'), $query);
+            $query = "SELECT * from accounts where username like '%".$user."%'";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
 
             return $result;
         }
 
         //update user account details
-        public function dbSQLQuery_update_account($username, $firstName, $profileID, $lastName, $contactNumber, $email, $remarks, $password) #syntax error cause this would depend on sqlquery
+        public function dbSQLQuery_update_account($user, $profileID, $password) #syntax error cause this would depend on sqlquery
         {
-            $mysqli = new mysqli('localhost', 'root', '', 'fyp');
-            $query = "update userAccount set firstName='$firstName', profileID='$profileID', lastName='$lastName', contactNumber='$contactNumber', email='$email', remarks='$remarks', password='$password' where username='$username'";
+            $mysqli = new mysqli('localhost','root','','fyp');
+            $query = "UPDATE accounts set profileID='$profileID', password='$password' where user='$user'";
             $result= $mysqli->query($query);
             return $mysqli->affected_rows;
             
@@ -133,8 +129,8 @@
         {   
             $id=$_GET['edit13'];
 
-            $query = "update userAccount set accountID='$id', userSuspended=0 where accountID='$id'";
-            $result = mysqli_query(mysqli_connect("localhost", "root", "","fyp"), $query);
+            $query = "UPDATE userAccount set userSuspended=0 where accountID='$id'";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
 
             return $result;
 
@@ -145,8 +141,8 @@
         {   
             $id=$_GET['edit13'];
 
-            $query = "update userAccount set accountID='$id', userSuspended=1 where accountID='$id'";
-            $result = mysqli_query(mysqli_connect("localhost", "root", "", "fyp"), $query);
+            $query = "UPDATE accounts set userSuspended=1 where accountID='$id'";
+            $result = mysqli_query(mysqli_connect('localhost','root','','fyp'), $query);
 
             return $result;
 

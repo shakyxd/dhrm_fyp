@@ -26,20 +26,20 @@ session_start();
     <center>
         <header class="header">
             <h1>
-                <!-- Restaurant Logo -->
-                <img class="restaurantLogoTopLeft" src="Logo.png" width="60px" height="60px">
+                <!-- Logo -->
+                <img class="LogoTopLeft" src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png" width="60px" height="60px">
             </h1>
             <h2 id="main">
-                <!-- Restaurant Name -->
-                <?php echo "<a href='HomePageUI.php?edit=$_GET[edit]' target='_self' class='main'>Rocket</a>"; ?>
+                <!-- Name -->
+                <?php echo "<a href='HomePageUI.php?edit=$_GET[edit]' target='_self' class='main'>DHRM</a>"; ?>
             </h2>
             <h3>
                 <!-- User's Navigation Dropdown Box -->
                 <div class="dropdown">
-                    <button class="dropbtn"><?php echo $_SESSION['username'];?></button>
+                    <button class="dropbtn"><?php echo $_SESSION['user'];?></button>
                     <div class="dropdown-content">
-                    <?php echo "<a href='#' onclick=window.location.href='ManageAccountViaNavBarUI.php?edit=$_GET[edit]'>Manage Account</a>"; ?>
-                    <a href="#" onclick="window.location.href='logoutController.php'"><img class="logout" src="Logout.png" width="25" height="25" align="center">Logout</a>
+                    <?php echo "<a href='#' onclick=window.location.href='SearchAccountNav.php?edit=$_GET[edit]'>Manage Account</a>"; ?>
+                    <a href="#" onclick="window.location.href='logoutController.php'"><img class="logout" src="https://i.imgur.com/tPJjyEf.png" width="25" height="25" align="center">Logout</a> <!-- This one uses Logout.php have't done yet ->
                     <!-- THE '#' IS FOR THE LINKS/HYPERLINKS, REPLACE THE URL ON THE HASH AND CHANGE THE LINK 'NUMBER' WHEN DONE-->
                     </div>
                   </div>
@@ -50,9 +50,9 @@ session_start();
             <hr></hr> <!-- Divider -->
             <div>
                 <!-- Search Icon -->
-                <img class="searchIcon" src="Search.png" alt="Search">
-                <!-- Search Username Textbox -->
-                <input class="inputSearch" id="inputbox" type="text" name="valueToSearch" placeholder="Search by Username"><br><br>
+                <img class="searchIcon" src="https://i.imgur.com/2xq2uen.jpg" alt="Search">
+                <!-- Search user Textbox -->
+                <input class="inputSearch" id="inputbox" type="text" name="valueToSearch" placeholder="Search by user"><br><br>
                 <!-- Refresh List Button -->
                 <input id="but" type="submit" name="search" value="Refresh List">
             </div>
@@ -61,7 +61,7 @@ session_start();
             <table class="tableViewAcc">
                 <tr>
                     <th>ID</th>
-                    <th>Username</th>
+                    <th>user</th>
                     <th>Status</th>
                     <th>Functions</th>
                 </tr>

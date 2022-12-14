@@ -80,7 +80,7 @@ INSERT INTO `Patients` (`patientID`, `firstName`, `lastName`, `accountID`, `plan
 
 DROP TABLE IF EXISTS `Service Plans`;
 CREATE TABLE IF NOT EXISTS `Service Plans` (
-  `planID` int NOT NULL,
+  `planID` int NOT NULL AUTO_INCREMENT,
   `planName` varchar(100) NOT NULL,
   PRIMARY KEY (`planID`),
   UNIQUE KEY `planName` (`planName`)
@@ -95,7 +95,7 @@ INSERT INTO `Service Plans` (`planID`, `planName`) VALUES
 
 DROP TABLE IF EXISTS `Treatments`;
 CREATE TABLE IF NOT EXISTS `Treatments` (
-  `treatmentID` int NOT NULL,
+  `treatmentID` int NOT NULL AUTO_INCREMENT,
   `treatmentName` varchar(100) NOT NULL,
   `lastVisited` datetime NOT NULL,
   PRIMARY KEY (`treatmentID`),

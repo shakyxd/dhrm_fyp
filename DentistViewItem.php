@@ -53,7 +53,7 @@
                         <td>$row[itemName]</td>
                         <td>$row[itemQty]</td>
                         <td>
-                            <a href='UpdateItem.php?id=$row[itemID]' class='modbtn'>Update</a>
+                            <a href='UpdateItem.php?id=$row[itemID]&pid=2' class='modbtn'>Update</a>
                         </td>
                      </tr>";
             }?>

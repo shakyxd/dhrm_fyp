@@ -34,6 +34,9 @@ $itemName="";
 $itemQty="";
 $errorMessage="";
 $successMessage="";
+if(isset($_GET["pid"])){
+    $profileID=$_GET["pid"];
+}
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
     if(!isset($_GET["id"])){
@@ -47,7 +50,12 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $result=$data->query($sql);
     $row=$result->fetch_assoc();
     if(!$row){
-        header("location:AdminViewItem.php");
+        if(isset($_GET["pid"])){
+            header("location:DentistViewItem.php");
+        }
+        else{
+            header("location:AdminViewItem.php");
+        }
         exit;
     }
     $itemName=$row["itemName"];
@@ -72,10 +80,19 @@ else{
 
             $successMessage="Item updated successfully";
 
-            header("location:AdminViewItem.php");
+            if(isset($_GET["pid"])){
+                header("location:DentistViewItem.php");
+            }
+            else{
+                header("location:AdminViewItem.php");
+            }
             exit;
     }while(false);
 }
+if(isset($_POST['button'])){
+    echo $_SERVER['HTTP_REFERER']; 
+   }
+   
 ?>
     <div class="createProfile-container"> 
         <h2>Update Item Details</h2></br>

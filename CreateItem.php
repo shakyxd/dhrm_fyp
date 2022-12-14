@@ -63,7 +63,7 @@
     }
     ?>
     <div class="createProfile-container"> 
-        <h2>Create new User Profile</h2></br>
+        <h2>Create new Item</h2></br>
         <?php
         if(!empty($errorMessage)){
             echo "<strong>$errorMessage</strong>";

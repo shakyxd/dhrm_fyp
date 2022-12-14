@@ -18,13 +18,13 @@
                 
                 while($row = mysqli_fetch_assoc($result))
                 {
-                    if($row['deactivated'] == 0)                                                                                                                                                                                                                                                                                                                                                                                                                       
+                    if($row['userSuspended'] == 0)                                                                                                                                                                                                                                                                                                                                                                                                                       
                     {
-                        echo "<tr><td>" . $row['accountID'] . "</td><td>".$row['username']. "</td><td>"."Active" ."</td><td>". "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[username]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='suspendUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: red'>Suspend</button>"."</td></tr>";
+                        echo "<tr><td>" . $row['accountID'] . "</td><td>".$row['user']. "</td><td>"."Active" ."</td><td>". "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[user]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='suspendUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: red'>Suspend</button>"."</td></tr>";
                     }
                     else
                     {
-                        echo "<tr><td>" . $row['accountID'] . "</td><td>" . $row['username']. "</td><td>" ."Suspended". "</td><td>" . "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[username]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='activateUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: green'>Activate</button>"."</td></tr>";
+                        echo "<tr><td>" . $row['accountID'] . "</td><td>" . $row['user']. "</td><td>" ."Suspended". "</td><td>" . "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[user]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='activateUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: green'>Activate</button>"."</td></tr>";
                     }
                 }
             }
@@ -45,11 +45,11 @@
                     {
                         if($row['userSuspended'] == 0)
                         {
-                            echo "<tr><td>" . $row['accountID'] . "</td><td>".$row['username']. "</td><td>"."Active" ."</td><td>". "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[username]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='suspendUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: red'>Suspend</button>"."</td></tr>";
+                            echo "<tr><td>" . $row['accountID'] . "</td><td>".$row['user']. "</td><td>"."Active" ."</td><td>". "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[user]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='suspendUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: red'>Suspend</button>"."</td></tr>";
                         }
                         else
                         {
-                            echo "<tr><td>" . $row['accountID'] . "</td><td>" . $row['username']. "</td><td>" ."Suspended". "</td><td>" . "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[username]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='activateUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: green'>Activate</button>"."</td></tr>";
+                            echo "<tr><td>" . $row['accountID'] . "</td><td>" . $row['user']. "</td><td>" ."Suspended". "</td><td>" . "<button type='button' class='tableButton' onclick=window.location.href='ManageAccountDetailsPageUI.php?edit=$_GET[edit]&edit12=$row[user]'>Account Details</button>"." "."<button type='button' class='tableButton' onclick=window.location.href='activateUserController.php?edit=$_GET[edit]&edit13=$row[accountID]' style='background-color: green'>Activate</button>"."</td></tr>";
                         }
                     }
                 }
