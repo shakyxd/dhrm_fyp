@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `Accounts` (
   `deactivated` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`accountID`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `Accounts` (`accountID`, `username`, `password`, `profileID`, `deactivated`) VALUES
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `Staffs` (
   `accountID` int NOT NULL,
   PRIMARY KEY (`staffID`),
   UNIQUE KEY `accountID` (`accountID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `Staffs` (`staffID`, `firstName`, `lastName`, `accountID`) VALUES
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Patients` (
   `treatmentID` int NOT NULL,
   PRIMARY KEY (`patientID`),
   UNIQUE KEY `accountID` (`accountID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `Patients` (`patientID`, `firstName`, `lastName`, `accountID`, `planID`, `treatmentID`) VALUES
@@ -80,11 +80,11 @@ INSERT INTO `Patients` (`patientID`, `firstName`, `lastName`, `accountID`, `plan
 
 DROP TABLE IF EXISTS `Service Plans`;
 CREATE TABLE IF NOT EXISTS `Service Plans` (
-  `planID` int NOT NULL AUTO_INCREMENT,
+  `planID` int NOT NULL,
   `planName` varchar(100) NOT NULL,
   PRIMARY KEY (`planID`),
   UNIQUE KEY `planName` (`planName`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `Service Plans` (`planID`, `planName`) VALUES
@@ -95,12 +95,12 @@ INSERT INTO `Service Plans` (`planID`, `planName`) VALUES
 
 DROP TABLE IF EXISTS `Treatments`;
 CREATE TABLE IF NOT EXISTS `Treatments` (
-  `treatmentID` int NOT NULL AUTO_INCREMENT,
+  `treatmentID` int NOT NULL,
   `treatmentName` varchar(100) NOT NULL,
   `lastVisited` datetime NOT NULL,
   PRIMARY KEY (`treatmentID`),
   UNIQUE KEY `treatmentName` (`treatmentName`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `Treatments` (`treatmentID`, `treatmentName`, `lastVisited`) VALUES
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `Material` (
   `itemQty` int NOT NULL,
   PRIMARY KEY (`itemID`),
   UNIQUE KEY `itemName` (`itemName`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `Material` (`itemID`, `itemName`, `itemQty`) VALUES

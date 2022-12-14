@@ -1,0 +1,87 @@
+<!-- <?php
+    session_start();
+?> -->
+
+<!DOCTYPE HTML>
+<html>  
+<head>
+<style>
+
+</style>
+
+<script>
+
+    function togglePassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function togglePassword2() {
+  var x = document.getElementById("password2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+
+</script>
+
+
+
+</head>
+
+<body>
+
+<h1 align = "center"> Create Account Form! </h1>
+
+<div class ="form" align="center">
+    <form action="createAccount.php" method="post" >
+        <table>
+            <tr>    
+                <td align="right"> Username: </td>
+                <td align="left"><input type="text" name="username"></td>
+            <tr>
+
+            <tr>    
+                <td align="right"> Password: </td>
+                <td align="left"><input type="password" name="password" id="password"></td>
+                <td> <input type="checkbox" onclick="togglePassword()"> Show Password </td>
+            <tr>
+
+            <tr>    
+                <td align="right"> Confirm Password: </td>
+                <td align="left"><input type="password" name="password2" id="password2"></td>
+                <td> <input type="checkbox" onclick="togglePassword2()"> Show Password </td>
+            <tr>
+
+            <tr>    
+                <td align="right"> Type: </td>
+                <td><input type="radio" name="profileID" value="2">Dentist</td>
+                <td><input type="radio" name="profileID" value="3">Patient</td>
+            <tr>
+
+            <!-- <tr>    
+                <td align="right"> Password: </td>
+                <td align="left"><input type="text" name="password"></td>
+            <tr> -->
+
+            <tr>
+                <td align="center" colspan="2"> <input type="submit" value="Create Account"></td>
+
+            <tr>
+
+        </table>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
