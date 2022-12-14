@@ -5,6 +5,9 @@
 <!DOCTYPE HTML>
 <html>  
 <head>
+
+  <link rel="stylesheet" href="johan.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <style>
 
 </style>
@@ -36,11 +39,21 @@ function togglePassword2() {
 
 </head>
 
-<body>
+<body style="background-color:#D3D3D3;">
 
-<h1 align = "center"> Create Account Form! </h1>
+  <header>
+    <nav>
+        <div>
+            <h3><a href=index.php>Dental Health Record Management System</a></h3>
+        </div>
+    </nav>
+</header>
+<br>
 
-<div class ="form" align="center">
+
+<div class ="container" align="center">
+
+  <h2 align = "center"> Create Account Form! </h2>
     <form action="createAccount.php" method="post" >
         <table>
             <tr>    
@@ -72,7 +85,7 @@ function togglePassword2() {
             <tr> -->
 
             <tr>
-                <td align="center" colspan="2"> <input type="submit" value="Create Account"></td>
+                <td align="center" colspan="2"> <input type="submit" value="Create Account" class="submitBtn"></td>
 
             <tr>
 
