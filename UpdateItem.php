@@ -115,7 +115,14 @@ if(isset($_POST['button'])){
                 }
             ?>
             </br></br><button type="submit" class="createProfileSubmitbtn">Submit</button>
-            <button onclick="history.back()" class="delbtn"role="button">Cancel</a>
+            <?php
+                if(isset($_GET["pid"])){
+                    echo("<a href='DentistViewItem.php' class=delbtn role='button'>Cancel</a>");
+                }
+                else{
+                    echo("<a href='AdminViewItem.php' class=delbtn role='button'>Cancel</a>");
+                }
+            ?>
         </form>
     </div>
 
