@@ -36,7 +36,7 @@ session_start();
             <h3>
                 <!-- User's Navigation Dropdown Box -->
                 <div class="dropdown">
-                    <button class="dropbtn"><?php echo $_SESSION['user'];?></button>
+                    <button class="dropbtn"><?php echo $_SESSION['username'];?></button>
                     <div class="dropdown-content">
                     <?php echo "<a href='#' onclick=window.location.href='SearchAccountNav.php?edit=$_GET[edit]'>Manage Account</a>"; ?>
                     <a href="#" onclick="window.location.href='logoutController.php'"><img class="logout" src="https://i.imgur.com/tPJjyEf.png" width="25" height="25" align="center">Logout</a> <!-- This one uses Logout.php have't done yet ->

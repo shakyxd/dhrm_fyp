@@ -79,6 +79,8 @@ header a:hover {
     list-style: none;
     font-family: Poppins;
     justify-content: center;
+    display: table;
+    margin:0 auto;
 }
 .profile-menu li {
     display: inline-block;
@@ -158,4 +160,9 @@ table{
 .delbtn:hover {
     background-color: #8f0000;
     opacity: 100%;
+}
+.searchbar{
+    font-family: Poppins;
+    display:table;
+    margin:0 auto;
 }
