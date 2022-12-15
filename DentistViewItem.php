@@ -19,12 +19,6 @@
         </nav>
     </header>
     </br></br>
-    <div class="profile">
-        <ul class="profile-menu">
-            <li><a href="CreateItem.php" class="profile-menu-item">Create a new Item</a></li>
-        </ul>
-    </div>
-    </br></br>
     <table>
         <thead>
             <tr>
