@@ -22,6 +22,15 @@
   }
 }
 
+function togglePassword2() {
+  var x = document.getElementById("password2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
 </script>
 
 
@@ -59,12 +68,11 @@
 
           <tr>
               <td align="center" colspan="2"> <input type="submit" value="Login" class="submitBtn"></td>
-
           <tr>
 
-            <!--<tr>
-              <td align="center" colspan="2"> <a href = "forgotPassword.html"> Forgot Password? </a>
-            </td>-->
+           <tr>
+            <td align="center" colspan="2"> <a href = "forgotPassword.html"> Forgot Password? </a></td>
+          </tr>
 
       </table>
 
