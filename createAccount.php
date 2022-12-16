@@ -79,7 +79,7 @@ if ($conn->connect_error) {
 
         
 
-    echo "Account created successfully! Congrats!";
+    header("location:viewAccount.php");
 
    
    
