@@ -59,16 +59,32 @@
             }
             if(isset($_GET['search'])){
                 $filtervalues=$_GET['search'];
-                $sql="SELECT accounts.accountID, accounts.username, accounts.password, accounts.profileID, 
-                accounts.deactivated, patients.patientID, patients.firstName, patients.lastName,
-                patients.accountID, patients.planID, staffs.staffID, staffs.firstName, staffs.lastName,
-                staffs.retired, staffs.accountID
+                $sql="SELECT accounts.accountID, 
+                    accounts.username, 
+                    accounts.password,
+                    accounts.profileID, 
+                    accounts.deactivated, 
+                    patients.patientID,
+                    patients.firstName as pfn, 
+                    patients.lastName as pln,
+                    patients.accountID as p_aid, 
+                    patients.planID, 
+                    staffs.staffID, 
+                    staffs.firstName as sfn, 
+                    staffs.lastName as sln,
+                    staffs.retired, 
+                    staffs.accountID as s_aid
                 FROM accounts
-                LEFT JOIN patients ON patients.accountID=accounts.accountID
-                LEFT JOIN staffs ON staffs.accountID=accounts.accountID
-                GROUP BY accounts.accountID
-                WHERE CONCAT(accounts.username,patients.firstName,patients.lastName,staffs.firstName,staffs.lastName) 
-                LIKE '%$filtervalues%'";
+                LEFT JOIN patients 
+                    ON patients.accountID=accounts.accountID
+                LEFT JOIN staffs 
+                    ON staffs.accountID=accounts.accountID
+                WHERE accounts.username LIKE '%$filtervalues%'
+                OR patients.firstName LIKE '%$filtervalues%'
+                OR patients.lastName LIKE '%$filtervalues%'
+                OR staffs.firstName LIKE '%$filtervalues%'
+                OR staffs.lastName LIKE '%$filtervalues%'
+                GROUP BY accounts.accountID";
             }
             else{
                 $sql="SELECT accounts.accountID, accounts.username, accounts.password, accounts.profileID, 
@@ -80,25 +96,6 @@
                 LEFT JOIN staffs ON staffs.accountID=accounts.accountID
                 GROUP BY accounts.accountID";
             }
-            // $sql="SELECT * from accounts 
-            //     LEFT JOIN patients ON accounts.accountID=patients.accountID
-            //     UNION
-            //     SELECT * FROM accounts
-            //     RIGHT JOIN patients ON accounts.accountID=patients.accountID";
-            // $sql="SELECT *
-            // FROM accounts LEFT JOIN patients ON accounts.accountID = patients.accountID
-            //         LEFT JOIN staffs ON accounts.accountID = staffs.accountID
-            // UNION
-            // SELECT *
-            // FROM patients LEFT JOIN accounts ON accounts.accountID = patients.accountID
-            //         LEFT JOIN staffs ON patients.accountID = staffs.accountID
-            // WHERE accounts.accountID is NULL
-            // UNION
-            // SELECT *
-            // FROM staffs LEFT JOIN accounts ON accounts.accountID = staffs.accountID
-            //         LEFT JOIN patients ON patients.accountID = staffs.accountID
-            // WHERE accounts.accountID IS NULL AND patients.accountID IS NULL";
-            
             $result=mysqli_query($data,$sql);
             while($row=$result->fetch_assoc()){
                 if($row["profileID"]==3){
