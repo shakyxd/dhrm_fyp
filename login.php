@@ -1,7 +1,7 @@
 <?php
 
 
-$username = $_POST["username"];
+$email = $_POST["email"];
 $password = $_POST["password"];
 
 
@@ -13,8 +13,8 @@ $conn = new mysqli('localhost', 'root', '', 'fyp');
 if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }else{
-    $stmt = $conn->prepare("SELECT * FROM accounts where username = ?");
-    $stmt->bind_param("s", $username);
+    $stmt = $conn->prepare("SELECT * FROM Patients where email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt_result = $stmt->get_result();
 
@@ -23,11 +23,11 @@ if ($conn->connect_error) {
         if($data['password'] === $password) {
             echo "<h2> Login Successfully </h2>";
         }else {
-            echo "<h2> Invalid username or password </h2>";
+            echo "<h2> Invalid email or password </h2>";
         }
 
     }else{
-        echo "<h2> Invalid username or password </h2>";
+        echo "<h2> Invalid email or password </h2>";
     }
     $stmt->close();
     $conn->close();

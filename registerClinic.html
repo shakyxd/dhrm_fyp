@@ -5,11 +5,13 @@
   <link rel="stylesheet" href="johan.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <style>
-#allergies{
+#description{
 
-  height:100px;
-  width:500px;
-  font-size:14pt;
+    height:100px;
+    width:500px;
+    font-size:14pt;
+
+
 }
 
 </style>
@@ -37,8 +39,6 @@ function togglePassword2() {
 
 </script>
 
-
-
 </head>
 
 <body style="background-color:#D3D3D3;">
@@ -55,12 +55,15 @@ function togglePassword2() {
 
 <div class ="container" align="center">
 
-  <h2 align = "center"> Register Patient Form! </h2>
-    <form action="registerPatient.php" method="post" >
+  <h2 align = "center"> Register Clinic Form! </h2>
+    <form action="registerClinic.php" method="post" >
         <table>
             <tr>    
-                <td align="right"> Email: </td>
+                <td align="right"> Clinic Email: </td>
                 <td align="left"><input type="text" name="email"></td>
+
+                <td align="right"> Clinic Name: </td>
+                <td align="left"><input type="text" name="nameClinic"></td>
             <tr>
 
             <tr>    
@@ -75,41 +78,34 @@ function togglePassword2() {
                 <td> <input type="checkbox" onclick="togglePassword2()"> Show Password </td>
             <tr>
 
-              <tr>
-                <td align="right"> Mobile Number: </td>
-                <td align="left"><input type="text" name="mobileNum"> </td>
-              <tr>
+            <tr>
+                <td align="right"> Phone Number: </td>
+                <td align="left"><input type="text" name="phoneNum"> </td>
+            <tr>
 
             <tr>    
-                <td align="right"> First Name: </td>
-                <td align="left"><input type="text" name="fname"></td>
-                <td align="right"> Last Name: </td>
-                <td align="left"><input type="text" name="lname"></td>
-            <tr>
-
-            <tr>
-              <td align="right"> Date Of Birth: </td>
-              <td align="left"><input type="text" name="dateOfBirth"> </td>
-              <td align="right"> Nationality: </td>
-              <td align="left"><input type="text" name="nationality"> </td>
-            <tr>
-
-              <tr>
-                <td align="right"> Allergies: </td>
-                <td align="left" colspan="4"><input type="text" name="allergies" id="allergies"> </td>
-              <tr>
-
-            <tr>    
-                <td align="right"> Type: </td>
+                <td align="right"> Blk No: </td>
+                <td align="left"><input type="text" name="blockNum"></td>
+                <td align="right"> Street Name: </td>
+                <td align="left"><input type="text" name="streetName"></td>
                 
-                <td>
-                <input type="radio" name="gender" value="M" required> Male </input>
-                <input type="radio" name="gender" value="F"> Female </input>
-                </td>
             <tr>
 
             <tr>
-                <td align="center" colspan="4"> <input type="submit" value="Register Account" class="submitBtn"></td>
+              <td align="right"> Unit No: </td>
+              <td align="left"><input type="text" name="unitNum"> </td>
+              <td align="right"> Postal Code: </td>
+              <td align="left"><input type="text" name="postalCode"> </td>
+            <tr>
+
+              <tr>
+                <td align="right"> Description: </td>
+                <td align="left" colspan="4"><input type="text" name="description" id="description"> </td>
+              <tr>
+
+
+            <tr>
+                <td align="center" colspan="4"> <input type="submit" value="Register Clinic" class="submitBtn"></td>
 
             <tr>
 

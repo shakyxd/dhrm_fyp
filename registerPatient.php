@@ -28,7 +28,7 @@ if ($conn->connect_error) {
 
     if ($password == $password2) {
 
-      $stmt = $conn->prepare("INSERT INTO Patients(emailPatient, passwordPatient, firstName, lastName, )
+      // $stmt = $conn->prepare("INSERT INTO Patients(emailPatient, passwordPatient, firstName, lastName, )
       values(?, ?, ?)");
       $stmt->bind_param("ssi", $username, $password, $profileID);
       $stmt->execute();
