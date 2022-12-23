@@ -53,12 +53,12 @@ function togglePassword2() {
 
 <div class ="container" align="center">
 
-  <h2 align = "center"> Create Account Form! </h2>
-    <form action="createAccount.php" method="post" >
+  <h2 align = "center"> Register Patient Form! </h2>
+    <form action="registerPatient.php" method="post" >
         <table>
             <tr>    
-                <td align="right"> Username: </td>
-                <td align="left"><input type="text" name="username"></td>
+                <td align="right"> Email: </td>
+                <td align="left"><input type="text" name="email"></td>
             <tr>
 
             <tr>    
@@ -73,32 +73,41 @@ function togglePassword2() {
                 <td> <input type="checkbox" onclick="togglePassword2()"> Show Password </td>
             <tr>
 
+              <tr>
+                <td align="right"> Mobile Number: </td>
+                <td align="left"><input type="text" name="mobileNum"> </td>
+              <tr>
+
             <tr>    
                 <td align="right"> First Name: </td>
                 <td align="left"><input type="text" name="fname"></td>
-            <tr>
-
-              <tr>    
                 <td align="right"> Last Name: </td>
                 <td align="left"><input type="text" name="lname"></td>
             <tr>
+
+            <tr>
+              <td align="right"> Date Of Birth: </td>
+              <td align="left"><input type="text" name="dateOfBirth"> </td>
+              <td align="right"> Nationality: </td>
+              <td align="left"><input type="text" name="nationality"> </td>
+            <tr>
+
+              <tr>
+                <td align="right"> Allergies: </td>
+                <td align="left"><input type="text" name="allergies"> </td>
+              <tr>
 
             <tr>    
                 <td align="right"> Type: </td>
                 
                 <td>
-                <input type="radio" name="profileID" value="2" required>Staff </input>
-                <input type="radio" name="profileID" value="3">Patient </input>
+                <input type="radio" name="gender" value="M" required> Male </input>
+                <input type="radio" name="gender" value="F"> Female </input>
                 </td>
             <tr>
 
-            <!-- <tr>    
-                <td align="right"> Password: </td>
-                <td align="left"><input type="text" name="password"></td>
-            <tr> -->
-
             <tr>
-                <td align="center" colspan="2"> <input type="submit" value="Create Account" class="submitBtn"></td>
+                <td align="center" colspan="2"> <input type="submit" value="Register Account" class="submitBtn"></td>
 
             <tr>
 
