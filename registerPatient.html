@@ -1,0 +1,113 @@
+<!-- <?php
+    session_start();
+?> -->
+
+<!DOCTYPE HTML>
+<html>  
+<head>
+
+  <link rel="stylesheet" href="johan.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<style>
+
+</style>
+
+<script>
+
+    function togglePassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function togglePassword2() {
+  var x = document.getElementById("password2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+
+</script>
+
+
+
+</head>
+
+<body style="background-color:#D3D3D3;">
+
+  <header>
+    <nav>
+        <div>
+            <h3><a href=index.php>Dental Health Record Management System</a></h3>
+        </div>
+    </nav>
+</header>
+<br>
+
+
+<div class ="container" align="center">
+
+  <h2 align = "center"> Create Account Form! </h2>
+    <form action="createAccount.php" method="post" >
+        <table>
+            <tr>    
+                <td align="right"> Username: </td>
+                <td align="left"><input type="text" name="username"></td>
+            <tr>
+
+            <tr>    
+                <td align="right"> Password: </td>
+                <td align="left"><input type="password" name="password" id="password"></td>
+                <td> <input type="checkbox" onclick="togglePassword()"> Show Password </td>
+            <tr>
+
+            <tr>    
+                <td align="right"> Confirm Password: </td>
+                <td align="left"><input type="password" name="password2" id="password2"></td>
+                <td> <input type="checkbox" onclick="togglePassword2()"> Show Password </td>
+            <tr>
+
+            <tr>    
+                <td align="right"> First Name: </td>
+                <td align="left"><input type="text" name="fname"></td>
+            <tr>
+
+              <tr>    
+                <td align="right"> Last Name: </td>
+                <td align="left"><input type="text" name="lname"></td>
+            <tr>
+
+            <tr>    
+                <td align="right"> Type: </td>
+                
+                <td>
+                <input type="radio" name="profileID" value="2" required>Staff </input>
+                <input type="radio" name="profileID" value="3">Patient </input>
+                </td>
+            <tr>
+
+            <!-- <tr>    
+                <td align="right"> Password: </td>
+                <td align="left"><input type="text" name="password"></td>
+            <tr> -->
+
+            <tr>
+                <td align="center" colspan="2"> <input type="submit" value="Create Account" class="submitBtn"></td>
+
+            <tr>
+
+        </table>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
