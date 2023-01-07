@@ -1,15 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers",
-    "\\database",
-    "\\database\\migrations",
-    "\\database\\seeds",
-    "\\resources",
-    "\\resources\\views"
+    ""
   ],
-  "SelectedNode": "\\resources\\views\\welcome.blade.php",
+  "SelectedNode": "\\johan.css",
   "PreviewInSolutionExplorer": false
 }

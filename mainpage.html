@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <link rel="stylesheet" href="mainpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #allergies {
+            height: 100px;
+            width: 500px;
+            font-size: 14pt;
+        }
+    </style>
+
+    <script>
+
+        function togglePassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        function togglePassword2() {
+            var x = document.getElementById("password2");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+
+    </script>
+
+
+
+</head>
+
+<body style="background-color:#D3D3D3;">
+
+    <div class="topnav">
+        <h3><a class="active" href="#home">DHRM</a></h3>
+        <h3><a href="#news">About Us</a></h3>
+        <h3><a href="#contact">Contact Us</a></h3>
+        <div class="topnav-right">
+            <a href="#search">Register</a>
+            <a href="#about">Login</a>
+        </div>
+    </div>
+    <br>
+
+
+    <div align="Left">
+
+        <form class="example" action="mainpage.php" method="post">
+            <div class="searchbar" align="left">
+                <input type="text" placeholder="Search For Clinic">
+                <button class="btn"><i class="fa fa-search"></i></button>                     
+            </div>
+            <div class="uneditable" align="left">
+                <input type="text" id="treatment" name="treatment" value="Treatment" readonly size="50">
+                <div class="selectform" align="left">
+                    <select id="treatment" name="treatment">
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                    </select>
+                </div>
+            </div>
+
+</form>
+
+    </div>
+
+</body>
+
+</html>
