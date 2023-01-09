@@ -3,13 +3,14 @@
 $email = $_POST["email"];
 $password = $_POST["password"];
 $password2 = $_POST["password2"];
-$mobileNum = $_POAST["mobileNum"];
+$mobileNum = $_POST["mobileNum"];
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
+$gender = $_POST["gender"];
 $dateOfBirth = $_POST["dateOfBirth"];
 $nationality = $_POST["nationality"];
 $allergies = $_POST["allergies"];
-$gender = $_POST["gender"];
+
 
 
 
@@ -28,9 +29,10 @@ if ($conn->connect_error) {
 
     if ($password == $password2) {
 
-      // $stmt = $conn->prepare("INSERT INTO Patients(emailPatient, passwordPatient, firstName, lastName, )
-      values(?, ?, ?)");
-      $stmt->bind_param("ssi", $username, $password, $profileID);
+      $stmt = $conn->prepare("INSERT INTO patient(emailPatient, passwordPatient, mobileNum, 
+      firstName, lastName, gender, dateOfBirth, nationality, allergiesList)
+      values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt->bind_param("ssissssss", $email, $password, $mobileNum, $fname, $fname, $gender, $dateOfBirth, $nationality, $allergies);
       $stmt->execute();
 
 
