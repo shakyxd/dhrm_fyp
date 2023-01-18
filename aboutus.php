@@ -9,6 +9,8 @@
 
     <!-- Custom styles for this template -->
     <link href="a.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   </head>
   <body>
     
@@ -25,10 +27,16 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">About Us</a></li>
+        <li class="nav-item"><a href="homepage.php" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="aboutus.php" class="nav-link active" aria-current="page">About Us</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Register</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Register</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Clinic Register</a></li>
+                <li><a class="dropdown-item" href="#">Patient Register</a></li>
+            </ul>
+        </li>
         <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
       </ul>
 
@@ -140,3 +148,4 @@
         -webkit-overflow-scrolling: touch;
       }
     </style>
+

@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\dist",
+    "\\dist\\css"
   ],
   "PreviewInSolutionExplorer": false
 }
