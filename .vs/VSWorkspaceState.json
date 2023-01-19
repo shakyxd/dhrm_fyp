@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\dist",
-    "\\dist\\css"
+    "\\dist\\css",
+    "\\dist\\js"
   ],
+  "SelectedNode": "\\dist\\css\\dashboard.css",
   "PreviewInSolutionExplorer": false
 }
