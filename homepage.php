@@ -104,7 +104,7 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="dentist1.jpg" class="d-block w-100" alt="...">
+                    <img src="images/dentist1.jpg" class="d-block w-100" alt="...">
                     <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="false" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                     <div class="container">
                       <div class="carousel-caption text-start">
@@ -115,7 +115,7 @@
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="dentist2.jpg" class="d-block w-100" alt="...">
+                    <img src="images/dentist2.jpg" class="d-block w-100" alt="...">
                     <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                     <div class="container">
                       <div class="carousel-caption">
@@ -126,7 +126,7 @@
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="dentist3.jpg" class="d-block w-100" alt="...">
+                    <img src="images/dentist3.jpg" class="d-block w-100" alt="...">
                     <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
                     <div class="container">
                       <div class="carousel-caption text-end">
@@ -157,19 +157,19 @@
                 <!-- Three columns of text below the carousel -->
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="clinic1.jpg" alt="Avatar" style="width:200px">
+                        <img src="images/clinic1.jpg" alt="Avatar" style="width:200px">
                         <h2 class="fw-normal">Clinic A</h2>
                         <p>"After partnering with toothscanner, we have seen an increase in customers visiting our clinic"</p>
                         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
-                        <img src="clinic2.jpg" alt="Avatar" style="width:173px">
+                        <img src="images/clinic2.jpg" alt="Avatar" style="width:173px">
                         <h2 class="fw-normal">Clinic B</h2>
                         <p>"Toothscanner is a handy app for us to make our treatment plans known to the public"</p>
                         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
-                        <img src="clinic3.jpg" alt="Avatar" style="width:180px">
+                        <img src="images/clinic3.jpg" alt="Avatar" style="width:180px">
                         <h2 class="fw-normal">Clinic C</h2>
                         <p>"With toothscanner, patients can now come in to our clinic and start their treatment immediately without having to schedule appointments here"</p>
                         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>

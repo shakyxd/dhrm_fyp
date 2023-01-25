@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-          <img class="rounded-lg-3" src="aboutusdental.jpg" alt="" width="720">
+          <img class="rounded-lg-3" src="images/aboutusdental.jpg" alt="" width="720">
       </div>
     </div>
   </div>
