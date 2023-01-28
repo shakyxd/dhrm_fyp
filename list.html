@@ -1,0 +1,71 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+    form {    
+      text-align: center;
+      width: 50%;
+      margin: auto;
+    }
+    h1,h2,div,ul,li,h3,p 
+      {
+        text-align: center;
+      }
+      form {
+        width: 50%;
+        margin: auto;
+      }
+  
+      p.special-font {
+          font-size: 12px;
+          }
+</style>
+
+<script>
+    function toggleAnswer(id) {
+        const answer = document.getElementById(`faq${id}`);
+        if (answer.style.display === "none") {
+          answer.style.display = "block";
+            } else {
+             answer.style.display = "none";
+              }
+        }
+</script>
+
+<body>
+<h2>Frequently Asked Questions</h2>
+        <div id="self-help-section"> 
+             <ul>
+                <li>
+                    <button onclick="toggleAnswer(1)">Why did I not recieve any follow up to my request(s)?</button> <!-- Change the Question Here -->
+                  </li>
+                  <li>
+                    <button onclick="toggleAnswer(2)">I have already paid for a due fee yet was charged again.</button>
+                  </li>
+                  <li>
+                    <button onclick="toggleAnswer(3)">I was promised a refund but was not given.</button>
+                  </li>
+         </ul>
+
+  <div id="faq1" class="answer" style="display: none;">
+    <h3>Why did I not recieve any follow up to my request(s)?</h3>
+    <p>If you did not recieve any follow up request within 24 hours, it is possible that your request was dropped due to insufficient information given. Please resubmit a ticket or call our hotline at +65 6942069.</p>
+  </div>
+  <div id="faq2" class="answer" style="display: none;">
+    <h3>I have already paid for a due fee yet was charged again.</h3>
+    <p>There are 2 possible outcomes, either the payment was not yet recieved or it was rejected. Please consult your bank to check if the payment went through. 
+      If your payment went through and yet there is still a charge, please call or email to our emergency hotline for payment process.</p>
+  </div>
+  <div id="faq3" class="answer" style="display: none;">
+    <h3>I was promised a refund but was not given.</h3>
+    <p>Please check with your bank to see if there has been any payment refunded to your account. If there are still discrepencies, please call or email to our emergency payemnt hotline for payment process.</p>
+  </div>
+</div>
+<br>
+<h2 class="center">Premium Membership Hotline</h2><br>
+<p>For your convenience, Premium Members can send a text message<b>*</b> to +65 9184 8888 with “DHRM+ 10-digit premium membership number” to request for a call back from our staff. </p>
+  <p id="special-font">  <br><i>*Carrier charges may apply. Mobile number must be the same number registered in your DHRM profile.</i></p>
+</body>
+
+</html>
