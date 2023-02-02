@@ -93,13 +93,13 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="PatientDashboard.php">
               <span data-feather="home" class="align-text-bottom"></span>
               Patient Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="PatientVisitationHistory.php">
+            <a class="nav-link active" href="#">
               <span data-feather="pie-chart" class="align-text-bottom"></span>
               Visitation History
             </a>
@@ -150,59 +150,7 @@
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
         <div class="row">
-          <div class="col-lg-4">
-            <img src="images/patient1.jpg" alt="Avatar" class="avatar">
-          </div>
-          <div class="col-lg-8">
-            <div class="card mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Email</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Phone</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-              </div>
-            </div>   
-          </div>
+          <h3>Patient Visitation History</h3>         
         </div>
       </div>
     </section>

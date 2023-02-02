@@ -93,7 +93,7 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="PatientDashboard.php">
               <span data-feather="home" class="align-text-bottom"></span>
               Patient Dashboard
             </a>
@@ -105,7 +105,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="PatientEditAccount.php">
+            <a class="nav-link" href="#">
               <span data-feather="settings" class="align-text-bottom"></span>
               Account Management
             </a>
@@ -149,6 +149,8 @@
        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
+        <!-- form edit -->
+        <form id="edit" method="POST" action="">
         <div class="row">
           <div class="col-lg-4">
             <img src="images/patient1.jpg" alt="Avatar" class="avatar">
@@ -161,7 +163,7 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                      <input id="name" type="text" name="name" value="Placeholder"></input>
                   </div>
                 </div>
                 <hr>
@@ -170,7 +172,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <input id="email" type="text" name="email" value="Placeholder"></input>
                   </div>
                 </div>
                 <hr>
@@ -179,7 +181,7 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <input id="phone" type="text" name="phone" value="Placeholder"></input>
                   </div>
                 </div>
                 <hr>
@@ -188,7 +190,7 @@
                     <p class="mb-0">Mobile</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <input id="mobile" type="text" name="mobile" value="Placeholder"></input>
                   </div>
                 </div>
                 <hr>
@@ -197,12 +199,22 @@
                     <p class="mb-0">Address</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <input id="address" type="text" name="address" value="Placeholder"></input>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <p class="mb-0"></p>
+                  </div>
+                  <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary">Update</button>
                   </div>
                 </div>
               </div>
             </div>   
           </div>
+         </form>
         </div>
       </div>
     </section>

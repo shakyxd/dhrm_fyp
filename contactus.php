@@ -84,8 +84,8 @@
       </a>
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="homepage.php" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="aboutus.php" class="nav-link active" aria-current="page">About Us</a></li>
-        <li class="nav-item"><a href="contactus.php" class="nav-link">Contact Us</a></li>
+        <li class="nav-item"><a href="aboutus.php" class="nav-link" aria-current="page">About Us</a></li>
+        <li class="nav-item"><a href="contactus.php" class="nav-link active">Contact Us</a></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Register</a>
             <ul class="dropdown-menu">
