@@ -124,4 +124,13 @@ INSERT INTO `Material` (`itemID`, `itemName`, `itemQty`) VALUES
 (2, 'braces', '1000'),
 (3, 'syringe', '1000');
 
+/* appointments table for booking pls delete this table if it's not working. */
+CREATE TABLE appointments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  date DATE NOT NULL,
+  dentist VARCHAR(100) NOT NULL,
+  summary TEXT NOT NULL,
+  priority TINYINT(1) NOT NULL
+);
+
 COMMIT;
