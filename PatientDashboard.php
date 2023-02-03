@@ -111,7 +111,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientTreatmentPlans.php">
               <span data-feather="thermometer" class="align-text-bottom"></span>
               Treatments
             </a>
