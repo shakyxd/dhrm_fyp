@@ -117,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientScheduleAppt.php">
               <span data-feather="book-open" class="align-text-bottom"></span>
               Schedule Appointment
             </a>

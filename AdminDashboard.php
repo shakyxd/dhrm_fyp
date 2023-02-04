@@ -100,12 +100,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="pie-chart" class="align-text-bottom"></span>
-              Visitation History
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
               <span data-feather="settings" class="align-text-bottom"></span>
               Account Management
             </a>
@@ -118,20 +112,8 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="database" class="align-text-bottom"></span>
-              Profile Management
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
               <span data-feather="dollar-sign" class="align-text-bottom"></span>
               Bills And Payments
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="home" class="align-text-bottom"></span>
-              Clinic Information
             </a>
           </li>
           <li class="nav-item">
