@@ -129,9 +129,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientAddFam.php">
               <span data-feather="home" class="align-text-bottom"></span>
-              Clinic Information
+              Add Family Members
             </a>
           </li>
           <li class="nav-item">

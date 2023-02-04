@@ -93,7 +93,7 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="PatientDashboard.php">
               <span data-feather="home" class="align-text-bottom"></span>
               Patient Dashboard
             </a>
@@ -129,7 +129,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="PatientAddFam.php">
+            <a class="nav-link active" href="#">
               <span data-feather="home" class="align-text-bottom"></span>
               Add Family Members
             </a>
@@ -149,68 +149,63 @@
        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="images/patient1.jpg" alt="Avatar" class="avatar">
-          </div>
-          <div class="col-lg-8">
-            <div class="card mb-4">
-              <div class="card-body">
+        <h3>Add A Family Member</h3> 
+        <div class="card mb-8">
+         <div class="card-body">
+          <div class="col-lg-12">
+              <form action="/action_page.php">
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
+                    <h6>Select your date: </h6>
                   </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                  <div class="col-sm-7">
+                    <label for="datemin">Date</label>
+                    <input type="date" id="datemin" name="datemin" min="2023-01-02" id="datemax" name="datemax" max="2024-01-02"><br><br> 
+                  </div>
+                </div>            
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>Dentist:</h6>
+                  </div>
+                  <div class="col-sm-7">
+                      <label for="dentist">Dentist</label>
+                      <select id="dentist" name="dentist">
+                        <option value="dentist1">placeholder1</option>
+                        <option value="dentist2">placeholder2</option>
+                        <option value="dentist3">placeholder3</option>
+                        <option value="dentist4">placeholder4</option>
+                      </select>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Email</p>
+                    <h6>Issues:</h6>
                   </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Phone</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                  <div class="col-sm-7">
+                    <textarea name="message" rows="3" cols="30" placeholder="Briefly describe to us your issues regarding your teeth"></textarea>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
+                    <h6>Are you currently on a premium plan?</h6>
                   </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                  <div class="col-sm-7">
+                    <input type="radio" id="yes" name="premium" value="Yes">
+                      <label for="yes">Yes</label>
+                    <input type="radio" id="no" name="premium" value="No">
+                      <label for="no">No</label>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Family Members</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder, Placeholder</p>
+                  <div class="col-sm-12 d-flex justify-content-end align-items-center">
+                    <button type="submit" class="btn btn-primary">Confirm Booking</button>
                   </div>
                 </div>
-              </div>
-            </div>   
+              </form>
           </div>
         </div>
       </div>
@@ -218,8 +213,7 @@
   </div>
 </div>
 
-
-    <script src="dist/js/bootstrap.bundle.min.js"></script>
+     <script src="dist/js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dist/js/dashboard.js"></script>
   </body>
