@@ -156,53 +156,17 @@
               <form action="/action_page.php">
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Select your date: </h6>
+                    <h6>Family Member Email</h6>
                   </div>
                   <div class="col-sm-7">
-                    <label for="datemin">Date</label>
-                    <input type="date" id="datemin" name="datemin" min="2023-01-02" id="datemax" name="datemax" max="2024-01-02"><br><br> 
+                    <label for="email">Enter your family member email:</label>
+                    <input type="email" id="email" name="email"><br><br> 
                   </div>
-                </div>            
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Dentist:</h6>
-                  </div>
-                  <div class="col-sm-7">
-                      <label for="dentist">Dentist</label>
-                      <select id="dentist" name="dentist">
-                        <option value="dentist1">placeholder1</option>
-                        <option value="dentist2">placeholder2</option>
-                        <option value="dentist3">placeholder3</option>
-                        <option value="dentist4">placeholder4</option>
-                      </select>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Issues:</h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <textarea name="message" rows="3" cols="30" placeholder="Briefly describe to us your issues regarding your teeth"></textarea>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Are you currently on a premium plan?</h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <input type="radio" id="yes" name="premium" value="Yes">
-                      <label for="yes">Yes</label>
-                    <input type="radio" id="no" name="premium" value="No">
-                      <label for="no">No</label>
-                  </div>
-                </div>
+                </div>                        
                 <hr>
                 <div class="row">
                   <div class="col-sm-12 d-flex justify-content-end align-items-center">
-                    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
                   </div>
                 </div>
               </form>

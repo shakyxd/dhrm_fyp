@@ -167,6 +167,9 @@
                         <option value="dentist4">placeholder4</option>
                       </select>
                   </div>
+                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary">Search</button>
+                  </div>
                 </div>
                 <hr>             
               </form>
