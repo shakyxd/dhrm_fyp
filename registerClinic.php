@@ -12,10 +12,6 @@ $postalCode = $_POST["postalCode"];
 $specialisation = $_POST["specialisation"];
 
 
-
-
-
-
 $dbname = "fyp";
 
 // Create database connection
