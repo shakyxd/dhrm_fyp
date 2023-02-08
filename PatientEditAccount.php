@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,6 +76,53 @@
     <!-- Custom styles for this template -->
     <link href="dist/css/dashboard.css" rel="stylesheet">
   </head>
+  <?php
+
+
+  // Create database connection
+
+  $conn = new mysqli('localhost', 'root', '', 'fyp');
+
+  if(! $conn ) {
+      die('Could not connect: ' . mysql_error());
+   }
+
+  $sql = "SELECT * FROM patient WHERE patientID = 7";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $column1 = $row["patientID"];
+    $column2 = $row["emailPatient"];
+    $column3 = $row["mobileNum"];
+    $column4 = $row["firstName"];
+    $column5 = $row["lastName"];
+    $column6 = $row["gender"];
+    $column7 = $row["dateOfBirth"];
+    $column8 = $row["nationality"];
+    $column9 = $row["allergiesList"];
+    $column10 = $row["passwordPatient"];
+  }
+} else {
+  echo "0 results";
+}
+  if($_SERVER['REQUEST_METHOD']=='POST'){
+    $column6= $_POST["gender"];
+    do{
+        if(empty($gender)){
+            $errorMessage="All fields are required";
+            break;
+        }
+            $sql="UPDATE patient 
+                SET gender='".$_POST["gender"]."'
+                WHERE patientID='7'";
+            mysqli_query($conn,$sql);
+
+    }while(false);
+  }
+
+  ?>
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -150,7 +201,7 @@
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
         <!-- form edit -->
-        <form id="edit" method="POST" action="">
+        <form method="post">
         <div class="row">
           <div class="col-lg-4">
             <img src="images/patient1.jpg" alt="Avatar" class="avatar">
@@ -160,10 +211,19 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
+                    <p class="mb-0">First Name</p>
                   </div>
                   <div class="col-sm-9">
-                      <input id="name" type="text" name="name" value="Placeholder"></input>
+                      <input id="fname" type="text" name="fname" value=<?php echo $column4?>></input>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Last Name</p>
+                  </div>
+                  <div class="col-sm-9">
+                      <input id="lname" type="text" name="lname" value=<?php echo $column5?>></input>
                   </div>
                 </div>
                 <hr>
@@ -172,7 +232,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="email" type="text" name="email" value="Placeholder"></input>
+                    <input id="email" type="text" name="email" value=<?php echo $column2?>></input>
                   </div>
                 </div>
                 <hr>
@@ -181,25 +241,52 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="phone" type="text" name="phone" value="Placeholder"></input>
+                    <input id="phone" type="text" name="phone" value=<?php echo $column3?>></input>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
+                    <p class="mb-0">Gender</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="mobile" type="text" name="mobile" value="Placeholder"></input>
+                    <input type="text" name="gender" value=<?php echo $column6?>></input>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
+                    <p class="mb-0">Date Of Birth</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="address" type="text" name="address" value="Placeholder"></input>
+                    <input id="dob" type="date" name="dob" value=<?php echo $column7?>></input>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Nationality</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <input id="nationality" type="text" name="nationality" value=<?php echo $column8?>></input>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Password</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <input id="password" type="password" name="password" value=<?php echo $column10?>></input>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Allergies</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <textarea rows="2" cols="30" name="allergy"><?php echo $column9?></textarea>
                   </div>
                 </div>
                 <hr>
@@ -208,7 +295,7 @@
                     <p class="mb-0"></p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                   </div>
                 </div>
               </div>
@@ -220,7 +307,6 @@
     </section>
   </div>
 </div>
-
 
     <script src="dist/js/bootstrap.bundle.min.js"></script>
 

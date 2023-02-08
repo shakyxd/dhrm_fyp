@@ -156,6 +156,35 @@
               <form action="/action_page.php">
                 <div class="row">
                   <div class="col-sm-3">
+                    <h6>Select Clinic: </h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <label for="clinic">Clinic</label>
+                      <select id="clinic" name="clinic">
+                        <option value="clinic1">placeholder1</option>
+                        <option value="clinic2">placeholder2</option>
+                        <option value="clinic3">placeholder3</option>
+                      </select>
+                  </div>
+                </div>            
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>Select Treatment Type: </h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <label for="treatment">Treatment</label>
+                      <select id="treatment" name="treatment">
+                        <option value="treatment1">placeholder1</option>
+                        <option value="treatment2">placeholder2</option>
+                        <option value="treatment3">placeholder3</option>
+                        <option value="treatment4">placeholder4</option>
+                      </select>
+                  </div>
+                </div>            
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
                     <h6>Select your date: </h6>
                   </div>
                   <div class="col-sm-7">
@@ -181,7 +210,7 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Issues:</h6>
+                    <h6>Description:</h6>
                   </div>
                   <div class="col-sm-7">
                     <textarea name="message" rows="3" cols="30" placeholder="Briefly describe to us your issues regarding your teeth"></textarea>
