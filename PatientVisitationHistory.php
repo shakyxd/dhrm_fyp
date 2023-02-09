@@ -117,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientScheduleAppt.php">
               <span data-feather="book-open" class="align-text-bottom"></span>
               Schedule Appointment
             </a>
@@ -129,9 +129,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientAddFam.php">
               <span data-feather="home" class="align-text-bottom"></span>
-              Clinic Information
+              Add Family Members
             </a>
           </li>
           <li class="nav-item">
@@ -149,8 +149,31 @@
        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
-        <div class="row">
-          <h3>Patient Visitation History</h3>         
+        <h3>Visitation History</h3> 
+        <div class="card mb-8">
+         <div class="card-body">
+          <div class="col-lg-12">
+              <form action="/action_page.php">           
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>Patient Name:</h6>
+                  </div>
+                  <div class="col-sm-7">
+                      <label for="dentist">Patient</label>
+                      <select id="dentist" name="dentist">
+                        <option value="dentist1">placeholder1</option>
+                        <option value="dentist2">placeholder2</option>
+                        <option value="dentist3">placeholder3</option>
+                        <option value="dentist4">placeholder4</option>
+                      </select>
+                  </div>
+                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary">Search</button>
+                  </div>
+                </div>
+                <hr>             
+              </form>
+          </div>
         </div>
       </div>
     </section>
