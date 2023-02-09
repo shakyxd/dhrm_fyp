@@ -108,27 +108,25 @@
   echo "0 results";
 }
   if($_SERVER['REQUEST_METHOD']=='POST'){
-    $column1= $_POST["emailPatient"]
-    $column6= $_POST["mobileNum"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
-    $column6= $_POST["gender"];
+    $column2= $_POST["email"];
+    $column3= $_POST["phone"];
+    $column9= $_POST["allergy"];
+    $column10= $_POST["password"];
     do{
-        if(empty($column6)){
-            echo '<script>alert("No gender input")</script>';
+        if(empty($column2) or empty($column3) or empty($column9) or empty($column10)){
+            echo '<script>alert("Missing Fields")</script>';
             break;
         }
             $sql="UPDATE patient 
-                SET gender='$column6'
+                SET emailPatient='$column2',
+                    mobileNum='$column3',
+                    allergiesList='$column9',
+                    passwordPatient='$column10'
                 WHERE patientID=7";
             mysqli_query($conn,$sql);
 
     }while(false);
+ 
   }
 
   ?>
@@ -287,6 +285,7 @@
                   </div>
                   <div class="col-sm-9">
                     <input id="password" type="password" name="password" value="<?php echo $column10;?>"></input>
+                    <input type="checkbox" onclick="togglePassword()"> Show Password
                   </div>
                 </div>
                 <hr>
@@ -317,6 +316,18 @@
   </div>
 </div>
 
+  <script>
+
+    function togglePassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+</script>
     <script src="dist/js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dist/js/dashboard.js"></script>
