@@ -108,15 +108,24 @@
   echo "0 results";
 }
   if($_SERVER['REQUEST_METHOD']=='POST'){
+    $column1= $_POST["emailPatient"]
+    $column6= $_POST["mobileNum"];
+    $column6= $_POST["gender"];
+    $column6= $_POST["gender"];
+    $column6= $_POST["gender"];
+    $column6= $_POST["gender"];
+    $column6= $_POST["gender"];
+    $column6= $_POST["gender"];
+    $column6= $_POST["gender"];
     $column6= $_POST["gender"];
     do{
-        if(empty($gender)){
-            $errorMessage="All fields are required";
+        if(empty($column6)){
+            echo '<script>alert("No gender input")</script>';
             break;
         }
             $sql="UPDATE patient 
-                SET gender='".$_POST["gender"]."'
-                WHERE patientID='7'";
+                SET gender='$column6'
+                WHERE patientID=7";
             mysqli_query($conn,$sql);
 
     }while(false);
@@ -214,7 +223,7 @@
                     <p class="mb-0">First Name</p>
                   </div>
                   <div class="col-sm-9">
-                      <input id="fname" type="text" name="fname" value=<?php echo $column4?>></input>
+                      <input id="fname" type="text" name="fname" value="<?php echo $column4;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -223,7 +232,7 @@
                     <p class="mb-0">Last Name</p>
                   </div>
                   <div class="col-sm-9">
-                      <input id="lname" type="text" name="lname" value=<?php echo $column5?>></input>
+                      <input id="lname" type="text" name="lname" value="<?php echo $column5;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -232,7 +241,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="email" type="text" name="email" value=<?php echo $column2?>></input>
+                    <input id="email" type="text" name="email" value="<?php echo $column2;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -241,7 +250,7 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="phone" type="text" name="phone" value=<?php echo $column3?>></input>
+                    <input id="phone" type="text" name="phone" value="<?php echo $column3;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -250,7 +259,7 @@
                     <p class="mb-0">Gender</p>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" name="gender" value=<?php echo $column6?>></input>
+                    <input type="text" name="gender" value="<?php echo $column6;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -259,7 +268,7 @@
                     <p class="mb-0">Date Of Birth</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="dob" type="date" name="dob" value=<?php echo $column7?>></input>
+                    <input id="dob" type="date" name="dob" value="<?php echo $column7;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -268,7 +277,7 @@
                     <p class="mb-0">Nationality</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="nationality" type="text" name="nationality" value=<?php echo $column8?>></input>
+                    <input id="nationality" type="text" name="nationality" value="<?php echo $column8;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -277,7 +286,7 @@
                     <p class="mb-0">Password</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="password" type="password" name="password" value=<?php echo $column10?>></input>
+                    <input id="password" type="password" name="password" value="<?php echo $column10;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -286,7 +295,7 @@
                     <p class="mb-0">Allergies</p>
                   </div>
                   <div class="col-sm-9">
-                    <textarea rows="2" cols="30" name="allergy"><?php echo $column9?></textarea>
+                    <textarea rows="2" cols="30" name="allergy"><?php echo $column9;?></textarea>
                   </div>
                 </div>
                 <hr>

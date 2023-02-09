@@ -153,26 +153,91 @@
         <div class="card mb-8">
          <div class="card-body">
           <div class="col-lg-12">
-              <form action="/action_page.php">           
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Patient Name:</h6>
-                  </div>
-                  <div class="col-sm-7">
-                      <label for="dentist">Patient</label>
-                      <select id="dentist" name="dentist">
-                        <option value="dentist1">placeholder1</option>
-                        <option value="dentist2">placeholder2</option>
-                        <option value="dentist3">placeholder3</option>
-                        <option value="dentist4">placeholder4</option>
-                      </select>
-                  </div>
-                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Search</button>
-                  </div>
+            <form method="GET" class="searchbar">
+              <div class="row">
+                <div class="col-sm-8">
+                  <input type="text" size="100" required name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Type anything to search">
                 </div>
-                <hr>             
-              </form>
+                <div class="col-sm-1">
+                  <button type="submit" name="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="col-sm-1">
+                  <a href="PatientVisitationHistory.php" class="btn btn-primary" role="button">Refresh</a>
+                </div>
+              </div>
+            </form>
+          <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Patient First Name</th>
+                    <th>Patient Last Name</th>
+                    <th>Staff First Name</th>
+                    <th>Staff Last Name</th>
+                    <th>Time</th>
+				    <th>Treatment Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $host="localhost";
+                $user="root";
+                $password="";
+                $db="fyp";
+        
+                $data=mysqli_connect($host,$user,$password,$db);
+                if($data===false){
+                    die("connection error");
+                }
+                if(isset($_GET['search'])){
+                    $filtervalues=$_GET['search'];
+                    $sql="SELECT appointment.patientID, 
+                        clinic.clinicID, 
+                        clinic.nameClinic, 
+                        appointment.clinicID,
+                        appointment.staffID, 
+                        appointment.firstName,
+                        appointment.lastName, 
+                        appointment.firstNameStaff, 
+                        appointment.lastNameStaff, 
+                        appointment.time, 
+                        appointment.treatmentName,
+                        appointment.price, 
+                    FROM appointment
+                    LEFT JOIN clinic 
+                        ON clinic.clinicID=appointment.clinicID
+                    WHERE patient.firstName LIKE '%$filtervalues%'
+                    OR patient.lirstName LIKE '%$filtervalues%'
+                    GROUP BY appointment.patientID=7";
+                }
+                else{
+                    $sql="SELECT appointment.patientID, 
+                        appointment.staffID, 
+                        appointment.firstName,
+                        appointment.lastName, 
+                        appointment.firstNameStaff, 
+                        appointment.lastNameStaff, 
+                        appointment.time, 
+                        appointment.treatmentName,
+                        appointment.price, 
+                        FROM appointment
+                        WHERE appointment.patientID=7";
+                }
+                $result=mysqli_query($data,$sql);
+                while($row=$result->fetch_assoc()){                  
+                        echo "<tr>
+                            <td>$row[patientID]</td>
+                            <td>$row[firstName]</td>
+						    <td>$row[lastName]</td>
+                            <td>$row[firstNameStaff]</td>
+                            <td>$row[lastNameStaff]</td>
+                            <td>$row[time]</td>
+                            <td>$row[treatmentName]</td>
+                            <td>$row[price]</td>";                        
+                }?>
+            </tbody>
+          </table>
           </div>
         </div>
       </div>
