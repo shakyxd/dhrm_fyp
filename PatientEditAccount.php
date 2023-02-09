@@ -218,19 +218,10 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">First Name</p>
+                    <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                      <input id="fname" type="text" name="fname" value="<?php echo $column4;?>"></input>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Last Name</p>
-                  </div>
-                  <div class="col-sm-9">
-                      <input id="lname" type="text" name="lname" value="<?php echo $column5;?>"></input>
+                    <p class="text-muted mb-0"><?php echo $column4 . ' ' . $column5;?></p>
                   </div>
                 </div>
                 <hr>
@@ -257,7 +248,7 @@
                     <p class="mb-0">Gender</p>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" name="gender" value="<?php echo $column6;?>"></input>
+                    <p class="text-muted mb-0"><?php echo $column6;?></p>
                   </div>
                 </div>
                 <hr>
@@ -266,7 +257,7 @@
                     <p class="mb-0">Date Of Birth</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="dob" type="date" name="dob" value="<?php echo $column7;?>"></input>
+                    <p class="text-muted mb-0"><?php echo $column7;?></p>
                   </div>
                 </div>
                 <hr>
@@ -275,7 +266,7 @@
                     <p class="mb-0">Nationality</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="nationality" type="text" name="nationality" value="<?php echo $column8;?>"></input>
+                    <p class="text-muted mb-0"><?php echo $column8;?></p>
                   </div>
                 </div>
                 <hr>
