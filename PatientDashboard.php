@@ -87,7 +87,7 @@
       die('Could not connect: ' . mysql_error());
    }
 
-  $sql = "SELECT * FROM patient WHERE patientID = 7";
+  $sql = "SELECT * FROM patient WHERE patientID = 1";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {

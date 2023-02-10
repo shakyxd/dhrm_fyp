@@ -87,7 +87,7 @@
       die('Could not connect: ' . mysql_error());
    }
 
-  $sql = "SELECT * FROM patient WHERE patientID = 7";
+  $sql = "SELECT * FROM patient WHERE patientID = 1";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -122,7 +122,7 @@
                     mobileNum='$column3',
                     allergiesList='$column9',
                     passwordPatient='$column10'
-                WHERE patientID=7";
+                WHERE patientID=1";
             mysqli_query($conn,$sql);
             echo '<script>alert("Edit Success!")</script>';
 

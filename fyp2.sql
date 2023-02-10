@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `Patient` (
   `deactivated` tinyint(1) NOT NULL DEFAULT '0',
   CONSTRAINT PK_Patient PRIMARY KEY (`patientID`, `emailPatient`),
   CONSTRAINT UK_Patient UNIQUE (`mobileNum`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
   `deactivated` int NOT NULL DEFAULT '0',
   CONSTRAINT PK_Clinic PRIMARY KEY (`clinicID`, `emailClinic`),
   CONSTRAINT UK_Clinic UNIQUE (`phoneNum`, `nameClinic`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -81,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `Staff` (
   CONSTRAINT UK_Staff UNIQUE (`emailStaff`, `phoneNumStaff`),
   CONSTRAINT FK_Staff FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Staff` (`clinicID`, `emailStaff`, `phoneNumStaff`, `staffType`, `dateJoined`, `salary`, `firstNameStaff`, `lastNameStaff`, `genderStaff`, `dateOfBirthStaff`) VALUES
-(2, 'staff1@hotmail.com', 33344455, 'Dentist', '2004-2-01', 6000, 'Dentist', 'One', 'F', '1982-02-21'),
+(1, 'staff1@hotmail.com', 33344455, 'Dentist', '2004-2-01', 6000, 'Dentist', 'One', 'F', '1982-02-21'),
 (2, 'staff2@hotmail.com', 11111111, 'Dentist', '2010-10-01', 5200, 'Dentist', 'Two', 'M', '1989-04-01'),
-(7, 'staff3@hotmail.com', 22221111, 'Admin', '2001-8-14', 3400, 'Admin', 'One', 'F', '1990-10-27');
+(3, 'staff3@hotmail.com', 22221111, 'Admin', '2001-8-14', 3400, 'Admin', 'One', 'F', '1990-10-27');
 
 
 
@@ -103,12 +103,21 @@ CREATE TABLE IF NOT EXISTS `Treatment` (
   CONSTRAINT PK_Treatment PRIMARY KEY (`treatmentID`, `clinicID`),
   CONSTRAINT FK_Treatment FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Treatment` (`clinicID`, `treatmentType`, `treatmentName`, `price`) VALUES
-(2, 'Tooth Extraction', 'Wisdom Tooth Extraction', 450),
-(2, 'General Checkup', 'Normal Package', 120),
-(7, 'General Checkup', 'Regular Checkup', 78);
+(1, 'Tooth Extraction', 'Wisdom Tooth Extraction', 450),
+(1, 'General Checkup', 'General Checkup', 78),
+(1, 'Teeth Scaling', 'Scaling and Polishing', 45),
+(1, 'Root Canal', 'Root Canal', 78),
+(2, 'Dental Filing', 'Dental Filing', 120),
+(2, 'Implants', 'Dental Implants', 450),
+(2, 'Orthodontics', 'Orthodontic treatment', 78),
+(2, 'Crowns', 'Dental Crowns and Bridges', 400),
+(3, 'Whitening', 'Teeth Whitening', 200),
+(3, 'Tooth Extraction', 'Normal Extraction', 70),
+(3, 'Implants', 'Dental Implants', 88),
+(3, 'Root Canal', 'Root Canal', 58);
 
 
 -- TIMESLOT TABLE
@@ -126,9 +135,9 @@ CREATE TABLE IF NOT EXISTS `Timeslot` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Timeslot` (`clinicID`, `date`, `time`, `dentistList`) VALUES
-(2, '2022-01-05', '09:00', '["Thomas", "Harry", "Diane"]'),
+(1, '2022-01-05', '09:00', '["Thomas", "Harry", "Diane"]'),
 (2, '2022-01-05', '13:30', '["Harry", "Diane"]'),
-(7, '2022-01-22', '17:30', '["Jackson"]');
+(3, '2022-01-22', '17:30', '["Jackson"]');
 
 -- APPOINTMENT TABLE
 
@@ -154,12 +163,14 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
   FOREIGN KEY (`staffID`) REFERENCES Staff(`staffID`),
   FOREIGN KEY (`treatmentID`) REFERENCES Treatment(`treatmentID`)
   
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`, `firstName`, `lastName`, `firstNameStaff`, `lastNameStaff`, `time`, `treatmentName`, `price`) VALUES
-(1, 1, 2, 1, 2, 'Tim', 'Baker', 'Diane', 'Hemsworth', '17:30', 'Normal Package', 120),
-(1, 4, 2, 5, 1, 'Henry', 'Baker', 'Harry', 'Mason', '17:30', 'Wisdom Tooth Extraction', 450),
-(8, 24, 7, 18, 3, 'Adeline', 'Wellington', 'Jackson', 'Butterworth', '09:30', 'Regular Checkup', 78);
+(1, 1, 2, 1, 2, 'Tim', 'Baker', 'Diane', 'Hemsworth', '17:30', 'Dental Filing', 120),
+(1, 1, 2, 1, 1, 'Henry', 'Baker', 'Harry', 'Mason', '17:30', 'Dental Implants', 450),
+(8, 2, 1, 2, 3, 'Adeline', 'Wellington', 'Jackson', 'Butterworth', '09:30', 'General Checkup', 78),
+(1, 3, 1, 2, 2, 'Patient', 'One', 'Jackson', 'Butterworth', '09:30', 'Scaling and Polishing', 45),
+(7, 3, 3, 3, 1, 'Patient', 'One', 'Dentist', 'One', '10:30', 'Teeth Whitening', 200);
 
 
 

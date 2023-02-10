@@ -207,7 +207,7 @@
                     FROM appointment
                     INNER JOIN clinic 
                         ON clinic.clinicID = appointment.clinicID
-                    WHERE appointment.patientID=7 AND
+                    WHERE appointment.patientID=1 AND
                     (clinic.nameClinic LIKE '%$filtervalues%'
                     OR appointment.treatmentName LIKE '%$filtervalues%')";
                 }
@@ -225,7 +225,7 @@
                         FROM appointment
                         INNER JOIN clinic
                             ON clinic.clinicID = appointment.clinicID
-                        WHERE appointment.patientID=7";
+                        WHERE appointment.patientID=1";
                 }
                 $result=mysqli_query($data,$sql);
                 while($row=$result->fetch_assoc()){                  
