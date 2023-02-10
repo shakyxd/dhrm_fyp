@@ -13,20 +13,44 @@
   
   if(isset($_GET["clinic"])){
     //only clinic chosen
-    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"){
+    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]=="Any"){
       $clinicID=$_GET["clinic"];
       $sql .=" WHERE clinic.clinicID=$clinicID";
     }
+    //only treatment chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+      $trtmnt=$_GET["trtmnt"];
+      $sql .=" WHERE treatment.treatmentType='$trtmnt'";
+    }
+    //only region chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
+      $region=$_GET["region"];
+      $sql .=" WHERE clinic.area='$region'";
+    }
     //clinic and treatment chosen
-    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"){
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
       $clinicID=$_GET["clinic"];
       $trtmnt=$_GET["trtmnt"];
       $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt'";
     }
-    //only treatment chosen
-    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"){
+    //treatment and region chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
       $trtmnt=$_GET["trtmnt"];
-      $sql .=" WHERE treatment.treatmentType='$trtmnt'";
+      $region=$_GET["region"];
+      $sql .=" WHERE treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
+    }
+    //clinic and region chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
+      $clinicID=$_GET["clinic"];
+      $region=$_GET["region"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND clinic.area='$region'";
+    }
+    //clinic treatment and region chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
+      $clinicID=$_GET["clinic"];
+      $trtmnt=$_GET["trtmnt"];
+      $region=$_GET["region"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
     }
   }
   if((isset($_GET["sort"]))AND($_GET["sort"]!="none")){
@@ -260,16 +284,18 @@
                           <option value="price">Price (Ascending)</option>
                           <option value="price DESC">Price (Descending)</option>
                       </select>
-                      <!-- <select name="price" class="form-select" id="inputGroupSelect04">
-                          <option selected value="none">Choose...</option>
-                          <option value="north">Price(Ascending)</option>
-                          <option value="northeast">North-East</option>
-                          <option value="east">East</option>
-                          <option value="central">Central</option>
-                          <option value="west">West</option>
-                      </select>               -->
+                      <label class="input-group-text" for="inputGroupSelect03">Filter By</label>
+                      <select name="region" class="form-select" id="inputGroupSelect04">
+                          <option selected value="Any">Any</option>
+                          <option>North</option>
+                          <option value="NorthEast">North-East</option>
+                          <option>East</option>
+                          <option>Central</option>
+                          <option>West</option>
+                      </select>              
                   </div>
                   <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
+                  <a class="btn btn-outline-secondary" href="homepage.php">Reset</a>
                   <br><br>
                   <div>
                   <table class='table table-bordered'>
@@ -277,6 +303,7 @@
                       <tr>
                         <th>Package Name</th>
                         <th>Clinic</th>
+                        <th>Address</th>
                         <th>email</th>
                         <th>Phone</th>
                         <th>Rating</th>
@@ -288,6 +315,7 @@
                       echo "<tr>
                           <td>$row[treatmentName]</td>
                           <td>$row[nameClinic]</td>
+                          <td>$row[address]</td>
                           <td>$row[emailClinic]</td>
                           <td>$row[phoneNum]</td>
                           <td>$row[rating]</td>
