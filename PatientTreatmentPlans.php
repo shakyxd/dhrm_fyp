@@ -191,13 +191,13 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Scaling and Polishing</h6>
+                    <h6>Tooth Extractions</h6>
                   </div>
                   <div class="col-sm-7">
-                    <p>Removal of plaque and calculus deposits through scaling and polishing teeth to remove stains.</p>
+                    <p>Extractions are done when the tooth's damage is too serious to be repaired or restored with a filling/crown.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Scaling and Polishing session now!</button>
+                    <button type="button" class="btn btn-primary">Book a Teeth Extraction treatment now!</button>
                   </div>
                 </div>
                 <hr>
@@ -215,13 +215,41 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Dental Filling</h6>
+                    <h6>Orthodontic treatment</h6>
                   </div>
                   <div class="col-sm-7">
-                    <p>Fillings are needed if there is a tooth cavity to close the hole.</p>
+                    <p>Straightening/moving teeth to improve the appearance of the teeth.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Dental Filling session now!</button>
+                    <button type="button" class="btn btn-primary">Book an Orthodontic treatment now!</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>Dental Crowns and Bridges</h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <p>A crown or cap is a dental restoration that covers the exposed surface of a tooth to strengthen it or improve its appearance. A bridge is a dental restoration to replace one or more missing teeth. It includes an artificial tooth or teeth which are fused to crowns on either side to provide support.</p>
+                      <ul>
+                        <li>Partial/Full dentures.</li>
+                        <li>Several visits to dental center.</li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary">Book a Denture Care treatment now!</button>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>Tooth Filling</h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <p>A dental filling is a type of restorative dentistry treatment used to repair minimal tooth fractures, tooth decay or otherwise damaged surfaces of the teeth</p>
+                  </div>
+                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary">Book a Tooth Filling treatment now!</button>
                   </div>
                 </div>
                 <hr>
@@ -243,34 +271,6 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Orthodontic treatment</h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <p>Straightening/moving teeth to improve the appearance of the teeth.</p>
-                  </div>
-                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book an Orthodontic treatment now!</button>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Dental Crowns and Bridges.</h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <p>A crown or cap is a dental restoration that covers the exposed surface of a tooth to strengthen it or improve its appearance. A bridge is a dental restoration to replace one or more missing teeth. It includes an artificial tooth or teeth which are fused to crowns on either side to provide support.</p>
-                      <ul>
-                        <li>Partial/Full dentures.</li>
-                        <li>Several visits to dental center.</li>
-                      </ul>
-                  </div>
-                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Denture Care treatment now!</button>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
                     <h6>Tooth Whitening</h6>
                   </div>
                   <div class="col-sm-7">
@@ -283,15 +283,27 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Extractions</h6>
+                    <h6>Teeth Cleaning</h6>
                   </div>
                   <div class="col-sm-7">
-                    <p>Extractions are done when the tooth's damage is too serious to be repaired or restored with a filling/crown.</p>
+                    <p>Teeth cleaning is part of oral hygiene and involves the removal of dental plaque from teeth with the intention of preventing cavities, gingivitis, and periodontal disease.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Teeth Extraction treatment now!</button>
+                    <button type="button" class="btn btn-primary">Book a Tooth Cleaning Session now!</button>
                   </div>
                 </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>X-ray</h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <p>Dental X-rays (radiographs) are images of your teeth that your dentist uses to evaluate your oral health.</p>
+                  </div>
+                  <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary">Book an X-ray Session now!</button>
+                  </div>
+                </div>               
               </div>
             </div>   
           </div>

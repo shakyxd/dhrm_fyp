@@ -72,6 +72,7 @@
     <!-- Custom styles for this template -->
     <link href="dist/css/dashboard.css" rel="stylesheet">
   </head>
+
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -161,9 +162,27 @@
                   <div class="col-sm-7">
                     <label for="clinic">Clinic</label>
                       <select id="clinic" name="clinic">
-                        <option value="clinic1">placeholder1</option>
-                        <option value="clinic2">placeholder2</option>
-                        <option value="clinic3">placeholder3</option>
+                        <?php
+
+                            $host="localhost";
+                            $user="root";
+                            $password="";
+                            $db="fyp";
+
+                            $data=mysqli_connect($host,$user,$password,$db);
+                            if($data===false){
+                                die("connection error");
+                            }
+                            $sql = "SELECT nameClinic FROM clinic ORDER BY clinicID";
+                            $res = mysqli_query($data, $sql);
+
+                            while ($row = $res->fetch_assoc()){
+                                echo "<option value=\"chosenClinic\">" . $row['nameClinic'] . "</option>";
+
+                                $chosenclinic = $row['nameClinic'];
+                            }
+
+                        ?>
                       </select>
                   </div>
                 </div>            
@@ -175,10 +194,25 @@
                   <div class="col-sm-7">
                     <label for="treatment">Treatment</label>
                       <select id="treatment" name="treatment">
-                        <option value="treatment1">placeholder1</option>
-                        <option value="treatment2">placeholder2</option>
-                        <option value="treatment3">placeholder3</option>
-                        <option value="treatment4">placeholder4</option>
+                        <?php
+
+                        $data=mysqli_connect($host,$user,$password,$db);
+                        if($data===false){
+                            die("connection error");
+                        }
+                        $sql2 = "SELECT clinicID from clinic WHERE nameClinic=$chosenclinic";
+                        $res2 = mysqli_query($data, $sql2);
+
+                        $sql3 = "SELECT treatmentType FROM treatment WHERE treatment.clinicID = $res2";
+                        $res = mysqli_query($data, $sql3);
+
+                        while ($row = $res->fetch_assoc()){
+                            echo "<option value=\"chosenTreatment\">" . $row['treatmentType'] . "</option>";
+
+                            $chosentreatment = $row['treatmentType'];
+                        }
+
+                        ?>
                       </select>
                   </div>
                 </div>            
