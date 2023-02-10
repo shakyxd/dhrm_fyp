@@ -124,6 +124,7 @@
                     passwordPatient='$column10'
                 WHERE patientID=7";
             mysqli_query($conn,$sql);
+            echo '<script>alert("Edit Success!")</script>';
 
     }while(false);
  
