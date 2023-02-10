@@ -287,11 +287,11 @@
                       <label class="input-group-text" for="inputGroupSelect03">Filter By</label>
                       <select name="region" class="form-select" id="inputGroupSelect04">
                           <option selected value="Any">Any</option>
-                          <option>North</option>
+                          <option value="North">North</option>
                           <option value="NorthEast">North-East</option>
-                          <option>East</option>
-                          <option>Central</option>
-                          <option>West</option>
+                          <option value="East">East</option>
+                          <option value="Central">Central</option>
+                          <option value="West">West</option>
                       </select>              
                   </div>
                   <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
