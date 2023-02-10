@@ -156,7 +156,8 @@
             <form method="GET" class="searchbar">
               <div class="row">
                 <div class="col-sm-8">
-                  <input type="text" size="100" required name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Search for clinic or treatment name">
+                  <label for="start">Search Date:</label>
+                  <input type="date" id="start" name="searchdate" value="<?php if(isset($_GET['searchdate'])){echo $_GET['searchdate'];}?>" min="2022-01-01" max="2023-12-31">
                 </div>
                 <div class="col-sm-1">
                   <button type="submit" name="submit" class="btn btn-primary">Search</button>
@@ -174,6 +175,7 @@
                     <th>Staff First Name</th>
                     <th>Staff Last Name</th>
                     <th>Time</th>
+                    <th>Date</th>
                     <th>Clinic Name</th>
 				    <th>Treatment Name</th>
                     <th>Price</th>
@@ -190,8 +192,8 @@
                 if($data===false){
                     die("connection error");
                 }
-                if(isset($_GET['search'])){
-                    $filtervalues=$_GET['search'];
+                if(isset($_GET['searchdate'])){
+                    $filtervalues=$_GET['searchdate'];
                     $sql="SELECT appointment.patientID, 
                         clinic.clinicID, 
                         clinic.nameClinic, 
@@ -203,13 +205,16 @@
                         appointment.lastNameStaff, 
                         appointment.time, 
                         appointment.treatmentName,
-                        appointment.price 
+                        appointment.price,
+                        timeslot.date
                     FROM appointment
                     INNER JOIN clinic 
                         ON clinic.clinicID = appointment.clinicID
+                    INNER JOIN timeslot
+                            ON clinic.clinicID = timeslot.clinicID
                     WHERE appointment.patientID=1 AND
-                    (clinic.nameClinic LIKE '%$filtervalues%'
-                    OR appointment.treatmentName LIKE '%$filtervalues%')";
+                    (timeslot.date LIKE '%$filtervalues%')";
+                    
                 }
                 else{
                     $sql="SELECT appointment.patientID, 
@@ -221,10 +226,13 @@
                         appointment.time, 
                         appointment.treatmentName,
                         appointment.price, 
-                        clinic.nameClinic
+                        clinic.nameClinic,
+                        timeslot.date
                         FROM appointment
                         INNER JOIN clinic
                             ON clinic.clinicID = appointment.clinicID
+                        INNER JOIN timeslot
+                            ON clinic.clinicID = timeslot.clinicID
                         WHERE appointment.patientID=1";
                 }
                 $result=mysqli_query($data,$sql);
@@ -236,6 +244,7 @@
                             <td>$row[firstNameStaff]</td>
                             <td>$row[lastNameStaff]</td>
                             <td>$row[time]</td>
+                            <td>$row[date]</td>
                             <td>$row[nameClinic]</td>
                             <td>$row[treatmentName]</td>
                             <td>$row[price]</td>";                        
