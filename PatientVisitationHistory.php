@@ -156,7 +156,7 @@
             <form method="GET" class="searchbar">
               <div class="row">
                 <div class="col-sm-8">
-                  <input type="text" size="100" required name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Type anything to search">
+                  <input type="text" size="100" required name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Search for clinic or treatment name">
                 </div>
                 <div class="col-sm-1">
                   <button type="submit" name="submit" class="btn btn-primary">Search</button>
@@ -166,15 +166,15 @@
                 </div>
               </div>
             </form>
-          <table>
+          <table class="table">
             <thead>
                 <tr>
-                    <th>Patient ID</th>
                     <th>Patient First Name</th>
                     <th>Patient Last Name</th>
                     <th>Staff First Name</th>
                     <th>Staff Last Name</th>
                     <th>Time</th>
+                    <th>Clinic Name</th>
 				    <th>Treatment Name</th>
                     <th>Price</th>
                 </tr>
@@ -203,13 +203,13 @@
                         appointment.lastNameStaff, 
                         appointment.time, 
                         appointment.treatmentName,
-                        appointment.price, 
+                        appointment.price 
                     FROM appointment
-                    LEFT JOIN clinic 
-                        ON clinic.clinicID=appointment.clinicID
-                    WHERE patient.firstName LIKE '%$filtervalues%'
-                    OR patient.lirstName LIKE '%$filtervalues%'
-                    GROUP BY appointment.patientID=7";
+                    INNER JOIN clinic 
+                        ON clinic.clinicID = appointment.clinicID
+                    WHERE appointment.patientID=7 AND
+                    (clinic.nameClinic LIKE '%$filtervalues%'
+                    OR appointment.treatmentName LIKE '%$filtervalues%')";
                 }
                 else{
                     $sql="SELECT appointment.patientID, 
@@ -221,18 +221,22 @@
                         appointment.time, 
                         appointment.treatmentName,
                         appointment.price, 
+                        clinic.nameClinic
                         FROM appointment
+                        INNER JOIN clinic
+                            ON clinic.clinicID = appointment.clinicID
                         WHERE appointment.patientID=7";
                 }
                 $result=mysqli_query($data,$sql);
                 while($row=$result->fetch_assoc()){                  
                         echo "<tr>
-                            <td>$row[patientID]</td>
+
                             <td>$row[firstName]</td>
 						    <td>$row[lastName]</td>
                             <td>$row[firstNameStaff]</td>
                             <td>$row[lastNameStaff]</td>
                             <td>$row[time]</td>
+                            <td>$row[nameClinic]</td>
                             <td>$row[treatmentName]</td>
                             <td>$row[price]</td>";                        
                 }?>
