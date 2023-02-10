@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
   `passwordClinic` text NOT NULL,
   `nameClinic` varchar(100) NOT NULL,
   `phoneNum` int NOT NULL,
+  `address` varchar(100) NOT NULL,
   `area` varchar(100) NOT NULL,
   `specialisation` varchar(100),
   `rating` float NOT NULL DEFAULT '0', 
@@ -51,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
 
 
 
-INSERT INTO `Clinic` (`emailClinic`, `passwordClinic`, `nameClinic`, `phoneNum`, `area`, `specialisation`, `rating`) VALUES
-('clinic1@hotmail.com', 'clinicPassword1', 'Raffles Dental Clinic', 12345678, '54 Raffles Boulevard 06-11 112250', 'General, Hygiene, Root Canal', 4.5),
-('clinic2@hotmail.com', 'clinicPassword2', 'Ah Huat Tooth Care', 87654321, '44 Orchard Road 02-04 782241', 'General, Hygiene, Tooth Removal', 5),
-('clinic3@hotmail.com', 'clinicPassword3', 'Shiny Teeth That Twinkle', 11223344, '78 Boon Lay Street 14-25 442215', 'Hygiene, Braces', 3);
+INSERT INTO `Clinic` (`emailClinic`, `passwordClinic`, `nameClinic`, `phoneNum`, `address`, `area`, `specialisation`, `rating`) VALUES
+('clinic1@hotmail.com', 'clinicPassword1', 'Raffles Dental Clinic', 12345678, '54 Raffles Boulevard 06-11 112250', 'Central', 'General, Hygiene, Root Canal', 4.5),
+('clinic2@hotmail.com', 'clinicPassword2', 'Ah Huat Tooth Care', 87654321, '44 Orchard Road 02-04 782241', 'East', 'General, Hygiene, Tooth Removal', 5),
+('clinic3@hotmail.com', 'clinicPassword3', 'Shiny Teeth That Twinkle', 11223344, '78 Boon Lay Street 14-25 442215', 'West', 'Hygiene, Braces', 3);
 
 
 
