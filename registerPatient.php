@@ -1,44 +1,87 @@
 <?php
 
-$email = $_POST["email"];
-$password = $_POST["password"];
-$password2 = $_POST["password2"];
-$mobileNum = $_POST["mobileNum"];
-$fname = $_POST["fname"];
-$lname = $_POST["lname"];
-$gender = $_POST["gender"];
-$dateOfBirth = $_POST["dateOfBirth"];
-$nationality = $_POST["nationality"];
-$allergies = $_POST["allergies"];
+if (isset($_POST["submit"])) {
+
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $password2 = $_POST["password2"];
+  $mobileNum = $_POST["mobileNum"];
+  $fname = $_POST["fname"];
+  $lname = $_POST["lname"];
+  $gender = $_POST["gender"];
+  $dateOfBirth = $_POST["dateOfBirth"];
+  $nationality = $_POST["nationality"];
+  $allergies = $_POST["allergies"];
+
+  require_once 'includes/dbHandler.inc.php';
+  require_once 'includes/functions.inc.php';
+
+  if(emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $gender,  $dateOfBirth, $nationality) !== false) {
+    header("location: registerPatient.html?error=emptyinput");
+    exit();
+  }
+
+  if(invalidEmail($email) !== false) {
+    header("location: registerPatient.html?error=invalidemail");
+    exit();
+  }
+
+  if(passwordMatch($password, $password2) !== false) {
+    header("location: registerPatient.html?error=passwordsdontmatch");
+    exit();
+  }
+
+  if(emailExists($conn, $email) !== false) {
+    header("location:registerPatient.html?error=emailtaken");
+    exit();
+  }
+
+  registerPatient(
+    $conn,
+    $email,
+    $password,
+    $mobileNum,
+    $fname,
+    $lname,
+    $gender,
+    $dateOfBirth,
+    $nationality,
+    $allergies
+  );
+
+
+}
+
+else {
 
 
 
+  header("location: registerPatient.html");
+  exit();
 
-$dbname = "fyp";
+}
 
-// Create database connection
-$conn = new mysqli('localhost', 'root', '', 'fyp');
+//   // Create database connection
+// $conn = new mysqli('localhost', 'root', '', 'fyp');
+// // Check connection
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }else{
 
+//     //insert into account
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}else{
+//     if ($password == $password2) {
 
-    //insert into account
-
-    if ($password == $password2) {
-
-      $stmt = $conn->prepare("INSERT INTO patient(emailPatient, passwordPatient, mobileNum, 
-      firstName, lastName, gender, dateOfBirth, nationality, allergiesList)
-      values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->bind_param("ssissssss", $email, $password, $mobileNum, $fname, $fname, $gender, $dateOfBirth, $nationality, $allergies);
-      $stmt->execute();
+//       $stmt = $conn->prepare("INSERT INTO patient(emailPatient, passwordPatient, mobileNum, 
+//       firstName, lastName, gender, dateOfBirth, nationality, allergiesList)
+//       values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+//       $stmt->bind_param("ssissssss", $email, $password, $mobileNum, $fname, $fname, $gender, $dateOfBirth, $nationality, $allergies);
+//       $stmt->execute();
 
 
-    }else {
-      echo "Passwords do not match";
-    }
+//     }else {
+//       echo "Passwords do not match";
+//     }
 
 
 //     // getting accountID
@@ -92,8 +135,8 @@ if ($conn->connect_error) {
 
    
    
-    $stmt->close();
-    $conn->close();
-}
+//     $stmt->close();
+//     $conn->close();
+// }
 
 ?>
