@@ -227,9 +227,9 @@
                       <label class="input-group-text" for="inputGroupSelect01">Choose a clinic</label>
                       <select name="clinic" class="form-select" id="inputGroupSelect01">
                           <option selected value="Any">Any</option>
-                          <option value="7">Raffles Dental Clinic</option>
-                          <option value="8">Ah Huat Tooth Care</option>
-                          <option value="9">Shiny Teeth That Twinkle</option>
+                          <option value="1">Raffles Dental Clinic</option>
+                          <option value="2">Ah Huat Tooth Care</option>
+                          <option value="3">Shiny Teeth That Twinkle</option>
                       </select>
                   </div>
 
@@ -237,8 +237,17 @@
                       <label class="input-group-text" for="inputGroupSelect02">Choose a treatment type</label>
                       <select name="trtmnt" class="form-select" id="inputGroupSelect02">
                           <option selected value="Any">Any</option>
-                          <option value="General Checkup">General Checkup</option>
-                          <option value="Tooth Extraction">Tooth Extraction</option>
+                          <option value="General Checkup"> General Checkup </option> 
+                          <option value="Wisdom Tooth"> Wisdom Tooth </option> 
+                          <option value="Tooth Extraction"> Tooth Extraction </option> 
+                          <option value="Root Canal"> Root Canal </option> 
+                          <option value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
+                          <option value="Crown and Bridges"> Crown and Bridges </option> 
+                          <option value="Tooth Filling"> Tooth Filling </option> 
+                          <option value="Tooth Implant"> Tooth Implant </option> 
+                          <option value="Teeth Whitening"> Teeth Whitening </option> 
+                          <option value="Teeth Cleaning"> Teeth Cleaning </option> 
+                          <option value="X-ray"> X-ray </option>
                       </select>
                   </div>
 

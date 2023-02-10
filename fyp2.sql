@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `Patient` (
   `lastName` varchar(100) NOT NULL,
   `gender` char,
   `dateOfBirth` date NOT NULL,
+  `address` varchar(100) NOT NULL,
   `nationality` varchar(100),
   `allergiesList` text,
   `deactivated` tinyint(1) NOT NULL DEFAULT '0',
@@ -25,10 +26,10 @@ CREATE TABLE IF NOT EXISTS `Patient` (
 
 
 INSERT INTO `Patient` (`emailPatient`, `passwordPatient`,  `mobileNum`, `firstName`, 
-                        `lastName`,`gender`,`dateOfBirth`,`nationality`,`allergiesList`, `deactivated`) VALUES
-('patient1@hotmail.com', 'Password1', 11112222, 'Patient', 'One', 'M', '1995-2-24', 'Singaporean', 'Nuts, Ant Bite', 0),
-('patient1@hotmail.com', 'Password2', 22223333, 'Patient', 'Two', 'F', '1990-11-04', 'Singaporean', '', 0),
-('patient1@hotmail.com', 'Password3', 33334444, 'Patient', 'Three', 'M', '1995-7-16', 'Malaysian', '', 0);
+                        `lastName`,`gender`,`dateOfBirth`, `address`, `nationality`,`allergiesList`, `deactivated`) VALUES
+('patient1@hotmail.com', 'Password1', 11112222, 'Patient', 'One', 'M', '1995-2-24', 'Blk 123 Singapore road', 'Singaporean', 'Nuts, Ant Bite', 0),
+('patient1@hotmail.com', 'Password2', 22223333, 'Patient', 'Two', 'F', '1990-11-04', 'Blk 223 Singapore road', 'Singaporean', '', 0),
+('patient1@hotmail.com', 'Password3', 33334444, 'Patient', 'Three', 'M', '1995-7-16', 'Blk 323 Singapore road', 'Malaysian', '', 0);
 
 
 -- CLINIC TABLE
@@ -40,10 +41,7 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
   `passwordClinic` text NOT NULL,
   `nameClinic` varchar(100) NOT NULL,
   `phoneNum` int NOT NULL,
-  `blockNum` int,
-  `streetName` varchar(100), 
-  `unitNum` varchar(100),
-  `postalCode` int,
+  `area` varchar(100) NOT NULL,
   `specialisation` varchar(100),
   `rating` float NOT NULL DEFAULT '0', 
   `deactivated` int NOT NULL DEFAULT '0',
@@ -53,10 +51,10 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
 
 
 
-INSERT INTO `Clinic` (`emailClinic`, `passwordClinic`, `nameClinic`, `phoneNum`, `blockNum`, `streetName`, `unitNum`, `postalCode`, `specialisation`, `rating`) VALUES
-('clinic1@hotmail.com', 'clinicPassword1', 'Raffles Dental Clinic', 12345678, 54, 'Raffles Boulevard', '06-11', 112250, 'General, Hygiene, Root Canal', 4.5),
-('clinic2@hotmail.com', 'clinicPassword2', 'Ah Huat Tooth Care', 87654321, 44, 'Orchard Road', '02-04', 782241, 'General, Hygiene, Tooth Removal', 5),
-('clinic3@hotmail.com', 'clinicPassword3', 'Shiny Teeth That Twinkle', 11223344, 78, 'Boon Lay Street', '14-25', 442215, 'Hygiene, Braces', 3);
+INSERT INTO `Clinic` (`emailClinic`, `passwordClinic`, `nameClinic`, `phoneNum`, `area`, `specialisation`, `rating`) VALUES
+('clinic1@hotmail.com', 'clinicPassword1', 'Raffles Dental Clinic', 12345678, '54 Raffles Boulevard 06-11 112250', 'General, Hygiene, Root Canal', 4.5),
+('clinic2@hotmail.com', 'clinicPassword2', 'Ah Huat Tooth Care', 87654321, '44 Orchard Road 02-04 782241', 'General, Hygiene, Tooth Removal', 5),
+('clinic3@hotmail.com', 'clinicPassword3', 'Shiny Teeth That Twinkle', 11223344, '78 Boon Lay Street 14-25 442215', 'Hygiene, Braces', 3);
 
 
 
@@ -85,8 +83,15 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 
 INSERT INTO `Staff` (`clinicID`, `emailStaff`, `phoneNumStaff`, `staffType`, `dateJoined`, `salary`, `firstNameStaff`, `lastNameStaff`, `genderStaff`, `dateOfBirthStaff`) VALUES
 (1, 'staff1@hotmail.com', 33344455, 'Dentist', '2004-2-01', 6000, 'Dentist', 'One', 'F', '1982-02-21'),
-(2, 'staff2@hotmail.com', 11111111, 'Dentist', '2010-10-01', 5200, 'Dentist', 'Two', 'M', '1989-04-01'),
-(3, 'staff3@hotmail.com', 22221111, 'Admin', '2001-8-14', 3400, 'Admin', 'One', 'F', '1990-10-27');
+(1, 'staff2@hotmail.com', 11111111, 'Dentist', '2010-10-01', 5200, 'Dentist', 'Two', 'M', '1989-04-01'),
+(1, 'staff3@hotmail.com', 13423411, 'Dentist', '2010-10-02', 5400, 'Dentist', 'Three', 'M', '1989-05-01'),
+(2, 'staff4@hotmail.com', 13545411, 'Dentist', '2010-10-06', 5100, 'Dentist', 'Four', 'F', '1989-05-02'),
+(2, 'staff5@hotmail.com', 13344411, 'Dentist', '2010-11-02', 5500, 'Dentist', 'Five', 'M', '1989-03-01'),
+(2, 'staff6@hotmail.com', 13876811, 'Dentist', '2010-12-02', 5700, 'Dentist', 'Six', 'F', '1989-04-01'),
+(3, 'staff7@hotmail.com', 13987911, 'Dentist', '2010-4-02', 5480, 'Dentist', 'Seven', 'F', '1989-06-01'),
+(3, 'staff8@hotmail.com', 14323421, 'Dentist', '2010-6-02', 5490, 'Dentist', 'Eight', 'M', '1989-07-01'),
+(3, 'staff9@hotmail.com', 13234411, 'Dentist', '2010-7-02', 5430, 'Dentist', 'Nine', 'M', '1989-08-01'),
+(10, 'staff10@hotmail.com', 22221111, 'Admin', '2001-8-14', 3400, 'Admin', 'One', 'F', '1990-10-27');
 
 
 
@@ -99,25 +104,26 @@ CREATE TABLE IF NOT EXISTS `Treatment` (
   `treatmentType` varchar(100),
   `treatmentName` varchar(100),
   `price` float,
-  `availability` int NOT NULL DEFAULT '0',
+  `availability` int NOT NULL DEFAULT '1',
   CONSTRAINT PK_Treatment PRIMARY KEY (`treatmentID`, `clinicID`),
   CONSTRAINT FK_Treatment FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `Treatment` (`clinicID`, `treatmentType`, `treatmentName`, `price`) VALUES
-(1, 'Tooth Extraction', 'Wisdom Tooth Extraction', 450),
-(1, 'General Checkup', 'General Checkup', 78),
-(1, 'Teeth Scaling', 'Scaling and Polishing', 45),
-(1, 'Root Canal', 'Root Canal', 78),
-(2, 'Dental Filing', 'Dental Filing', 120),
-(2, 'Implants', 'Dental Implants', 450),
-(2, 'Orthodontics', 'Orthodontic treatment', 78),
-(2, 'Crowns', 'Dental Crowns and Bridges', 400),
-(3, 'Whitening', 'Teeth Whitening', 200),
-(3, 'Tooth Extraction', 'Normal Extraction', 70),
-(3, 'Implants', 'Dental Implants', 88),
-(3, 'Root Canal', 'Root Canal', 58);
+INSERT INTO `Treatment` (`clinicID`, `treatmentType`, `treatmentName`, `price`, `availability`) VALUES
+(1, 'Wisdom Tooth', 'Wisdom Tooth Extraction', 450, 1),
+(1, 'General Checkup', 'General Checkup', 78, 1),
+(1, 'Root Canal', 'Root Canal', 78, 1),
+(1, 'Teeth Cleaning', 'Cleaning', 78, 1),
+(2, 'Tooth Filling', 'Dental Fillings', 120, 1),
+(2, 'Teeth Whitening', 'Whitening', 450, 1),
+(2, 'Orthodontics(Braces)', 'Braces', 78, 1),
+(2, 'Crown and Bridges', 'Dental Crowns and Bridges', 400, 1),
+(2, 'X-ray', 'Dental X-ray', 400, 1),
+(3, 'Teeth Whitening', 'Dental Whitening', 200, 1),
+(3, 'Tooth Extraction', 'Normal Extraction', 70, 1),
+(3, 'Tooth Implant', 'Dental Implants', 88, 1),
+(3, 'Tooth Filling', 'Dental Fillings', 58, 1);
 
 
 -- TIMESLOT TABLE
@@ -132,12 +138,12 @@ CREATE TABLE IF NOT EXISTS `Timeslot` (
   CONSTRAINT PK_Timeslot PRIMARY KEY (`timeSlotID`, `clinicID`),
   CONSTRAINT FK_Timeslot FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Timeslot` (`clinicID`, `date`, `time`, `dentistList`) VALUES
-(1, '2022-01-05', '09:00', '["Thomas", "Harry", "Diane"]'),
-(2, '2022-01-05', '13:30', '["Harry", "Diane"]'),
-(3, '2022-01-22', '17:30', '["Jackson"]');
+(1, '2022-01-05', '09:00', '["Dentist One", "Dentist Two", "Dentist Three"]'),
+(2, '2022-01-05', '13:30', '["Dentist Four", "Dentist Five", "Dentist Six"]'),
+(3, '2022-01-22', '17:30', '["Dentist Seven", "Dentist Eight", "Dentist Nine"]');
 
 -- APPOINTMENT TABLE
 
@@ -166,11 +172,11 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`, `firstName`, `lastName`, `firstNameStaff`, `lastNameStaff`, `time`, `treatmentName`, `price`) VALUES
-(1, 1, 2, 1, 2, 'Tim', 'Baker', 'Diane', 'Hemsworth', '17:30', 'Dental Filing', 120),
-(1, 1, 2, 1, 1, 'Henry', 'Baker', 'Harry', 'Mason', '17:30', 'Dental Implants', 450),
-(8, 2, 1, 2, 3, 'Adeline', 'Wellington', 'Jackson', 'Butterworth', '09:30', 'General Checkup', 78),
-(1, 3, 1, 2, 2, 'Patient', 'One', 'Jackson', 'Butterworth', '09:30', 'Scaling and Polishing', 45),
-(7, 3, 3, 3, 1, 'Patient', 'One', 'Dentist', 'One', '10:30', 'Teeth Whitening', 200);
+(1, 1, 2, 1, 13, 'Patient', 'One', 'Dentist', 'Four', '09:00', 'Dental Fillings', 58),
+(1, 1, 3, 1, 12, 'Patient', 'One', 'Dentist', 'Seven', '09:00', 'Dental Implants', 88),
+(2, 2, 1, 2, 2, 'Patient', 'Two', 'Dentist', 'Two', '13:30', 'General Checkup', 78),
+(1, 3, 1, 2, 10, 'Patient', 'Three', 'Dentist', 'One', '09:00', 'Dental Whitening', 200),
+(3, 3, 3, 3, 6, 'Patient', 'Three', 'Dentist', 'Eight', '17:30', 'Whitening', 450);
 
 
 
