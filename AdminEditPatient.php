@@ -13,6 +13,7 @@ $passwordPatient="";
 $mobileNum ="";
 $firstName ="";
 $lastName ="";
+$addressPatient ="";
 $gender ="";
 $dateOfBirth ="";
 $address ="";
@@ -46,6 +47,7 @@ $successMessage="";
     $mobileNum = $row["mobileNum"];
     $firstName = $row["firstName"];
     $lastName = $row["lastName"];
+    $addressPatient = $row["addressPatient"];
     $gender = $row["gender"];
     $dateOfBirth = $row["dateOfBirth"];
     $address = $row["address"];
@@ -62,6 +64,7 @@ $successMessage="";
     $mobileNum = $_POST["mobileNum"];
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
+    $addressPatient = $_POST["addressPatient"];
     $gender = $_POST["gender"];
     $dateOfBirth = $_POST["dateOfBirth"];
     $address = $_POST["address"];
@@ -70,7 +73,7 @@ $successMessage="";
 
   
     do {
-        if ( empty($emailPatient) || empty($passwordPatient) || empty($mobileNum) || empty($firstName) || empty($lastName) || empty($gender) || empty($dateOfBirth) || empty($address) || empty($nationality) || empty($allergiesList) ) {
+        if ( empty($emailPatient) || empty($passwordPatient) || empty($mobileNum) || empty($firstName) || empty($lastName) || empty($addressPatient) || empty($gender) || empty($dateOfBirth) || empty($nationality) || empty($allergiesList) ) {
           $errorMessage = "All the fields are required";
           break;
         }
@@ -81,6 +84,7 @@ $successMessage="";
                 mobileNum='$mobileNum',
                 firstName='$firstName',
                 lastName='$lastName',
+                addressPatient='$addressPatient',
                 gender='$gender',
                 dateOfBirth='$dateOfBirth',
                 address='$address',
@@ -238,6 +242,10 @@ $successMessage="";
         <div class="col-12">
           <label for="lastName" class="form-label">Last Name</label>
           <input type="text" name="lastName" class="form-control" id="lastName" value="<?php echo $lastName;?>">
+        </div>
+        <div class="col-sm-6">
+          <label for="addressPatient" class="form-label">Patient Address</label>
+          <input type="text" name="addressPatient" class="form-control" id="addressPatient"  value="<?php echo $addressPatient;?>">
         </div>
 
 
