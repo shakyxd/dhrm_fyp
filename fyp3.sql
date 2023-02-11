@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS `Patient` (
   `addressPatient` varchar(100),
   `gender` char,
   `dateOfBirth` date NOT NULL,
-  `address` varchar(100) NOT NULL,
   `nationality` varchar(100),
   `allergiesList` text,
   `deactivated` tinyint(1) NOT NULL DEFAULT '0',
@@ -115,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `Treatment` (
   `treatmentType` varchar(100),
   `treatmentName` varchar(100),
   `price` float,
-  `availability` int NOT NULL DEFAULT '1',
+  `availability` int NOT NULL DEFAULT '0',
   CONSTRAINT PK_Treatment PRIMARY KEY (`treatmentID`, `clinicID`),
   CONSTRAINT FK_Treatment FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)
@@ -285,11 +284,7 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`, `firstName`, `lastName`, `firstNameStaff`, `lastNameStaff`, `time`, `date`, `treatmentName`, `price`) VALUES
-<<<<<<< HEAD
-(14, 1, 1, 7, 2, 'Amanda', 'Chan', 'Thierry', 'Henry', '15:30', '2023-05-20', 'Regular Checkup Plus', 90),
-=======
 (14, 1, 1, 7, 2, 'Amanda', 'Chan', 'Thierry', 'Henry', '15:30', ,'2023-05-20' 'Regular Checkup Plus', 90),
->>>>>>> 2c521195765a05dd92d6d8456eb026f49177d020
 (14, 2, 1, 5, 6, 'John', 'Ong', 'Francis', 'Baker', '15:30', '2023-05-20', 'Whitening and Polishing', 100),
 (25, 3, 2, 1, 8, 'Sarah', 'Tan', 'Thomas', 'Lee', '11:30', '2023-05-20', 'Teeth Scaling', 60);
 
