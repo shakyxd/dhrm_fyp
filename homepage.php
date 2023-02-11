@@ -1,4 +1,67 @@
-﻿<!doctype html>
+﻿<?php
+  session_start();
+  $host="localhost";
+  $user="root";
+  $password="";
+  $db="fyp";
+
+  $data=mysqli_connect($host,$user,$password,$db);
+  if($data===false){
+    die("connection error");
+  }
+  $sql="SELECT * FROM treatment INNER JOIN clinic ON treatment.clinicID=clinic.clinicID";
+  
+  if(isset($_GET["clinic"])){
+    //only clinic chosen
+    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]=="Any"){
+      $clinicID=$_GET["clinic"];
+      $sql .=" WHERE clinic.clinicID=$clinicID";
+    }
+    //only treatment chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+      $trtmnt=$_GET["trtmnt"];
+      $sql .=" WHERE treatment.treatmentType='$trtmnt'";
+    }
+    //only region chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
+      $region=$_GET["region"];
+      $sql .=" WHERE clinic.area='$region'";
+    }
+    //clinic and treatment chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+      $clinicID=$_GET["clinic"];
+      $trtmnt=$_GET["trtmnt"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt'";
+    }
+    //treatment and region chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
+      $trtmnt=$_GET["trtmnt"];
+      $region=$_GET["region"];
+      $sql .=" WHERE treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
+    }
+    //clinic and region chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
+      $clinicID=$_GET["clinic"];
+      $region=$_GET["region"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND clinic.area='$region'";
+    }
+    //clinic treatment and region chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
+      $clinicID=$_GET["clinic"];
+      $trtmnt=$_GET["trtmnt"];
+      $region=$_GET["region"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
+    }
+  }
+  if((isset($_GET["sort"]))AND($_GET["sort"]!="none")){
+    //sort is set
+      $sort=$_GET["sort"];
+      $sort=str_replace("+", " ", $sort);
+      $sql .=" ORDER BY $sort";
+  }
+  $result=mysqli_query($data,$sql);
+?>  
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -65,7 +128,6 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     }
-
 </style>
 </head>
 <body>
@@ -153,7 +215,6 @@
               <!-- Wrap the rest of the page in another container to center all the content. -->
 
             <div class="container marketing">
-
                 <!-- Three columns of text below the carousel -->
                 <div class="row">
                     <div class="col-lg-4">
@@ -185,35 +246,88 @@
                         <p class="lead">Fill Out The Form Below So That We Can Find The Best Price For Your Treatment</p>
                     </div>
                 </div>
+                <form action="homepage.php" method="get">
+                  <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputGroupSelect01">Choose a clinic</label>
+                      <select name="clinic" class="form-select" id="inputGroupSelect01">
+                          <option selected value="Any">Any</option>
+                          <option value="1">Raffles Dental Clinic</option>
+                          <option value="2">Ah Huat Tooth Care</option>
+                          <option value="3">Shiny Teeth That Twinkle</option>
+                      </select>
+                  </div>
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect02">Choose a treatment type</label>
-                    <select class="form-select" id="inputGroupSelect02">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
+                  <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputGroupSelect02">Choose a treatment type</label>
+                      <select name="trtmnt" class="form-select" id="inputGroupSelect02">
+                          <option selected value="Any">Any</option>
+                          <option value="General Checkup"> General Checkup </option> 
+                          <option value="Wisdom Tooth"> Wisdom Tooth </option> 
+                          <option value="Tooth Extraction"> Tooth Extraction </option> 
+                          <option value="Root Canal"> Root Canal </option> 
+                          <option value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
+                          <option value="Crown and Bridges"> Crown and Bridges </option> 
+                          <option value="Tooth Filling"> Tooth Filling </option> 
+                          <option value="Tooth Implant"> Tooth Implant </option> 
+                          <option value="Teeth Whitening"> Teeth Whitening </option> 
+                          <option value="Teeth Cleaning"> Teeth Cleaning </option> 
+                          <option value="X-ray"> X-ray </option>
+                      </select>
+                  </div>
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect03">Filter By/Sort By</label>
-                    <select class="form-select" id="inputGroupSelect03">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <select class="form-select" id="inputGroupSelect04">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                    </select>              
-                </div>
-                <button class="btn btn-outline-secondary" type="button">Search</button>
-
-                <hr class="featurette-divider">
-
+                  <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputGroupSelect03">Sort By</label>
+                      <select name="sort" class="form-select" id="inputGroupSelect03">
+                          <option selected value="none">Choose...</option>
+                          <option value="rating">Rating (Ascending)</option>
+                          <option value="rating DESC">Rating (Descending)</option>
+                          <option value="price">Price (Ascending)</option>
+                          <option value="price DESC">Price (Descending)</option>
+                      </select>
+                      <label class="input-group-text" for="inputGroupSelect03">Filter By</label>
+                      <select name="region" class="form-select" id="inputGroupSelect04">
+                          <option selected value="Any">Any</option>
+                          <option value="North">North</option>
+                          <option value="NorthEast">North-East</option>
+                          <option value="East">East</option>
+                          <option value="Central">Central</option>
+                          <option value="West">West</option>
+                      </select>              
+                  </div>
+                  <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
+                  <a class="btn btn-outline-secondary" href="homepage.php">Reset</a>
+                  <br><br>
+                  <div>
+                  <table class='table table-bordered'>
+                    <thead>
+                      <tr>
+                        <th>Package Name</th>
+                        <th>Clinic</th>
+                        <th>Address</th>
+                        <th>email</th>
+                        <th>Phone</th>
+                        <th>Rating</th>
+                        <th>Price (S$)</th>
+                      </tr>
+                    </thead>
+                    <?php
+                    while($row=$result->fetch_assoc()){
+                      echo "<tr>
+                          <td>$row[treatmentName]</td>
+                          <td>$row[nameClinic]</td>
+                          <td>$row[address]</td>
+                          <td>$row[emailClinic]</td>
+                          <td>$row[phoneNum]</td>
+                          <td>$row[rating]</td>
+                          <td>$row[price]</td>
+                          <td><button>Book Now</button></td>
+                      </tr>";
+                    }
+                    ?>
+                  </table>
+                  </div>
+                  <hr class="featurette-divider">
+                </form>
                 <!-- /END THE FEATURETTES -->
 
             </div><!-- /.container -->

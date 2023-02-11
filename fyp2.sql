@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `Patient` (
   `addressPatient` varchar(100),
   `gender` char,
   `dateOfBirth` date NOT NULL,
+  `address` varchar(100) NOT NULL,
   `nationality` varchar(100),
   `allergiesList` text,
   `deactivated` tinyint(1) NOT NULL DEFAULT '0',
@@ -114,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `Treatment` (
   `treatmentType` varchar(100),
   `treatmentName` varchar(100),
   `price` float,
-  `availability` int NOT NULL DEFAULT '0',
+  `availability` int NOT NULL DEFAULT '1',
   CONSTRAINT PK_Treatment PRIMARY KEY (`treatmentID`, `clinicID`),
   CONSTRAINT FK_Treatment FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)

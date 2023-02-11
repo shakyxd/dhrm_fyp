@@ -72,6 +72,7 @@
     <!-- Custom styles for this template -->
     <link href="dist/css/dashboard.css" rel="stylesheet">
   </head>
+
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -156,6 +157,68 @@
               <form action="/action_page.php">
                 <div class="row">
                   <div class="col-sm-3">
+                    <h6>Select Clinic: </h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <label for="clinic">Clinic</label>
+                      <select id="clinic" name="clinic">
+                        <?php
+
+                            $host="localhost";
+                            $user="root";
+                            $password="";
+                            $db="fyp";
+
+                            $data=mysqli_connect($host,$user,$password,$db);
+                            if($data===false){
+                                die("connection error");
+                            }
+                            $sql = "SELECT nameClinic FROM clinic ORDER BY clinicID";
+                            $res = mysqli_query($data, $sql);
+
+                            while ($row = $res->fetch_assoc()){
+                                echo "<option value=\"chosenClinic\">" . $row['nameClinic'] . "</option>";
+
+                                $chosenclinic = $row['nameClinic'];
+                            }
+
+                        ?>
+                      </select>
+                  </div>
+                </div>            
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6>Select Treatment Type: </h6>
+                  </div>
+                  <div class="col-sm-7">
+                    <label for="treatment">Treatment</label>
+                      <select id="treatment" name="treatment">
+                        <?php
+
+                        $data=mysqli_connect($host,$user,$password,$db);
+                        if($data===false){
+                            die("connection error");
+                        }
+                        $sql2 = "SELECT clinicID from clinic WHERE nameClinic=$chosenclinic";
+                        $res2 = mysqli_query($data, $sql2);
+
+                        $sql3 = "SELECT treatmentType FROM treatment WHERE treatment.clinicID = $res2";
+                        $res = mysqli_query($data, $sql3);
+
+                        while ($row = $res->fetch_assoc()){
+                            echo "<option value=\"chosenTreatment\">" . $row['treatmentType'] . "</option>";
+
+                            $chosentreatment = $row['treatmentType'];
+                        }
+
+                        ?>
+                      </select>
+                  </div>
+                </div>            
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
                     <h6>Select your date: </h6>
                   </div>
                   <div class="col-sm-7">
@@ -181,7 +244,7 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6>Issues:</h6>
+                    <h6>Description:</h6>
                   </div>
                   <div class="col-sm-7">
                     <textarea name="message" rows="3" cols="30" placeholder="Briefly describe to us your issues regarding your teeth"></textarea>

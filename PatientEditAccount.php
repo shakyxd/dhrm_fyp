@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,6 +76,61 @@
     <!-- Custom styles for this template -->
     <link href="dist/css/dashboard.css" rel="stylesheet">
   </head>
+  <?php
+
+
+  // Create database connection
+
+  $conn = new mysqli('localhost', 'root', '', 'fyp');
+
+  if(! $conn ) {
+      die('Could not connect: ' . mysql_error());
+   }
+
+  $sql = "SELECT * FROM patient WHERE patientID = 1";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $column1 = $row["patientID"];
+    $column2 = $row["emailPatient"];
+    $column3 = $row["mobileNum"];
+    $column4 = $row["firstName"];
+    $column5 = $row["lastName"];
+    $column6 = $row["gender"];
+    $column7 = $row["dateOfBirth"];
+    $column8 = $row["nationality"];
+    $column9 = $row["allergiesList"];
+    $column10 = $row["passwordPatient"];
+  }
+} else {
+  echo "0 results";
+}
+  if($_SERVER['REQUEST_METHOD']=='POST'){
+    $column2= $_POST["email"];
+    $column3= $_POST["phone"];
+    $column9= $_POST["allergy"];
+    $column10= $_POST["password"];
+    do{
+        if(empty($column2) or empty($column3) or empty($column9) or empty($column10)){
+            echo '<script>alert("Missing Fields")</script>';
+            break;
+        }
+            $sql="UPDATE patient 
+                SET emailPatient='$column2',
+                    mobileNum='$column3',
+                    allergiesList='$column9',
+                    passwordPatient='$column10'
+                WHERE patientID=1";
+            mysqli_query($conn,$sql);
+            echo '<script>alert("Edit Success!")</script>';
+
+    }while(false);
+ 
+  }
+
+  ?>
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -150,7 +209,7 @@
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
         <!-- form edit -->
-        <form id="edit" method="POST" action="">
+        <form method="post">
         <div class="row">
           <div class="col-lg-4">
             <img src="images/patient1.jpg" alt="Avatar" class="avatar">
@@ -163,7 +222,7 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                      <input id="name" type="text" name="name" value="Placeholder"></input>
+                    <p class="text-muted mb-0"><?php echo $column4 . ' ' . $column5;?></p>
                   </div>
                 </div>
                 <hr>
@@ -172,7 +231,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="email" type="text" name="email" value="Placeholder"></input>
+                    <input id="email" type="text" name="email" value="<?php echo $column2;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -181,25 +240,53 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="phone" type="text" name="phone" value="Placeholder"></input>
+                    <input id="phone" type="text" name="phone" value="<?php echo $column3;?>"></input>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
+                    <p class="mb-0">Gender</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="mobile" type="text" name="mobile" value="Placeholder"></input>
+                    <p class="text-muted mb-0"><?php echo $column6;?></p>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
+                    <p class="mb-0">Date Of Birth</p>
                   </div>
                   <div class="col-sm-9">
-                    <input id="address" type="text" name="address" value="Placeholder"></input>
+                    <p class="text-muted mb-0"><?php echo $column7;?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Nationality</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $column8;?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Password</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <input id="password" type="password" name="password" value="<?php echo $column10;?>"></input>
+                    <input type="checkbox" onclick="togglePassword()"> Show Password
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Allergies</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <textarea rows="2" cols="30" name="allergy"><?php echo $column9;?></textarea>
                   </div>
                 </div>
                 <hr>
@@ -208,7 +295,7 @@
                     <p class="mb-0"></p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                   </div>
                 </div>
               </div>
@@ -221,7 +308,18 @@
   </div>
 </div>
 
+  <script>
 
+    function togglePassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+</script>
     <script src="dist/js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dist/js/dashboard.js"></script>

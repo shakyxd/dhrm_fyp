@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,6 +76,38 @@
     <!-- Custom styles for this template -->
     <link href="dist/css/dashboard.css" rel="stylesheet">
   </head>
+  <?php
+
+
+  // Create database connection
+
+  $conn = new mysqli('localhost', 'root', '', 'fyp');
+
+  if(! $conn ) {
+      die('Could not connect: ' . mysql_error());
+   }
+
+  $sql = "SELECT * FROM patient WHERE patientID = 1";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $column1 = $row["patientID"];
+    $column2 = $row["emailPatient"];
+    $column3 = $row["mobileNum"];
+    $column4 = $row["firstName"];
+    $column5 = $row["lastName"];
+    $column6 = $row["gender"];
+    $column7 = $row["dateOfBirth"];
+    $column8 = $row["nationality"];
+    $column9 = $row["allergiesList"];
+  }
+} else {
+  echo "0 results";
+}
+
+  ?>
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -161,7 +197,7 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column4 . ' ' . $column5 ?></p>
                   </div>
                 </div>
                 <hr>
@@ -170,7 +206,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column2 ?></p>
                   </div>
                 </div>
                 <hr>
@@ -179,25 +215,43 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column3 ?></p>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
+                    <p class="mb-0">Gender</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column6 ?></p>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
+                    <p class="mb-0">Date Of Birth</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column7 ?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Nationality</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $column8 ?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Allergies</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $column9 ?></p>
                   </div>
                 </div>
                 <hr>
