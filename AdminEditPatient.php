@@ -16,7 +16,6 @@ $lastName ="";
 $addressPatient ="";
 $gender ="";
 $dateOfBirth ="";
-$address ="";
 $nationality ="";
 $allergiesList ="";
 
@@ -50,7 +49,6 @@ $successMessage="";
     $addressPatient = $row["addressPatient"];
     $gender = $row["gender"];
     $dateOfBirth = $row["dateOfBirth"];
-    $address = $row["address"];
     $nationality = $row["nationality"];
     $allergiesList = $row["allergiesList"];
   
@@ -67,7 +65,6 @@ $successMessage="";
     $addressPatient = $_POST["addressPatient"];
     $gender = $_POST["gender"];
     $dateOfBirth = $_POST["dateOfBirth"];
-    $address = $_POST["address"];
     $nationality = $_POST["nationality"];
     $allergiesList = $_POST["allergiesList"];
 
@@ -87,7 +84,6 @@ $successMessage="";
                 addressPatient='$addressPatient',
                 gender='$gender',
                 dateOfBirth='$dateOfBirth',
-                address='$address',
                 nationality='$nationality',
                 allergiesList='$allergiesList'
                 WHERE patientID=$patientID";  
@@ -262,10 +258,6 @@ $successMessage="";
           <input type="text" name="dateOfBirth" class="form-control" id="dateOfBirth"  value="<?php echo $dateOfBirth;?>">
         </div>
 
-        <div class="col-sm-6">
-          <label for="address" class="form-label">Address</label>
-          <input type="text" name="address" class="form-control" id="address"  value="<?php echo $address;?>">
-        </div>
 
         <div class="col-sm-6">
           <label for="nationality" class="form-label">Nationality</label>

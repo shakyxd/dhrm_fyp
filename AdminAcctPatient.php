@@ -124,7 +124,6 @@
     <th>Patient Address</th>
     <th>Gender</th>
     <th>Date Of Birth</th>
-    <th> Address</th>
 	<th>Nationality</th>
 	<th>Allergies List</th>
   <th>Edit/Delete</th>
@@ -167,7 +166,6 @@ while($row = $result->fetch_assoc()){
   <td>$row[addressPatient]</td>
 	<td>$row[gender]</td>
 	<td>$row[dateOfBirth]</td>
-  <td>$row[address]</td>
 	<td>$row[nationality]</td>
 	<td>$row[allergiesList]</td>
 	<td>
