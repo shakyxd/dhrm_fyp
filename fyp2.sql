@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `Patient` (
   `mobileNum` int NOT NULL,
   `firstName` varchar(100),
   `lastName` varchar(100) NOT NULL,
+  `addressPatient` varchar(100),
   `gender` char,
   `dateOfBirth` date NOT NULL,
   `address` varchar(100) NOT NULL,
@@ -26,10 +27,10 @@ CREATE TABLE IF NOT EXISTS `Patient` (
 
 
 INSERT INTO `Patient` (`emailPatient`, `passwordPatient`,  `mobileNum`, `firstName`, 
-                        `lastName`,`gender`,`dateOfBirth`, `address`, `nationality`,`allergiesList`, `deactivated`) VALUES
-('patient1@hotmail.com', 'Password1', 11112222, 'Patient', 'One', 'M', '1995-2-24', 'Blk 123 Singapore road', 'Singaporean', 'Nuts, Ant Bite', 0),
-('patient1@hotmail.com', 'Password2', 22223333, 'Patient', 'Two', 'F', '1990-11-04', 'Blk 223 Singapore road', 'Singaporean', '', 0),
-('patient1@hotmail.com', 'Password3', 33334444, 'Patient', 'Three', 'M', '1995-7-16', 'Blk 323 Singapore road', 'Malaysian', '', 0);
+                        `lastName`, `addressPatient`, `gender`,`dateOfBirth`,`nationality`,`allergiesList`, `deactivated`) VALUES
+('amandachan@hotmail.com', 'Password1', 11112222, 'Amanda', 'Chan', 'Blk 222 Boon Lay Avenue, S(101222)', 'F', '1995-02-24', 'Singaporean', 'Nuts, Ant Bite', 0),
+('johnong@hotmail.com', 'Password2', 22223333, 'John', 'Ong', 'Blk 72 Serangoon North, S(550072)', 'M', '1990-11-04', 'Singaporean', '', 0),
+('thomaslee@hotmail.com', 'Password3', 33334444, 'Thomas', 'Lee', 'Blk 25 Yishun Avenue, S(12425)', 'M', '1995-07-16', 'Malaysian', '', 0);
 
 
 -- CLINIC TABLE
@@ -41,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
   `passwordClinic` text NOT NULL,
   `nameClinic` varchar(100) NOT NULL,
   `phoneNum` int NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `area` varchar(100) NOT NULL,
+  `address` varchar(100), 
+  `area` varchar(100),
   `specialisation` varchar(100),
   `rating` float NOT NULL DEFAULT '0', 
   `deactivated` int NOT NULL DEFAULT '0',
@@ -53,9 +54,10 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
 
 
 INSERT INTO `Clinic` (`emailClinic`, `passwordClinic`, `nameClinic`, `phoneNum`, `address`, `area`, `specialisation`, `rating`) VALUES
-('clinic1@hotmail.com', 'clinicPassword1', 'Raffles Dental Clinic', 12345678, '54 Raffles Boulevard 06-11 112250', 'Central', 'General, Hygiene, Root Canal', 4.5),
-('clinic2@hotmail.com', 'clinicPassword2', 'Ah Huat Tooth Care', 87654321, '44 Orchard Road 02-04 782241', 'East', 'General, Hygiene, Tooth Removal', 5),
-('clinic3@hotmail.com', 'clinicPassword3', 'Shiny Teeth That Twinkle', 11223344, '78 Boon Lay Street 14-25 442215', 'West', 'Hygiene, Braces', 3);
+('rafflesdental@hotmail.com', 'clinicPassword1', 'Raffles Dental Clinic', 95562244,'54 Raffles Boulevard, #06-11, S(48954)','Central', 'General, Hygiene, Root Canal', 4.5),
+('tantoothcare@hotmail.com', 'clinicPassword2', 'Tan Tooth Care', 87654321,'44 Orchard Road, #02-04, S(782244)', 'Central', 'General, Hygiene, Tooth Removal', 5),
+('bedoklanedc@yahoo.com', 'clinicPassword3', 'Bedok Lane Dental Clinic', 86655412, 'Blk 78, Bedok Lane, #2-25, S(442278)', 'East', 'Teeth Cleaning, Crown and Bridges, Orthodontics(Braces)', 4),
+('yishunfamilydc@yahoo.com', 'clinicPassword3', 'Yishun Family Dental Clinic', 9866521, 'Blk 122, Bedok Lane, #01-55, S(201122)', 'North', 'General Checkup, Wisdom Tooth, Tooth Extraction', 3.5);
 
 
 
@@ -83,16 +85,24 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Staff` (`clinicID`, `emailStaff`, `phoneNumStaff`, `staffType`, `dateJoined`, `salary`, `firstNameStaff`, `lastNameStaff`, `genderStaff`, `dateOfBirthStaff`) VALUES
-(1, 'staff1@hotmail.com', 33344455, 'Dentist', '2004-2-01', 6000, 'Dentist', 'One', 'F', '1982-02-21'),
-(1, 'staff2@hotmail.com', 11111111, 'Dentist', '2010-10-01', 5200, 'Dentist', 'Two', 'M', '1989-04-01'),
-(1, 'staff3@hotmail.com', 13423411, 'Dentist', '2010-10-02', 5400, 'Dentist', 'Three', 'M', '1989-05-01'),
-(2, 'staff4@hotmail.com', 13545411, 'Dentist', '2010-10-06', 5100, 'Dentist', 'Four', 'F', '1989-05-02'),
-(2, 'staff5@hotmail.com', 13344411, 'Dentist', '2010-11-02', 5500, 'Dentist', 'Five', 'M', '1989-03-01'),
-(2, 'staff6@hotmail.com', 13876811, 'Dentist', '2010-12-02', 5700, 'Dentist', 'Six', 'F', '1989-04-01'),
-(3, 'staff7@hotmail.com', 13987911, 'Dentist', '2010-4-02', 5480, 'Dentist', 'Seven', 'F', '1989-06-01'),
-(3, 'staff8@hotmail.com', 14323421, 'Dentist', '2010-6-02', 5490, 'Dentist', 'Eight', 'M', '1989-07-01'),
-(3, 'staff9@hotmail.com', 13234411, 'Dentist', '2010-7-02', 5430, 'Dentist', 'Nine', 'M', '1989-08-01'),
-(10, 'staff10@hotmail.com', 22221111, 'Admin', '2001-8-14', 3400, 'Admin', 'One', 'F', '1990-10-27');
+(2, 'sarahtan@hotmail.com', 88564223, 'Dentist', '2004-02-01', 6000, 'Sarah', 'Tan', 'F', '1982-02-21'),
+(2, 'mandeepsingh@gmail.com', 98561331, 'Dentist', '2010-10-01', 5200, 'Mandeep', 'Singh', 'M', '1989-04-01'),
+(2, 'chelstonlow@gmail.com', 85236542, 'Admin', '2001-08-14', 3400, 'Chelston', 'Low', 'M', '1990-10-27'),
+
+(1, 'mariahkong@gmail.com', 99886532, 'Admin', '2020-5-12', 3200, 'Mariah', 'Kong', 'F', '1995-03-02'),
+(1, 'francisbaker@hotmail.com', 98654412, 'Dentist', '2018-05-12', 4800, 'Francis', 'Baker', 'M', '1992-05-11'),
+(1, 'hendrickheng@hotmail.com', 85619193, 'Dentist', '2015-01-02', 5200, 'Hendrick', 'Heng', 'M', '1978-12-25'),
+(1, 'thierryhenry@hotmail.com', 88761315, 'Dentist', '2016-03-22', 5000, 'Thierry', 'Henry', 'M', '1980-03-17'),
+
+(4, 'jakeyip@gmail.com', 87331629, 'Admin', '2010-3-26', 3600, 'Jake', 'Yip', 'M', '1965-01-28'),
+(4, 'samanthawee@hotmail.com', 9916712, 'Dentist', '2019-02-03', 5500, 'Samantha', 'Wee', 'F', '1988-05-22'),
+(4, 'jamesong@hotmail.com', 89895132, 'Dentist', '2019-01-25', 6200, 'James', 'Ong', 'M', '1969-08-08'),
+
+(3, 'lisapo@gmail.com', 91123466, 'Admin', '2018-06-01', 3400, 'Lisa', 'Po', 'F', '1994-11-24'),
+(3, 'janetteo@hotmail.com', 84043064, 'Dentist', '2018-02-22', 6050, 'Janet', 'Teo', 'F', '1985-06-02'),
+(3, 'ericyang@hotmail.com', 80334909, 'Dentist', '2006-11-30', 6400, 'Eric', 'Yang', 'M', '1972-05-09'),
+(3, 'tommyyang@hotmail.com', 93304468, 'Dentist', '2008-01-03', 6300, 'Tommy', 'Yang', 'M', '1976-12-27');
+
 
 
 
@@ -111,20 +121,40 @@ CREATE TABLE IF NOT EXISTS `Treatment` (
   REFERENCES Clinic(`clinicID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `Treatment` (`clinicID`, `treatmentType`, `treatmentName`, `price`, `availability`) VALUES
-(1, 'Wisdom Tooth', 'Wisdom Tooth Extraction', 450, 1),
-(1, 'General Checkup', 'General Checkup', 78, 1),
-(1, 'Root Canal', 'Root Canal', 78, 1),
-(1, 'Teeth Cleaning', 'Cleaning', 78, 1),
-(2, 'Tooth Filling', 'Dental Fillings', 120, 1),
-(2, 'Teeth Whitening', 'Whitening', 450, 1),
-(2, 'Orthodontics(Braces)', 'Braces', 78, 1),
-(2, 'Crown and Bridges', 'Dental Crowns and Bridges', 400, 1),
-(2, 'X-ray', 'Dental X-ray', 400, 1),
-(3, 'Teeth Whitening', 'Dental Whitening', 200, 1),
-(3, 'Tooth Extraction', 'Normal Extraction', 70, 1),
-(3, 'Tooth Implant', 'Dental Implants', 88, 1),
-(3, 'Tooth Filling', 'Dental Fillings', 58, 1);
+INSERT INTO `Treatment` (`clinicID`, `treatmentType`, `treatmentName`, `price`) VALUES
+(1, 'Tooth Extraction', 'Wisdom Tooth Extraction', 450),
+(1, 'General Checkup', 'Regular Checkup Plus', 90),
+(1, 'General Checkup', 'Regular Checkup', 78),
+(1, 'Root Canal', 'Root Canal Operation', 222),
+(1, 'Teeth Cleaning', 'Scaling And Polish', 120),
+(1, 'Teeth Whitening', 'Whitening And Polish', 100),
+
+
+(2, 'General Checkup', 'Normal Package', 88),
+(2, 'Teeth Cleaning', 'Teeth Scaling', 60),
+(2, 'Teeth Cleaning', 'Teeth Cleaning Package', 110),
+(2, 'Tooth Extraction', 'Tooth Extract - 1 pc', 80),
+(2, 'Tooth Extraction', 'Tooth Extract - 2 pc', 130),
+(2, 'Tooth Implant', 'Tooth Implant - Standard', 200),
+(2, 'Tooth Implant', 'Tooth Implant - Gold', 450),
+(2, 'Tooth Filling', 'Fillers', 80),
+(2, 'X-ray', 'Upper Row X-ray', 130),
+(2, 'X-ray', 'Lower Row X-ray', 130),
+(2, 'X-ray', 'Full X-ray', 200),
+
+(3, 'Crown and Bridges', 'Crowning', 70),
+(3, 'Crown and Bridges', 'Bridging', 65),
+(3, 'Teeth Cleaning', 'Teeth Clean Pro', 110),
+(3, 'Orthodontics(Braces)', 'Top Braces', 150),
+(3, 'Orthodontics(Braces)', 'Bottom Braces', 150),
+(3, 'Orthodontics(Braces)', 'Full Braces', 270),
+
+(4, 'General Checkup', 'Checkup and Consultation - $60', 60),
+(4, 'Tooth Extraction', 'Tooth Extraction $90', 90),
+(4, 'Wisdom Tooth', 'Wisdom Tooth Extraction - 1 session $150', 150),
+(4, 'Wisdom Tooth', 'Wisdom Tooth Extraction - 2 session $180', 180);
+
+
 
 
 -- TIMESLOT TABLE
@@ -142,9 +172,90 @@ CREATE TABLE IF NOT EXISTS `Timeslot` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Timeslot` (`clinicID`, `date`, `time`, `dentistList`) VALUES
-(1, '2022-01-05', '09:00', '["Dentist One", "Dentist Two", "Dentist Three"]'),
-(2, '2022-01-05', '13:30', '["Dentist Four", "Dentist Five", "Dentist Six"]'),
-(3, '2022-01-22', '17:30', '["Dentist Seven", "Dentist Eight", "Dentist Nine"]');
+(1, '2023-05-20', '09:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '09:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '10:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '10:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '11:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '11:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '12:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '12:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '13:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '13:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '14:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '14:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '15:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '15:30', '["Hendrick Heng"]'),
+(1, '2023-05-20', '16:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '16:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '17:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '17:30', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+(1, '2023-05-20', '18:00', '["Francis Baker, Hendrick Heng, Thierry Henry"]'),
+
+(2, '2023-05-20', '09:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '09:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '10:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '10:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '11:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '11:30', '["Mandeep Singh"]'),
+(2, '2023-05-20', '12:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '12:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '13:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '13:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '14:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '14:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '15:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '15:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '16:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '16:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '17:00', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '17:30', '["Sarah Tan, Mandeep Singh"]'),
+(2, '2023-05-20', '18:00', '["Sarah Tan, Mandeep Singh"]'),
+
+
+
+(3, '2023-05-20', '09:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '09:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '10:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '10:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '11:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '11:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '12:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '12:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '13:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '13:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '14:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '14:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '15:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '15:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '16:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '16:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '17:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '17:30', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+(3, '2023-05-20', '18:00', '["Janet Teo, Eric Yang, Tommy Yang"]'),
+
+
+(4, '2023-05-20', '09:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '09:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '10:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '10:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '11:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '11:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '12:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '12:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '13:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '13:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '14:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '14:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '15:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '15:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '16:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '16:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '17:00', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '17:30', '["Samantha Wee, James Ong"]'),
+(4, '2023-05-20', '18:00', '["Samantha Wee, James Ong"]');
+
+
 
 -- APPOINTMENT TABLE
 
@@ -160,6 +271,7 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
   `lastName` varchar(100),
   `firstNameStaff` varchar(100),
   `lastNameStaff` varchar(100),
+  `date` date,
   `time` varchar(100),
   `treatmentName` varchar(100),
   `price` int,
@@ -172,12 +284,10 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
   
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`, `firstName`, `lastName`, `firstNameStaff`, `lastNameStaff`, `time`, `treatmentName`, `price`) VALUES
-(1, 1, 2, 1, 13, 'Patient', 'One', 'Dentist', 'Four', '09:00', 'Dental Fillings', 58),
-(1, 1, 3, 1, 12, 'Patient', 'One', 'Dentist', 'Seven', '09:00', 'Dental Implants', 88),
-(2, 2, 1, 2, 2, 'Patient', 'Two', 'Dentist', 'Two', '13:30', 'General Checkup', 78),
-(1, 3, 1, 2, 10, 'Patient', 'Three', 'Dentist', 'One', '09:00', 'Dental Whitening', 200),
-(3, 3, 3, 3, 6, 'Patient', 'Three', 'Dentist', 'Eight', '17:30', 'Whitening', 450);
+INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`, `firstName`, `lastName`, `firstNameStaff`, `lastNameStaff`, `time`, `date`, `treatmentName`, `price`) VALUES
+(14, 1, 1, 7, 2, 'Amanda', 'Chan', 'Thierry', 'Henry', '15:30', '2023-05-20', 'Regular Checkup Plus', 90),
+(14, 2, 1, 5, 6, 'John', 'Ong', 'Francis', 'Baker', '15:30', '2023-05-20', 'Whitening and Polishing', 100),
+(25, 3, 2, 1, 8, 'Sarah', 'Tan', 'Thomas', 'Lee', '11:30', '2023-05-20', 'Teeth Scaling', 60);
 
 
 

@@ -1,3 +1,66 @@
+<?php
+session_start();
+$host="localhost";
+$user="root";
+$password="";
+$db="fyp";
+
+$data=mysqli_connect($host,$user,$password,$db);
+if($data===false){
+    die("connection error");
+}
+$sql="SELECT * FROM treatment INNER JOIN clinic ON treatment.clinicID=clinic.clinicID";
+
+if(isset($_GET["clinic"])){
+    //only clinic chosen
+    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]=="Any"){
+        $clinicID=$_GET["clinic"];
+        $sql .=" WHERE clinic.clinicID=$clinicID";
+    }
+    //only treatment chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+        $trtmnt=$_GET["trtmnt"];
+        $sql .=" WHERE treatment.treatmentType='$trtmnt'";
+    }
+    //only region chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
+        $region=$_GET["region"];
+        $sql .=" WHERE clinic.area='$region'";
+    }
+    //clinic and treatment chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+        $clinicID=$_GET["clinic"];
+        $trtmnt=$_GET["trtmnt"];
+        $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt'";
+    }
+    //treatment and region chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
+        $trtmnt=$_GET["trtmnt"];
+        $region=$_GET["region"];
+        $sql .=" WHERE treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
+    }
+    //clinic and region chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
+        $clinicID=$_GET["clinic"];
+        $region=$_GET["region"];
+        $sql .=" WHERE clinic.clinicID=$clinicID AND clinic.area='$region'";
+    }
+    //clinic treatment and region chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
+        $clinicID=$_GET["clinic"];
+        $trtmnt=$_GET["trtmnt"];
+        $region=$_GET["region"];
+        $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
+    }
+}
+if((isset($_GET["sort"]))AND($_GET["sort"]!="none")){
+    //sort is set
+    $sort=$_GET["sort"];
+    $sort=str_replace("+", " ", $sort);
+    $sql .=" ORDER BY $sort";
+}
+$result=mysqli_query($data,$sql);
+?> 
 <!doctype html>
 <html lang="en">
   <head>
@@ -154,120 +217,85 @@
         <div class="card mb-8">
          <div class="card-body">
           <div class="col-lg-12">
-              <form action="/action_page.php">
+              <form action="PatientScheduleAppt.php" method="get">
                 <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Select Clinic: </h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <label for="clinic">Clinic</label>
-                      <select id="clinic" name="clinic">
-                        <?php
-
-                            $host="localhost";
-                            $user="root";
-                            $password="";
-                            $db="fyp";
-
-                            $data=mysqli_connect($host,$user,$password,$db);
-                            if($data===false){
-                                die("connection error");
-                            }
-                            $sql = "SELECT nameClinic FROM clinic ORDER BY clinicID";
-                            $res = mysqli_query($data, $sql);
-
-                            while ($row = $res->fetch_assoc()){
-                                echo "<option value=\"chosenClinic\">" . $row['nameClinic'] . "</option>";
-
-                                $chosenclinic = $row['nameClinic'];
-                            }
-
-                        ?>
+                  <div class="col-sm-10">
+                      <select name="trtmnt" class="form-select" id="inputGroupSelect02">
+                          <option selected value="Any">Choose A Treatment Type</option>
+                          <option value="General Checkup"> General Checkup </option> 
+                          <option value="Wisdom Tooth"> Wisdom Tooth </option> 
+                          <option value="Tooth Extraction"> Tooth Extraction </option> 
+                          <option value="Root Canal"> Root Canal </option> 
+                          <option value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
+                          <option value="Crown and Bridges"> Crown and Bridges </option> 
+                          <option value="Tooth Filling"> Tooth Filling </option> 
+                          <option value="Tooth Implant"> Tooth Implant </option> 
+                          <option value="Teeth Whitening"> Teeth Whitening </option> 
+                          <option value="Teeth Cleaning"> Teeth Cleaning </option> 
+                          <option value="X-ray"> X-ray </option>
                       </select>
                   </div>
                 </div>            
                 <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Select Treatment Type: </h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <label for="treatment">Treatment</label>
-                      <select id="treatment" name="treatment">
-                        <?php
-
-                        $data=mysqli_connect($host,$user,$password,$db);
-                        if($data===false){
-                            die("connection error");
-                        }
-                        $sql2 = "SELECT clinicID from clinic WHERE nameClinic=$chosenclinic";
-                        $res2 = mysqli_query($data, $sql2);
-
-                        $sql3 = "SELECT treatmentType FROM treatment WHERE treatment.clinicID = $res2";
-                        $res = mysqli_query($data, $sql3);
-
-                        while ($row = $res->fetch_assoc()){
-                            echo "<option value=\"chosenTreatment\">" . $row['treatmentType'] . "</option>";
-
-                            $chosentreatment = $row['treatmentType'];
-                        }
-
-                        ?>
-                      </select>
-                  </div>
+                <div class="col-sm-10">
+                    <select name="region" class="form-select" id="inputGroupSelect04">
+                        <option selected value="Any">Filter By</option>
+                        <option value="North">North</option>
+                        <option value="NorthEast">North-East</option>
+                        <option value="East">East</option>
+                        <option value="Central">Central</option>
+                        <option value="West">West</option>
+                    </select>
+                </div>
                 </div>            
                 <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Select your date: </h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <label for="datemin">Date</label>
-                    <input type="date" id="datemin" name="datemin" min="2023-01-02" id="datemax" name="datemax" max="2024-01-02"><br><br> 
-                  </div>
+                <div class="col-sm-10">
+                    <select name="sort" class="form-select" id="inputGroupSelect03">
+                        <option selected value="none">Sort By</option>
+                        <option value="rating">Rating (Ascending)</option>
+                        <option value="rating DESC">Rating (Descending)</option>
+                        <option value="price">Price (Ascending)</option>
+                        <option value="price DESC">Price (Descending)</option>
+                    </select>
+                </div>
                 </div>            
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Dentist:</h6>
-                  </div>
-                  <div class="col-sm-7">
-                      <label for="dentist">Dentist</label>
-                      <select id="dentist" name="dentist">
-                        <option value="dentist1">placeholder1</option>
-                        <option value="dentist2">placeholder2</option>
-                        <option value="dentist3">placeholder3</option>
-                        <option value="dentist4">placeholder4</option>
-                      </select>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Description:</h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <textarea name="message" rows="3" cols="30" placeholder="Briefly describe to us your issues regarding your teeth"></textarea>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Are you currently on a premium plan?</h6>
-                  </div>
-                  <div class="col-sm-7">
-                    <input type="radio" id="yes" name="premium" value="Yes">
-                      <label for="yes">Yes</label>
-                    <input type="radio" id="no" name="premium" value="No">
-                      <label for="no">No</label>
-                  </div>
-                </div>
                 <hr>
                 <div class="row">
                   <div class="col-sm-12 d-flex justify-content-end align-items-center">
-                    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                    <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
+                    <a class="btn btn-outline-secondary" href="PatientScheduleAppt.php">Reset</a>
                   </div>
                 </div>
+                <hr>
+                <div>
+                  <table class='table table-bordered'>
+                    <thead>
+                      <tr>
+                        <th>Package Name</th>
+                        <th>Clinic</th>
+                        <th>Address</th>
+                        <th>email</th>
+                        <th>Phone</th>
+                        <th>Rating</th>
+                        <th>Price (S$)</th>
+                      </tr>
+                    </thead>
+                    <?php
+                    while($row=$result->fetch_assoc()){
+                        echo "<tr>
+                          <td>$row[treatmentName]</td>
+                          <td>$row[nameClinic]</td>
+                          <td>$row[address]</td>
+                          <td>$row[emailClinic]</td>
+                          <td>$row[phoneNum]</td>
+                          <td>$row[rating]</td>
+                          <td>$row[price]</td>
+                          <td><button>Book Now</button></td>
+                      </tr>";
+                    }
+                    ?>
+                  </table>
+                  </div>
               </form>
           </div>
         </div>

@@ -232,7 +232,7 @@
                         INNER JOIN clinic
                             ON clinic.clinicID = appointment.clinicID
                         INNER JOIN timeslot
-                            ON clinic.clinicID = timeslot.clinicID
+                            ON appointment.timeSlotID = timeslot.timeSlotID
                         WHERE appointment.patientID=1";
                 }
                 $result=mysqli_query($data,$sql);
