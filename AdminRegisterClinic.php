@@ -54,23 +54,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="AdminAcctMgmt.php">
               <span data-feather="settings" class="align-text-bottom"></span>
               Account Management
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="AdminTreatment.php">
-              <span data-feather="thermometer" class="align-text-bottom"></span>
-              Treatments
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="database" class="align-text-bottom"></span>
-              Profile Management
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="AdminBillsnPayment.php">
               <span data-feather="dollar-sign" class="align-text-bottom"></span>
@@ -99,17 +88,7 @@
       </div>
     </nav>
 
-    <section style="background-color: #99ccff;">
-       
-       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Lorem Ipsum</h1>     
-        <div class="container py-5">
-        <div class="row">
-          <h3>Register Clinic (Admin)</h3>         
-        </div>
-      </div>
-      </div>
-    </section>
+   
 
 
 <form>

@@ -158,18 +158,7 @@ $successMessage="";
               Account Management
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="AdminTreatment.php">
-              <span data-feather="thermometer" class="align-text-bottom"></span>
-              Treatments
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="database" class="align-text-bottom"></span>
-              Profile Management
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="AdminBillsnPayment.php">
               <span data-feather="dollar-sign" class="align-text-bottom"></span>

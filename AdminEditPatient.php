@@ -163,7 +163,7 @@ $successMessage="";
             </a>
           </li>
           <li class="nav-item">
-           <a class="nav-link active" aria-current="page" href="AdminAcctMgmt.php.php">
+           <a class="nav-link active" aria-current="page" href="AdminAcctMgmt.php">
               <span data-feather="settings" class="align-text-bottom"></span>
               Account Management
             </a>

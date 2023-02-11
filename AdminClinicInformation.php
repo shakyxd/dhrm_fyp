@@ -127,7 +127,6 @@
   <th>Region</th>
 	<th>Specialisation</th>
 	<th>Rating</th>
-  <th>Edit/Delete</th>
 </tr>
 </thead>
 <tbody>
