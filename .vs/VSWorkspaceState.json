@@ -3,7 +3,9 @@
     "",
     "\\dist",
     "\\dist\\css",
-    "\\dist\\js"
+    "\\dist\\js",
+    "\\includes"
   ],
+  "SelectedNode": "\\login.html",
   "PreviewInSolutionExplorer": false
 }

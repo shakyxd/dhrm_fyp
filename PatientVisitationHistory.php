@@ -235,12 +235,12 @@ session_start();
                             <td>$row[nameClinic]</td>
                             <td>$row[treatmentName]</td>
                             <td>$row[price]</td>";
-                            if ($row2 = 1){
+                            if ($row['paid'] > 0){
 
-                                echo"<td>No</td>"; 
+                                echo"<td>Paid</td>"; 
                             }
                             else{
-                                echo"<td>Paid</td>";
+                                echo"<td>Not Paid</td>";
                             }
                 }?>
             </tbody>
