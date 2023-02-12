@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -82,7 +86,7 @@
   <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <a class="nav-link px-3" href="unset.php">Sign out</a>
     </div>
   </div>
 </header>
@@ -189,8 +193,11 @@
                 $user="root";
                 $password="";
                 $db="fyp";
+
+                $loginID = $_SESSION["userID"];
                 
                 $data=mysqli_connect($host,$user,$password,$db);
+
                 if($data===false){
                     die("connection error");
                 }
@@ -202,7 +209,7 @@
                         ON clinic.clinicID = appointment.clinicID
                     INNER JOIN timeslot
                             ON appointment.timeSlotID = timeslot.timeSlotID
-                    WHERE appointment.patientID=1 AND
+                    WHERE appointment.patientID=$loginID AND
                     (timeslot.date LIKE '%$filtervalues%')";
                     
                 }
@@ -213,7 +220,7 @@
                             ON clinic.clinicID = appointment.clinicID
                         INNER JOIN timeslot
                             ON appointment.timeSlotID = timeslot.timeSlotID
-                        WHERE (appointment.patientID=1 AND appointment.paid = 0)";
+                        WHERE (appointment.patientID=$loginID AND appointment.paid = 0)";
                 }
                 $result=mysqli_query($data,$sql);
                 while($row=$result->fetch_assoc()){                  

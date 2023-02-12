@@ -8,22 +8,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="AdminVisitationHist.php">
-              <span data-feather="pie-chart" class="align-text-bottom"></span>
-              Visitation History
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="AdminAcctMgmt.php">
               <span data-feather="settings" class="align-text-bottom"></span>
               Account Management
-            </a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link" href="AdminBillsnPayment.php">
-              <span data-feather="dollar-sign" class="align-text-bottom"></span>
-              Bills And Payments
             </a>
           </li>
           <li class="nav-item">
@@ -35,7 +22,19 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="clock" class="align-text-bottom"></span>
-              View Time Slots
+              Add Treatment
+            </a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="clock" class="align-text-bottom"></span>
+                Edit Treatment
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="clock" class="align-text-bottom"></span>
+              Register Staff
             </a>
           </li>
           <li class="nav-item">

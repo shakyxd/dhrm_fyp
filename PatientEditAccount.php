@@ -87,7 +87,8 @@
       die('Could not connect: ' . mysql_error());
    }
 
-  $sql = "SELECT * FROM patient WHERE patientID = 1";
+  $loginID = $_SESSION["userID"];
+  $sql = "SELECT * FROM patient WHERE patientID = $loginID";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -141,7 +142,7 @@
   <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <a class="nav-link px-3" href="unset.php">Sign out</a>
     </div>
   </div>
 </header>
