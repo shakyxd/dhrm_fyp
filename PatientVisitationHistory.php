@@ -215,7 +215,9 @@
                         WHERE appointment.patientID=1";
                 }
                 $result=mysqli_query($data,$sql);
-                while($row=$result->fetch_assoc()){                  
+                while($row=$result->fetch_assoc()){   
+                    $query2=mysqli_query($data,"SELECT paid FROM appointment");
+                    $row2=mysqli_fetch_array($query2);
                         echo "<tr>
 
                             <td>$row[firstName]</td>
@@ -227,12 +229,12 @@
                             <td>$row[nameClinic]</td>
                             <td>$row[treatmentName]</td>
                             <td>$row[price]</td>";
-                            if ($row["appointment.paid"] = 1){
+                            if ($row2 = 1){
 
-                                echo" <td>Paid</td>"; 
+                                echo"<td>No</td>"; 
                             }
                             else{
-                                echo" <td>No</td>";
+                                echo"<td>Paid</td>";
                             }
                 }?>
             </tbody>

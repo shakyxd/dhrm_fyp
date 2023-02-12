@@ -33,11 +33,16 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Register</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Clinic Register</a></li>
                 <li><a class="dropdown-item" href="#">Patient Register</a></li>
             </ul>
         </li>
-        <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Login</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Patient Login</a></li>
+                <li><a class="dropdown-item" href="#">Staff Login</a></li>
+            </ul>
+        </li>
       </ul>
 
   
