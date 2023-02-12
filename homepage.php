@@ -292,7 +292,7 @@
                           <option value="East">East</option>
                           <option value="Central">Central</option>
                           <option value="West">West</option>
-                      </select>               -->
+                      </select>
                   </div>
                   <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
                    <a class="btn btn-outline-secondary" href="homepage.php">Reset</a>
@@ -303,6 +303,7 @@
                       <tr>
                         <th>Package Name</th>
                         <th>Clinic</th>
+                        <th>Address</th>
                         <th>email</th>
                         <th>Phone</th>
                         <th>Rating</th>
