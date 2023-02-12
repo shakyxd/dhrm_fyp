@@ -10,42 +10,26 @@ if($data===false){
     die("connection error");
 }
 $sql="SELECT * FROM treatment INNER JOIN clinic ON treatment.clinicID=clinic.clinicID";
+$trtmnt="Any";
+$area="Any";
+$sort="none";
 
 if(isset($_GET["trtmnt"])){
     //only treatment chosen
-    if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+    if($_GET["trtmnt"]!="Any"&&$_GET["area"]=="Any"){
         $trtmnt=$_GET["trtmnt"];
         $sql .=" WHERE treatment.treatmentType='$trtmnt'";
     }
-    //only region chosen
-    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
-        $region=$_GET["region"];
-        $sql .=" WHERE clinic.area='$region'";
+    //only area chosen
+    else if($_GET["trtmnt"]=="Any"&&$_GET["area"]!="Any"){
+        $area=$_GET["area"];
+        $sql .=" WHERE clinic.area='$area'";
     }
-    //clinic and treatment chosen
-    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
-        $clinicID=$_GET["clinic"];
+    //treatment and area chosen
+    else if($_GET["trtmnt"]!="Any"&&$_GET["area"]!="Any"){
         $trtmnt=$_GET["trtmnt"];
-        $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt'";
-    }
-    //treatment and region chosen
-    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
-        $trtmnt=$_GET["trtmnt"];
-        $region=$_GET["region"];
-        $sql .=" WHERE treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
-    }
-    //clinic and region chosen
-    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]!="Any"){
-        $clinicID=$_GET["clinic"];
-        $region=$_GET["region"];
-        $sql .=" WHERE clinic.clinicID=$clinicID AND clinic.area='$region'";
-    }
-    //clinic treatment and region chosen
-    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]!="Any"){
-        $clinicID=$_GET["clinic"];
-        $trtmnt=$_GET["trtmnt"];
-        $region=$_GET["region"];
-        $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt' AND clinic.area='$region'";
+        $area=$_GET["area"];
+        $sql .=" WHERE treatment.treatmentType='$trtmnt' AND clinic.area='$area'";
     }
 }
 if((isset($_GET["sort"]))AND($_GET["sort"]!="none")){
@@ -216,41 +200,41 @@ $result=mysqli_query($data,$sql);
                 <div class="row">
                   <div class="col-sm-10">
                       <select name="trtmnt" class="form-select" id="inputGroupSelect02">
-                          <option selected value="Any">Choose A Treatment Type</option>
-                          <option value="General Checkup"> General Checkup </option> 
-                          <option value="Wisdom Tooth"> Wisdom Tooth </option> 
-                          <option value="Tooth Extraction"> Tooth Extraction </option> 
-                          <option value="Root Canal"> Root Canal </option> 
-                          <option value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
-                          <option value="Crown and Bridges"> Crown and Bridges </option> 
-                          <option value="Tooth Filling"> Tooth Filling </option> 
-                          <option value="Tooth Implant"> Tooth Implant </option> 
-                          <option value="Teeth Whitening"> Teeth Whitening </option> 
-                          <option value="Teeth Cleaning"> Teeth Cleaning </option> 
-                          <option value="X-ray"> X-ray </option>
+                          <option <?php if($trtmnt=="Any") {echo "selected";}?> value="Any">Choose A Treatment Type</option>
+                          <option <?php if($trtmnt=="General Checkup") {echo "selected";}?> value="General Checkup"> General Checkup </option> 
+                          <option <?php if($trtmnt=="Wisdom Tooth") {echo "selected";}?> value="Wisdom Tooth"> Wisdom Tooth </option> 
+                          <option <?php if($trtmnt=="Tooth Extraction") {echo "selected";}?> value="Tooth Extraction"> Tooth Extraction </option> 
+                          <option <?php if($trtmnt=="Root Canal") {echo "selected";}?> value="Root Canal"> Root Canal </option> 
+                          <option <?php if($trtmnt=="Orthodontics(Braces)") {echo "selected";}?> value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
+                          <option <?php if($trtmnt=="Crown and Bridges") {echo "selected";}?> value="Crown and Bridges"> Crown and Bridges </option> 
+                          <option <?php if($trtmnt=="Tooth Filling") {echo "selected";}?> value="Tooth Filling"> Tooth Filling </option> 
+                          <option <?php if($trtmnt=="Tooth Implant") {echo "selected";}?> value="Tooth Implant"> Tooth Implant </option> 
+                          <option <?php if($trtmnt=="Teeth Whitening") {echo "selected";}?> value="Teeth Whitening"> Teeth Whitening </option> 
+                          <option <?php if($trtmnt=="Teeth Cleaning") {echo "selected";}?> value="Teeth Cleaning"> Teeth Cleaning </option> 
+                          <option <?php if($trtmnt=="X-ray") {echo "selected";}?> value="X-ray"> X-ray </option>
                       </select>
                   </div>
                 </div>            
                 <hr>
                 <div class="col-sm-10">
-                    <select name="region" class="form-select" id="inputGroupSelect04">
-                        <option selected value="Any">Filter By</option>
-                        <option value="North">North</option>
-                        <option value="NorthEast">North-East</option>
-                        <option value="East">East</option>
-                        <option value="Central">Central</option>
-                        <option value="West">West</option>
+                    <select name="area" class="form-select" id="inputGroupSelect04">
+                        <option <?php if($area=="Any") {echo "selected";}?> value="Any">Filter By</option>
+                        <option <?php if($area=="North") {echo "selected";}?> value="North">North</option>
+                        <option <?php if($area=="NorthEast") {echo "selected";}?> value="NorthEast">North-East</option>
+                        <option <?php if($area=="East") {echo "selected";}?> value="East">East</option>
+                        <option <?php if($area=="Central") {echo "selected";}?> value="Central">Central</option>
+                        <option <?php if($area=="West") {echo "selected";}?> value="West">West</option>
                     </select>
                 </div>
                 </div>            
                 <hr>
                 <div class="col-sm-10">
                     <select name="sort" class="form-select" id="inputGroupSelect03">
-                        <option selected value="none">Sort By</option>
-                        <option value="rating">Rating (Ascending)</option>
-                        <option value="rating DESC">Rating (Descending)</option>
-                        <option value="price">Price (Ascending)</option>
-                        <option value="price DESC">Price (Descending)</option>
+                        <option <?php if($sort=="none") {echo "selected";}?> value="none">Sort By</option>
+                        <option <?php if($sort=="rating") {echo "selected";}?> value="rating">Rating (Ascending)</option>
+                        <option <?php if($sort=="rating DESC") {echo "selected";}?> value="rating DESC">Rating (Descending)</option>
+                        <option <?php if($sort=="price") {echo "selected";}?> value="price">Price (Ascending)</option>
+                        <option <?php if($sort=="price DESC") {echo "selected";}?> value="price DESC">Price (Descending)</option>
                     </select>
                 </div>
                 </div>            

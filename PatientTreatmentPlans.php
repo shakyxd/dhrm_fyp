@@ -167,7 +167,7 @@
                       </ul>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a regular dental care now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=General+Checkup&area=Any&sort=none">Book a regular dental care now!</a>
                   </div>
                 </div>
                 <hr>
@@ -185,7 +185,7 @@
                       </ul>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a wisdom tooth removal session now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Wisdom+Tooth&area=Any&sort=none">Book a wisdom tooth removal session now!</a>
                   </div>
                 </div>
                 <hr>
@@ -197,7 +197,7 @@
                     <p>Extractions are done when the tooth's damage is too serious to be repaired or restored with a filling/crown.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Teeth Extraction treatment now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Tooth+Extraction&area=Any&sort=none">Book a Teeth Extraction treatment now!</a>
                   </div>
                 </div>
                 <hr>
@@ -209,7 +209,7 @@
                     <p>Root canals are needed for a cracked tooth from injury or genetics, a deep cavity, or issues from a previous filling. Patients generally need a root canal when they notice their teeth are sensitive, particularly to hot and cold sensations.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Root Canal session now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Root+Canal&area=Any&sort=none">Book a Root Canal session now!</a>
                   </div>
                 </div>
                 <hr>
@@ -221,7 +221,7 @@
                     <p>Straightening/moving teeth to improve the appearance of the teeth.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book an Orthodontic treatment now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Orthodontics%28Braces%29&area=Any&sort=none">Book an Orthodontic treatment now!</a>
                   </div>
                 </div>
                 <hr>
@@ -237,7 +237,7 @@
                       </ul>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Denture Care treatment now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Crown+and+Bridges&area=Any&sort=none#">Book a Denture Crown treatment now!</a>
                   </div>
                 </div>
                 <hr>
@@ -249,7 +249,7 @@
                     <p>A dental filling is a type of restorative dentistry treatment used to repair minimal tooth fractures, tooth decay or otherwise damaged surfaces of the teeth</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Tooth Filling treatment now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Tooth+Filling&area=Any&sort=none">Book a Tooth Filling treatment now!</a>
                   </div>
                 </div>
                 <hr>
@@ -265,7 +265,7 @@
                       </ul>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Dental Implant Consultation session now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Tooth+Implant&area=Any&sort=none">Book a Dental Implant Consultation session now!</a>
                   </div>
                 </div>
                 <hr>
@@ -277,7 +277,7 @@
                     <p>Teeth whitening procedures can remove stains or tooth discolourations.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Tooth Whitening reatment now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Teeth+Whitening&area=Any&sort=none">Book a Tooth Whitening reatment now!</a>
                   </div>
                 </div>
                 <hr>
@@ -289,7 +289,7 @@
                     <p>Teeth cleaning is part of oral hygiene and involves the removal of dental plaque from teeth with the intention of preventing cavities, gingivitis, and periodontal disease.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book a Tooth Cleaning Session now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=Teeth+Cleaning&area=Any&sort=none">Book a Tooth Cleaning Session now!</a>
                   </div>
                 </div>
                 <hr>
@@ -301,7 +301,7 @@
                     <p>Dental X-rays (radiographs) are images of your teeth that your dentist uses to evaluate your oral health.</p>
                   </div>
                   <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                    <button type="button" class="btn btn-primary">Book an X-ray Session now!</button>
+                    <a type="button" class="btn btn-primary" href="PatientScheduleAppt.php?trtmnt=X-ray&area=Any&sort=none">Book an X-ray Session now!</a>
                   </div>
                 </div>               
               </div>
