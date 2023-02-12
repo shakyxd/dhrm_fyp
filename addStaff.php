@@ -105,7 +105,7 @@
 <th> Gender </th>
 <th> D.O.B </th>
 <th> Salary </th>
-<th> Activated </th>
+<th> Deactivated </th>
 <th> Active </th>
 <th> Remove </th>
 

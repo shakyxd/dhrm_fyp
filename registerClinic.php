@@ -5,10 +5,8 @@ $password = $_POST["password"];
 $password2 = $_POST["password2"];
 $nameClinic = $_POST["nameClinic"];
 $phoneNum = $_POST["phoneNum"];
-$blockNum = $_POST["blockNum"];
-$streetName = $_POST["streetName"];
-$unitNum = $_POST["unitNum"];
-$postalCode = $_POST["postalCode"];
+$address = $_POST["address"];
+$area = $_POST["area"];
 $specialisation = $_POST["specialisation"];
 
 
@@ -28,9 +26,9 @@ if ($conn->connect_error) {
     if ($password == $password2) {
 
       $stmt = $conn->prepare("INSERT INTO clinic(emailClinic, passwordClinic, nameClinic, 
-      phoneNum, blockNum, streetName, unitNum, postalCode, specialisation)
-      values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      $stmt->bind_param("sssiissis", $email, $password, $nameClinic, $phoneNum, $blockNum, $streetName, $unitNum, $postalCode, $specialisation);
+      phoneNum, address, area, specialisation)
+      values(?, ?, ?, ?, ?, ?, ?)");
+      $stmt->bind_param("sssisss", $email, $password, $nameClinic, $phoneNum, $address, $area, $specialisation);
       $stmt->execute();
 
 

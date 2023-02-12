@@ -8,6 +8,7 @@ $lastNameStaff = $_POST["lastNameStaff"];
 $dateOfBirthStaff = $_POST["dateOfBirthStaff"];
 $salary = $_POST["salary"];
 $genderStaff = $_POST["genderStaff"];
+$deactivated = 0;
 
 
 $dbname = "fyp";
@@ -23,9 +24,9 @@ if ($conn->connect_error) {
 
     //insert into treatment database
 
-    $stmt = $conn->prepare("INSERT INTO staff(staffType, emailStaff, phoneNumStaff, firstNameStaff, lastNameStaff, dateOfBirthStaff, salary, genderStaff  )
-      values(?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssisssss", $staffType, $emailStaff, $phoneNumStaff, $firstNameStaff, $lastNameStaff, $dateOfBirthStaff, $salary, $genderStaff);
+    $stmt = $conn->prepare("INSERT INTO staff(staffType, emailStaff, phoneNumStaff, firstNameStaff, lastNameStaff, dateOfBirthStaff, salary, genderStaff, deactivated )
+      values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssisssssi", $staffType, $emailStaff, $phoneNumStaff, $firstNameStaff, $lastNameStaff, $dateOfBirthStaff, $salary, $genderStaff, $deactivated);
     $stmt->execute();
 
   header("location:../addStaff.php");

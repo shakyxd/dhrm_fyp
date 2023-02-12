@@ -284,6 +284,7 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`, `firstName`, `lastName`, `firstNameStaff`, `lastNameStaff`, `time`, `date`, `treatmentName`, `price`) VALUES
+(14, 1, 1, 7, 2, 'Amanda', 'Chan', 'Thierry', 'Henry', '15:30', '2023-05-20', 'Regular Checkup Plus', 90),
 (14, 1, 1, 7, 2, 'Amanda', 'Chan', 'Thierry', 'Henry', '15:30', ,'2023-05-20' 'Regular Checkup Plus', 90),
 (14, 2, 1, 5, 6, 'John', 'Ong', 'Francis', 'Baker', '15:30', '2023-05-20', 'Whitening and Polishing', 100),
 (25, 3, 2, 1, 8, 'Sarah', 'Tan', 'Thomas', 'Lee', '11:30', '2023-05-20', 'Teeth Scaling', 60);

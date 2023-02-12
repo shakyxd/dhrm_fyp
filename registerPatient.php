@@ -8,15 +8,17 @@ if (isset($_POST["submit"])) {
   $mobileNum = $_POST["mobileNum"];
   $fname = $_POST["fname"];
   $lname = $_POST["lname"];
+  $addressPatient = $_POST["addressPatient"];
   $gender = $_POST["gender"];
   $dateOfBirth = $_POST["dateOfBirth"];
   $nationality = $_POST["nationality"];
   $allergies = $_POST["allergies"];
+  $deactivated = 0;
 
   require_once 'includes/dbHandler.inc.php';
   require_once 'includes/functions.inc.php';
 
-  if(emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $gender,  $dateOfBirth, $nationality) !== false) {
+  if(emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality, $deactivated) !== false) {
     header("location: registerPatient.html?error=emptyinput");
     exit();
   }
@@ -43,10 +45,12 @@ if (isset($_POST["submit"])) {
     $mobileNum,
     $fname,
     $lname,
+    $addressPatient,
     $gender,
     $dateOfBirth,
     $nationality,
-    $allergies
+    $allergies,
+    $deactivated
   );
 
 

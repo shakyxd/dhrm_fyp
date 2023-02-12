@@ -2,12 +2,12 @@
 
 require_once 'dbHandler.inc.php';
 
-function emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $gender,  $dateOfBirth, $nationality) 
+function emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality) 
 {
     $result = true;
 
     if (empty($email) || empty($password) || empty($password2) || empty($mobileNum)|| empty($fname) ||
-     empty($lname) || empty($gender)|| empty($dateOfBirth) || empty($nationality)) 
+     empty($lname) || empty($addressPatient) ||empty($gender)|| empty($dateOfBirth) || empty($nationality)) 
      {
         $result = true;
      }
@@ -77,11 +77,11 @@ function emailExists($conn, $email) {
 }
 
 function registerPatient($conn, $email, $password, $mobileNum, $fname,
- $lname, $gender, $dateOfBirth, $nationality, $allergies) 
+ $lname, $addressPatient, $gender, $dateOfBirth, $nationality, $allergies, $deactivated) 
 {
     $sql = "INSERT INTO patient(emailPatient, passwordPatient, mobileNum, 
-    firstName, lastName, gender, dateOfBirth, nationality, allergiesList)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    firstName, lastName, addressPatient, gender, dateOfBirth, nationality, allergiesList, deactivated)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -92,7 +92,7 @@ function registerPatient($conn, $email, $password, $mobileNum, $fname,
 
     // $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssissssss", $email, $password, $mobileNum, $fname, $lname, $gender, $dateOfBirth, $nationality, $allergies);
+    mysqli_stmt_bind_param($stmt, "ssisssssssi", $email, $password, $mobileNum, $fname, $lname, $addressPatient, $gender, $dateOfBirth, $nationality, $allergies, $deactivated);
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
