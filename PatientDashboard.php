@@ -78,7 +78,7 @@
   </head>
   <?php
 
-
+  $loginID = $_SESSION["userID"];
   // Create database connection
 
   $conn = new mysqli('localhost', 'root', '', 'fyp');
@@ -87,7 +87,7 @@
       die('Could not connect: ' . mysql_error());
    }
 
-  $sql = "SELECT * FROM patient WHERE patientID = 1";
+  $sql = "SELECT * FROM patient WHERE patientID = $loginID";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
