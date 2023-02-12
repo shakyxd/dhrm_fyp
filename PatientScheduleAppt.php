@@ -166,7 +166,7 @@ $result=mysqli_query($data,$sql);
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientBills.php">
               <span data-feather="dollar-sign" class="align-text-bottom"></span>
               Bills And Payments
             </a>

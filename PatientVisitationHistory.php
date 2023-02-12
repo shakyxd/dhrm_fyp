@@ -123,7 +123,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="PatientBills.php">
               <span data-feather="dollar-sign" class="align-text-bottom"></span>
               Bills And Payments
             </a>
@@ -179,6 +179,7 @@
                     <th>Clinic Name</th>
 				    <th>Treatment Name</th>
                     <th>Price</th>
+                    <th>Paid</th>
                 </tr>
             </thead>
             <tbody>
@@ -194,40 +195,18 @@
                 }
                 if(isset($_GET['searchdate'])){
                     $filtervalues=$_GET['searchdate'];
-                    $sql="SELECT appointment.patientID, 
-                        clinic.clinicID, 
-                        clinic.nameClinic, 
-                        appointment.clinicID,
-                        appointment.staffID, 
-                        appointment.firstName,
-                        appointment.lastName, 
-                        appointment.firstNameStaff, 
-                        appointment.lastNameStaff, 
-                        appointment.time, 
-                        appointment.treatmentName,
-                        appointment.price,
-                        timeslot.date
+                    $sql="SELECT *
                     FROM appointment
                     INNER JOIN clinic 
                         ON clinic.clinicID = appointment.clinicID
                     INNER JOIN timeslot
-                            ON clinic.clinicID = timeslot.clinicID
+                            ON appointment.timeSlotID = timeslot.timeSlotID
                     WHERE appointment.patientID=1 AND
                     (timeslot.date LIKE '%$filtervalues%')";
                     
                 }
                 else{
-                    $sql="SELECT appointment.patientID, 
-                        appointment.staffID, 
-                        appointment.firstName,
-                        appointment.lastName, 
-                        appointment.firstNameStaff, 
-                        appointment.lastNameStaff, 
-                        appointment.time, 
-                        appointment.treatmentName,
-                        appointment.price, 
-                        clinic.nameClinic,
-                        timeslot.date
+                    $sql="SELECT *
                         FROM appointment
                         INNER JOIN clinic
                             ON clinic.clinicID = appointment.clinicID
@@ -247,7 +226,14 @@
                             <td>$row[date]</td>
                             <td>$row[nameClinic]</td>
                             <td>$row[treatmentName]</td>
-                            <td>$row[price]</td>";                        
+                            <td>$row[price]</td>";
+                            if ($row["appointment.paid"] = 1){
+
+                                echo" <td>Paid</td>"; 
+                            }
+                            else{
+                                echo" <td>No</td>";
+                            }
                 }?>
             </tbody>
           </table>
