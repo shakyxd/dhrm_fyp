@@ -11,14 +11,9 @@ if($data===false){
 }
 $sql="SELECT * FROM treatment INNER JOIN clinic ON treatment.clinicID=clinic.clinicID";
 
-if(isset($_GET["clinic"])){
-    //only clinic chosen
-    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["region"]=="Any"){
-        $clinicID=$_GET["clinic"];
-        $sql .=" WHERE clinic.clinicID=$clinicID";
-    }
+if(isset($_GET["trtmnt"])){
     //only treatment chosen
-    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
+    if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["region"]=="Any"){
         $trtmnt=$_GET["trtmnt"];
         $sql .=" WHERE treatment.treatmentType='$trtmnt'";
     }
