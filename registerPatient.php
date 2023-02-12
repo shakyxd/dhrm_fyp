@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
   require_once 'includes/dbHandler.inc.php';
   require_once 'includes/functions.inc.php';
 
-  if(emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality, $deactivated) !== false) {
+  if(emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality) !== false) {
     header("location: registerPatient.html?error=emptyinput");
     exit();
   }

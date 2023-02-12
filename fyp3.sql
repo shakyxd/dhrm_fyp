@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `Treatment` (
   `treatmentType` varchar(100),
   `treatmentName` varchar(100),
   `price` float,
-  `availability` int NOT NULL DEFAULT '0',
+  `availability` int NOT NULL DEFAULT '1',
   CONSTRAINT PK_Treatment PRIMARY KEY (`treatmentID`, `clinicID`),
   CONSTRAINT FK_Treatment FOREIGN KEY (`clinicID`) 
   REFERENCES Clinic(`clinicID`)
