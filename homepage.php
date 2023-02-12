@@ -10,7 +10,10 @@
     die("connection error");
   }
   $sql="SELECT * FROM treatment INNER JOIN clinic ON treatment.clinicID=clinic.clinicID";
-  
+  $clinic="Any";
+  $trtmnt="Any";
+  $area="Any";
+  $sort="none";
   if(isset($_GET["clinic"])){
     //only clinic chosen
     if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["area"]=="Any"){
@@ -249,49 +252,55 @@
                 <form action="homepage.php" method="get">
                   <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect01">Choose a clinic</label>
+                      
                       <select name="clinic" class="form-select" id="inputGroupSelect01">
-                          <option selected value="Any">Any</option>
-                          <option value="1">Raffles Dental Clinic</option>
-                          <option value="2">Ah Huat Tooth Care</option>
-                          <option value="3">Shiny Teeth That Twinkle</option>
+                        <option <?php if($clinic=="Any") {echo "selected";}?> value="Any">Any</option>
+                        <?php
+                        $sql2="SELECT * FROM clinic";
+                        $result2=mysqli_query($data,$sql2);
+                        foreach ($result2 as $clinic){
+                          echo'<option value="'.$clinic["clinicID"].'">'.           
+                          $clinic["nameClinic"].'</option>';
+                        }
+                        ?>
                       </select>
                   </div>
 
                   <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect02">Choose a treatment type</label>
                       <select name="trtmnt" class="form-select" id="inputGroupSelect02">
-                          <option selected value="Any">Any</option>
-                          <option value="General Checkup"> General Checkup </option> 
-                          <option value="Wisdom Tooth"> Wisdom Tooth </option> 
-                          <option value="Tooth Extraction"> Tooth Extraction </option> 
-                          <option value="Root Canal"> Root Canal </option> 
-                          <option value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
-                          <option value="Crown and Bridges"> Crown and Bridges </option> 
-                          <option value="Tooth Filling"> Tooth Filling </option> 
-                          <option value="Tooth Implant"> Tooth Implant </option> 
-                          <option value="Teeth Whitening"> Teeth Whitening </option> 
-                          <option value="Teeth Cleaning"> Teeth Cleaning </option> 
-                          <option value="X-ray"> X-ray </option>
+                          <option <?php if($trtmnt=="Any") {echo "selected";}?> value="Any">Choose A Treatment Type</option>
+                          <option <?php if($trtmnt=="General Checkup") {echo "selected";}?> value="General Checkup"> General Checkup </option> 
+                          <option <?php if($trtmnt=="Wisdom Tooth") {echo "selected";}?> value="Wisdom Tooth"> Wisdom Tooth </option> 
+                          <option <?php if($trtmnt=="Tooth Extraction") {echo "selected";}?> value="Tooth Extraction"> Tooth Extraction </option> 
+                          <option <?php if($trtmnt=="Root Canal") {echo "selected";}?> value="Root Canal"> Root Canal </option> 
+                          <option <?php if($trtmnt=="Orthodontics(Braces)") {echo "selected";}?> value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
+                          <option <?php if($trtmnt=="Crown and Bridges") {echo "selected";}?> value="Crown and Bridges"> Crown and Bridges </option> 
+                          <option <?php if($trtmnt=="Tooth Filling") {echo "selected";}?> value="Tooth Filling"> Tooth Filling </option> 
+                          <option <?php if($trtmnt=="Tooth Implant") {echo "selected";}?> value="Tooth Implant"> Tooth Implant </option> 
+                          <option <?php if($trtmnt=="Teeth Whitening") {echo "selected";}?> value="Teeth Whitening"> Teeth Whitening </option> 
+                          <option <?php if($trtmnt=="Teeth Cleaning") {echo "selected";}?> value="Teeth Cleaning"> Teeth Cleaning </option> 
+                          <option <?php if($trtmnt=="X-ray") {echo "selected";}?> value="X-ray"> X-ray </option>
                       </select>
                   </div>
 
                   <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect03">Sort By</label>
                       <select name="sort" class="form-select" id="inputGroupSelect03">
-                          <option selected value="none">None</option>
-                          <option value="rating">Rating (Ascending)</option>
-                          <option value="rating DESC">Rating (Descending)</option>
-                          <option value="price">Price (Ascending)</option>
-                          <option value="price DESC">Price (Descending)</option>
+                      <option <?php if($sort=="none") {echo "selected";}?> value="none">Any</option>
+                        <option <?php if($sort=="rating") {echo "selected";}?> value="rating">Rating (Ascending)</option>
+                        <option <?php if($sort=="rating DESC") {echo "selected";}?> value="rating DESC">Rating (Descending)</option>
+                        <option <?php if($sort=="price") {echo "selected";}?> value="price">Price (Ascending)</option>
+                        <option <?php if($sort=="price DESC") {echo "selected";}?> value="price DESC">Price (Descending)</option>
                       </select>
                       <label class="input-group-text" for="inputGroupSelect03">Filter By</label>
                       <select name="area" class="form-select" id="inputGroupSelect04">
-                          <option selected value="Any">Any</option>
-                          <option value="North">North</option>
-                          <option value="Northeast">North-East</option>
-                          <option value="East">East</option>
-                          <option value="Central">Central</option>
-                          <option value="West">West</option>
+                      <option <?php if($area=="Any") {echo "selected";}?> value="Any">Any</option>
+                        <option <?php if($area=="North") {echo "selected";}?> value="North">North</option>
+                        <option <?php if($area=="NorthEast") {echo "selected";}?> value="NorthEast">North-East</option>
+                        <option <?php if($area=="East") {echo "selected";}?> value="East">East</option>
+                        <option <?php if($area=="Central") {echo "selected";}?> value="Central">Central</option>
+                        <option <?php if($area=="West") {echo "selected";}?> value="West">West</option>
                       </select>
                   </div>
                   <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
