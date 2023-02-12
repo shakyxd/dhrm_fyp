@@ -13,20 +13,44 @@
   
   if(isset($_GET["clinic"])){
     //only clinic chosen
-    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"){
+    if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["area"]=="Any"){
       $clinicID=$_GET["clinic"];
       $sql .=" WHERE clinic.clinicID=$clinicID";
     }
+    //only treatment chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["area"]=="Any"){
+      $trtmnt=$_GET["trtmnt"];
+      $sql .=" WHERE treatment.treatmentType='$trtmnt'";
+    }
+    //only area chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["area"]!="Any"){
+      $area=$_GET["area"];
+      $sql .=" WHERE clinic.area='$area'";
+    }
     //clinic and treatment chosen
-    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"){
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["area"]=="Any"){
       $clinicID=$_GET["clinic"];
       $trtmnt=$_GET["trtmnt"];
       $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt'";
     }
-    //only treatment chosen
-    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"){
+    //treatment and area chosen
+    else if($_GET["clinic"]=="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["area"]!="Any"){
       $trtmnt=$_GET["trtmnt"];
-      $sql .=" WHERE treatment.treatmentType='$trtmnt'";
+      $area=$_GET["area"];
+      $sql .=" WHERE treatment.treatmentType='$trtmnt' AND clinic.area='$area'";
+    }
+    //clinic and area chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["area"]!="Any"){
+      $clinicID=$_GET["clinic"];
+      $area=$_GET["area"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND clinic.area='$area'";
+    }
+    //clinic treatment and area chosen
+    else if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]!="Any"&&$_GET["area"]!="Any"){
+      $clinicID=$_GET["clinic"];
+      $trtmnt=$_GET["trtmnt"];
+      $area=$_GET["area"];
+      $sql .=" WHERE clinic.clinicID=$clinicID AND treatment.treatmentType='$trtmnt' AND clinic.area='$area'";
     }
   }
   if((isset($_GET["sort"]))AND($_GET["sort"]!="none")){
@@ -254,19 +278,20 @@
                   <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect03">Sort By</label>
                       <select name="sort" class="form-select" id="inputGroupSelect03">
-                          <option selected value="none">Choose...</option>
+                          <option selected value="none">None</option>
                           <option value="rating">Rating (Ascending)</option>
                           <option value="rating DESC">Rating (Descending)</option>
                           <option value="price">Price (Ascending)</option>
                           <option value="price DESC">Price (Descending)</option>
                       </select>
-                      <!-- <select name="price" class="form-select" id="inputGroupSelect04">
-                          <option selected value="none">Choose...</option>
-                          <option value="north">Price(Ascending)</option>
-                          <option value="northeast">North-East</option>
-                          <option value="east">East</option>
-                          <option value="central">Central</option>
-                          <option value="west">West</option>
+                      <label class="input-group-text" for="inputGroupSelect03">Filter By</label>
+                      <select name="area" class="form-select" id="inputGroupSelect04">
+                          <option selected value="Any">Any</option>
+                          <option value="North">North</option>
+                          <option value="Northeast">North-East</option>
+                          <option value="East">East</option>
+                          <option value="Central">Central</option>
+                          <option value="West">West</option>
                       </select>               -->
                   </div>
                   <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
@@ -289,6 +314,7 @@
                       echo "<tr>
                           <td>$row[treatmentName]</td>
                           <td>$row[nameClinic]</td>
+                          <td>$row[address]</td>
                           <td>$row[emailClinic]</td>
                           <td>$row[phoneNum]</td>
                           <td>$row[rating]</td>
