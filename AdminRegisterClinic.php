@@ -1,3 +1,43 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $emailClinic = $_POST['emailClinic'];
+  $passwordClinic = $_POST['passwordClinic'];
+  $confirmPassword = $_POST['confirmPassword'];
+  $nameClinic = $_POST['nameClinic'];
+  $phoneNum = $_POST['phoneNum'];
+  $address = $_POST['address'];
+  $area = $_POST['area'];
+  $specialisation = $_POST['specialisation'];
+  
+
+  // Validate the inputs
+  if (empty($emailClinic) || empty($passwordClinic) || empty($confirmPassword) || empty($nameClinic) || empty($phoneNum) || empty($address) || empty($area) || empty($specialisation)) {
+    echo "All fields are required.";
+  } else {
+    // Connect to the database
+    $conn = mysqli_connect("localhost", "root", "", "fyp");
+
+    // Check if the connection is successful
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Insert the new user into the database
+    $sql = "INSERT INTO clinic (emailClinic, passwordClinic, nameClinic, phoneNum, address, area, specialisation)
+            VALUES ('$emailClinic', '$passwordClinic', '$nameClinic', '$phoneNum', '$address', '$area', '$specialisation')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "<script>alert('Record added successfully!');window.location.href = 'AdminClinicInformation.php';</script>";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+    // Close the connection
+    mysqli_close($conn);
+  }
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -38,115 +78,109 @@
 
 <div class="container-fluid">
   <div class="row">
-      <?php
+    <?php
         require_once("AdminNav.php");
-      ?>
-
-   
-
-
-<form>
+    ?>
 
 <div class="form-center">
 <div class="background">
 <div class="container">
 <div class="card mb-4">
-
   <div class="screen-body">
     <div class="screen-body-item">
       <div class="app-form">
-
-       <form action="" method="post">
-
-   <div class="col-md-7 col-lg-8">
+    <form action="" method="post">
+ 
+      <div class="col-md-7 col-lg-8">
     <h4 class="mb-3">Register Clinic</h4>
+
     <form class="needs-validation" novalidate>
       <div class="row g-3">
         <div class="col-sm-6">
-          <label for="companyName" class="form-label">Company Name</label>
-          <input type="text" class="form-control" id="companyName" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            Company name is required.
-          </div>
-        </div>
+      <label for="emailClinic" class="form-label">Clinic Email</label>
+      <input type="text" id="emailClinic" class="form-control" name="emailClinic">
+      </div>
+
+      <div class="col-sm-6">      
+      <label for="nameClinic" class="form-label">Clinic Name</label>
+      <input type="text" id="nameClinic" class="form-control" name="nameClinic">
+</div>
 
         <div class="col-sm-6">
-          <label for="owner" class="form-label">Owner</label>
-          <input type="text" class="form-control" id="owner" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            Owner is required.
-          </div>
-        </div>
+      <label for="passwordClinic" class="form-label">Password</label>
+      <input type="password" id="passwordClinic" class="form-control" name="passwordClinic">
+      <input type="checkbox" onclick="togglePassword()"> Show Password </td>
+      </div>
 
 
-        <div class="col-12">
-          <label for="address" class="form-label">Mailing Address</label>
-          <input type="text" class="form-control" id="address" placeholder="Street" required>
-          <div class="invalid-feedback">
-            Please enter Mailing Address.
-          </div>
-        </div>
+
 
         <div class="col-sm-6">
-          <label for="postalCode" class="form-label">Postal Code</label>
-          <input type="text" class="form-control" id="postalCode" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            Postal Code is required.
-          </div>
-        </div>
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input type="password" id="confirmPassword" class="form-control" name="confirmPassword">
+      <td> <input type="checkbox" onclick="togglePassword2()"> Show Password </td>
+</div>
 
-        <div class="col-sm-6">
-          <label for="phoneNumber" class="form-label">Phone Number</label>
-          <input type="text" class="form-control" id="phoneNumber" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            Phone Number is required.
-          </div>
-        </div>
 
-        <div class="col-sm-6">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" placeholder="someone@example.com" value="" required>
-          <div class="invalid-feedback">
-            Email is required.
-          </div>
-        </div>
 
-        <div class="col-sm-6">
-          <label for="avgCost" class="form-label">Average Cost ($)</label>
-          <input type="text" class="form-control" id="avgCost" placeholder="" value="" >
+<div class="col-sm-6">
+      <label for="phoneNum" class="form-label">Phone Number</label>
+      <input type="text" id="phoneNum" class="form-control" name="phoneNum">
+</div>
 
-        </div>
+<div class="col-sm-6">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" id="address" class="form-control" name="address">
+</div>
+
+<div class="col-12">
+      <label for="area" class="form-label">Area:</label>
+        <select id="area" class="form-select" name="area">
+            <option value="">Select Area:</option>
+            <option value="North">North</option>
+            <option value="NorthEast">NorthEast</option>
+            <option value="East">East</option>
+            <option value="Central">Central</option>
+            <option value="West">West</option>
+</select> 
+</div>
+
+<div class="col-12">
+      <label for="specialisation" class="form-label">Specialisation</label>
+      <input type="text" id="specialisation" class="form-control" name="specialisation">
       </div>
       <br>
 
-      <div class="col-12">
-          <label for="regDoctor" class="form-label">Register Doctor</label>
-          <input type="text" class="form-control" id="regDoctor" placeholder="" required>
-          <div class="invalid-feedback">
-            Register Doctor.
-          </div>
-        </div>
-      
 
       <hr class="my-4">
-
-      <button class="w-100 btn btn-primary btn-lg" type="submit">Register</button>
-        </div>
-      </div>
-
+      <button class="my-button" type="submit" value="Submit">Register</button>
     </form>
+
+    <script>
+
+function togglePassword() {
+var x = document.getElementById("passwordClinic");
+if (x.type === "passwordClinic") {
+x.type = "text";
+} else {
+x.type = "passwordClinic";
+}
+}
+
+function togglePassword2() {
+var x = document.getElementById("confirmPassword");
+if (x.type === "confirmPassword") {
+x.type = "text";
+} else {
+x.type = "confirmPassword";
+}
+}
+
+
+</script>
     
-</div>
-</div>
-</div>
-
-
-    <script src="dist/js/bootstrap.bundle.min.js"></script>
-
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dist/js/dashboard.js"></script>
   </body>
 </html>
-
 <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -205,7 +239,7 @@
 }
 
 .container {
-  flex: 0 1 2000px;
+  flex: 0 1 800px;
   margin: auto;
   padding: 20px;
 }
@@ -307,5 +341,24 @@
   position: static;
   width:120%;
   height:0em;
+}
+.my-button {
+    display: inline-block;
+    margin: 5px; /* space between buttons */
+    background: #c1e1e0; /* background color */
+    color: #333; /* text color */
+    font-size: 1.8em;
+    font-family: ‘Monaco’, serif;
+    font-style: bold;
+    border-radius: 30px; /* rounded corners */
+    padding: 8px 16px; /* space around text */
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.my-button:hover {
+    background: #666;
+    color: #c1e1e0;
 }
     </style>
