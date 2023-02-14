@@ -300,6 +300,7 @@ CREATE TABLE IF NOT EXISTS `Friend` (
   `oneFriendID` int NOT NULL,
   `twoFriendID` int NOT NULL,
   `status`  varchar(100) NOT NULL
+    CONSTRAINT PK_Friend PRIMARY KEY (`friendID`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
   
 
