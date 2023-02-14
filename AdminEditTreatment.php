@@ -51,21 +51,20 @@ $successMessage="";
     $treatmentType = $_POST["treatmentType"];
     $treatmentName = $_POST["treatmentName"];
     $price = $_POST["price"];
-    $availability = $_POST["status"];
+    $availability = $_POST["availability"];
   
     do {
         if ( empty($clinicID) || empty($treatmentType) || empty($treatmentName) || empty($price) || empty($availability) ) {
           $errorMessage = "All the fields are required";
           break;
         }
-  
-        $sql = "UPDATE treatment 
+          $sql = "UPDATE treatment 
                 SET clinicID='$clinicID',
                 treatmentType='$treatmentType',
                 treatmentName='$treatmentName',
                 price='$price',
-                availability='$availability'
-                WHERE treatmentID=$treatmentID";  
+                `availability`='$availability' WHERE treatmentID=$treatmentID";
+        
         $result =$connection->query($sql);
   
         if(!$result){
@@ -186,9 +185,9 @@ $successMessage="";
         </div>
         <div class="col-6">
           <label for="availability" class="form-label">Availability</label>
-          <select name="status" class="form-select" id="inputGroupSelect04" value="<?php echo $availability;?>">
-            <option <?php if($availability=1) {echo 'selected';}?> value='1'>Available</option>
-            <option <?php if($availability=0) {echo 'selected';}?> value='0'>Not Available</option>
+          <select name="availability" class="form-select" id="inputGroupSelect04">
+            <option <?php if($availability==='1') {echo 'selected';}?> value='1'>Available</option>
+            <option <?php if($availability==='0') {echo 'selected';}?> value='0'>Not Available</option>
           </select>
         </div>
         </div>
