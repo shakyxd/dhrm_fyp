@@ -20,15 +20,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="AdminAddTreatment.php">
               <span data-feather="clock" class="align-text-bottom"></span>
               Add Treatment
             </a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="AdminViewTreatment.php">
                 <span data-feather="clock" class="align-text-bottom"></span>
-                Edit Treatment
+                Edit Treatments
             </a>
           </li>
           <li class="nav-item">
