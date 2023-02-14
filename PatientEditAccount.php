@@ -123,7 +123,7 @@
                     mobileNum='$column3',
                     allergiesList='$column9',
                     passwordPatient='$column10'
-                WHERE patientID=1";
+                WHERE patientID=$loginID";
             mysqli_query($conn,$sql);
             echo '<script>alert("Edit Success!")</script>';
 
