@@ -32,9 +32,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="AdminViewAppointment.php">
               <span data-feather="clock" class="align-text-bottom"></span>
-              Register Staff
+              View All Appointment
             </a>
           </li>
           <li class="nav-item">
