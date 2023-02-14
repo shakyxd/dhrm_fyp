@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
   require_once 'includes/dbHandler.inc.php';
   require_once 'includes/functions.inc.php';
 
-  if(emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality) !== false) {
+  if(emptyInputSignUpPatient($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality) !== false) {
     header("location: registerPatient.html?error=emptyinput");
     exit();
   }
@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
     exit();
   }
 
-  if(emailExists($conn, $email) !== false) {
+  if(emailExistsPatient($conn, $email) !== false) {
     header("location:registerPatient.html?error=emailtaken");
     exit();
   }
@@ -144,3 +144,4 @@ else {
 // }
 
 ?>
+

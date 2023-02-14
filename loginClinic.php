@@ -13,16 +13,16 @@ if (isset($_POST["submit"])) {
     require_once 'includes/functions.inc.php';
 
     if(emptyInputLogin($email, $password) !== false) {
-        header("location: login.html?error=emptyinput");
+        header("location: loginClinic.html?error=emptyinput");
         exit();
       }
 
-    loginUser($conn, $email, $password);
+    loginClinic($conn, $email, $password);
 }
     else {
 
 
-        header("location: login.html");
+        header("location: loginClinic.html");
         exit();
       
       }

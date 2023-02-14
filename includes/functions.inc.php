@@ -3,7 +3,7 @@
 require_once 'dbHandler.inc.php';
 
 //SIGN UP
-function emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality) 
+function emptyInputSignUpPatient($email, $password, $password2, $mobileNum, $fname, $lname, $addressPatient, $gender,  $dateOfBirth, $nationality) 
 {
     $result = true;
 
@@ -47,7 +47,7 @@ function emptyInputSignUp($email, $password, $password2, $mobileNum, $fname, $ln
     
         } 
 
-function emailExists($conn, $email) {
+function emailExistsPatient($conn, $email) {
     $sql = "SELECT * FROM patient WHERE emailPatient = ?;";
     $stmt = mysqli_stmt_init($conn);
 
@@ -120,12 +120,12 @@ function emptyInputLogin($email, $password)
     return $result;
 }
 
-function loginUser($conn, $email, $password) {
+function loginPatient($conn, $email, $password) {
     $emailExists = emailExists($conn, $email);
 
     if($emailExists === false) {
 
-        header("location:./login.html?error=wronglogin");
+        header("location:./loginPatient.html?error=wronglogin");
         exit();
     }
 
@@ -134,7 +134,7 @@ function loginUser($conn, $email, $password) {
 
     if ($password !== $passwordGet) {
 
-        header("location:./login.html?error=passwordwrong");
+        header("location:./loginPatient.html?error=passwordwrong");
         exit();
     }
     else if($password === $passwordGet){
@@ -143,6 +143,114 @@ function loginUser($conn, $email, $password) {
         $_SESSION["userID"] = $emailExists["patientID"];
 
         header("location:./PatientDashboard.php");
+
+
+    }
+
+}
+
+
+//CLINIC FUNCTIONS
+
+function emptyInputSignUpClinic($email, $password, $password2, $nameClinic, $phoneNum, $address, $area, $specialisation) 
+{
+    $result = true;
+
+    if (empty($email) || empty($password) || empty($password2) || empty($nameClinic)|| empty($phoneNum) ||
+     empty($address) || empty($area) ||empty($specialisation)) 
+     {
+        $result = true;
+     }
+     else 
+     {
+        $result = false;
+     }
+    return $result;
+}
+
+
+
+function emailExistsClinic($conn, $email) {
+    $sql = "SELECT * FROM clinic WHERE emailClinic = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location:./registerClinic.html?error=stmtfailed");
+        exit();
+
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($resultData)) {
+
+        return $row;
+
+    }
+    else {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+
+
+}
+
+
+function registerClinic($conn, $email, $password, $nameClinic, $phoneNum,
+ $address, $area, $specialisation) 
+{
+    $sql = "INSERT INTO clinic(emailClinic, passwordClinic, nameClinic, 
+    phoneNum, address, area, specialisation)
+    VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location:./registerClinic.html?error=stmtfailed");
+        exit();
+
+    }
+
+    // $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "sssisss", $email, $password, $nameClinic, $phoneNum, $address, $area, $specialisation);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+    header("location:./registerclinic.html?error=noerror");
+    exit();
+}
+
+
+
+
+function loginClinic($conn, $email, $password) {
+    $emailExists = emailExistsClinic($conn, $email);
+
+    if($emailExists === false) {
+
+        header("location:./loginClinic.html?error=wronglogin");
+        exit();
+    }
+
+    $passwordGet = $emailExists["passwordClinic"];
+    // $passwordCheck = password_verify($password, $passwordGet);
+
+    if ($password !== $passwordGet) {
+
+        header("location:./loginClinic.html?error=passwordwrong");
+        exit();
+    }
+    else if($password === $passwordGet){
+
+        session_start();
+        $_SESSION["userID"] = $emailExists["clinicID"];
+
+        header("location:./ClinicDashboard.php");
 
 
     }
