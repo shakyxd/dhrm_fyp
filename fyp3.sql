@@ -292,6 +292,18 @@ INSERT INTO `Appointment` (`timeslotID`, `patientID`, `clinicID`, `staffID`, `tr
 
 
 
+-- FRIEND TABLE
+
+DROP TABLE IF EXISTS `Friend`;
+CREATE TABLE IF NOT EXISTS `Friend` (
+  `friendID` int NOT NULL AUTO_INCREMENT,
+  `oneFriendID` int NOT NULL,
+  `twoFriendID` int NOT NULL,
+  `status`  varchar(100) NOT NULL
+  ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  
+
+
 -- DROP TABLE IF EXISTS `Service Plans`;
 -- CREATE TABLE IF NOT EXISTS `Service Plans` (
 --   `planID` int NOT NULL AUTO_INCREMENT,
