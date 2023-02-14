@@ -109,7 +109,7 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0">Superadmin</p>
                   </div>
                 </div>
                 <hr>
@@ -118,7 +118,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0">Admin@ToothScanner.com</p>
                   </div>
                 </div>
                 <hr>
@@ -127,16 +127,7 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0">98101932</p>
                   </div>
                 </div>
                 <hr>
@@ -145,7 +136,7 @@
                     <p class="mb-0">Address</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0">52 HillView Road Singapore 539102</p>
                   </div>
                 </div>
               </div>

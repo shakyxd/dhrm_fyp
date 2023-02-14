@@ -95,10 +95,11 @@
         </li>
         <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
       </ul>
-
-      
-      <h1 class="center">Contact Us</h1>
-    <br>
+    </div>
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="center">Contact Us</h1>
+      </div>
+        <br>
         <p> If you are facing any issues or have any queries, please first take a look at our self-help resources available for you below. 
           <br> For urgent help or if you are flying within 72 hours, please call us at 6942069 or use the form below to get in touch with us.
           <br> For urgent help regarding payment processes, please call our hotline at +65 69832567 or email us at payment@DHRM.com</p>
@@ -117,23 +118,13 @@
 
         <h2>Frequently Asked Questions</h2>
         <div id="self-help-section"> 
-             <ul>
-                <li>
+
                     <form method="post">
                         <input type="submit" name="question1" value="Why did I not recieve any follow up to my request(s)?">
-                    </form>
-                  </li>
-                  <li>
-                    <form method="post">
                         <input type="submit" name="question2" value="I have already paid for a due fee yet was charged again.">
-                    </form>
-                  </li>
-                  <li>
-                    <form method="post">
                         <input type="submit" name="question3" value="I was promised a refund but was not given.">
                     </form>
-                  </li>
-         </ul>
+
     <!-- IMPORTANT NOTE: IF THE FOLLOWING else if statements do not work, please change them back into list format shown at the bottom -->
 
 
