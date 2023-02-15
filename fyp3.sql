@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `Friend` (
   
 
 INSERT INTO `friend` (`friendID`, `oneFriendID`, `oneFriendemail`, `twoFriendID`, `twoFriendemail`, `status`) VALUES
-(2, 1, 'amandachan@hotmail.com', 3, 'thomaslee@hotmail.com', 'Pending');
+(2, 1, 'amandachan@hotmail.com', 3, 'thomaslee@hotmail.com', 'Friend');
 -- DROP TABLE IF EXISTS `Service Plans`;
 -- CREATE TABLE IF NOT EXISTS `Service Plans` (
 --   `planID` int NOT NULL AUTO_INCREMENT,
