@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,31 +8,24 @@ $database = "fyp";
 //create connection 
 $connection = new mysqli($servername, $username, $password, $database);
 
-$treatmentID="";
-$clinicID = "";
-$treatmentType="";
-$treatmentName="";
-$price ="";
-$availability ="";
-
-$errorMessage ="";
-$successMessage="";
+$loginID=$_SESSION["userID"];
+$clinicID=$_GET["clinicID"];
+$treatmentID=$_GET["tID"];
+$treatmentName=$_GET["tName"];
+$price=$_GET["price"];
 
 if ($_SERVER['REQUEST_METHOD']== 'POST'){
-  $clinicID=$_POST["clinicID"];
-  $treatmentType = $_POST["treatmentType"];
-  $treatmentName = $_POST["treatmentName"];
-  $price = $_POST["price"];
-  $availability = $_POST["status"];
-
+    $staffID=$_POST["staffID"];
+    $date=$_POST["date"];
+    $time=$_POST["time"];
   do {
-      if ( empty($clinicID) || empty($treatmentType) || empty($treatmentName) || empty($price) || empty($availability) ) {
+      if ( empty($date) || empty($time)) {
         $errorMessage = "All the fields are required";
         break;
       }
 
-      $sql = "INSERT INTO treatment (clinicID, treatmentType, treatmentName, price)
-              VALUES ('".$clinicID."', '".$treatmentType."', '".$treatmentName."', '".$price."')"; 
+      $sql = "INSERT INTO appointment (timeSlotID, patientID, clinicID, staffID, treatmentID, firstName, lastName, firstNameStaff, lastNameStaff, `date`, `time`, treatmentName, price, paid)
+              VALUES ($timeSlotID, $loginID, $clinicID, $staffID, $treatmentID, '".$fname."', '".$lname."', '".$fnamestaff."', '".$lnamestaff."', '".$date."','".$time."','".$treatmentName."',$price, 0)"; 
       $result =$connection->query($sql);
 
       if(!$result){
@@ -39,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
         break;
       }
 
-      $successMessage = "New Treatment Added!";
+      echo "<script>alert('Booking Successful!')</script>";
         
-      header("location:AdminViewTreatment.php");
+      header("location:PatientVisitationHistory.php");
       exit;
 
   } while (false);
@@ -56,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Add Treatment (Admin)</title>
+    <title>Book Appointment</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
@@ -89,11 +83,61 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
 
 <div class="container-fluid">
   <div class="row">
-    <?php
-        require_once("AdminNav.php");
-    ?>
-
-
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Patient Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PatientVisitationHistory.php">
+              <span data-feather="pie-chart" class="align-text-bottom"></span>
+              Visitation History
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PatientEditAccount.php">
+              <span data-feather="settings" class="align-text-bottom"></span>
+              Account Management
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PatientTreatmentPlans.php">
+              <span data-feather="thermometer" class="align-text-bottom"></span>
+              Treatments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PatientScheduleAppt.php">
+              <span data-feather="book-open" class="align-text-bottom"></span>
+              Schedule Appointment
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PatientBills.php">
+              <span data-feather="dollar-sign" class="align-text-bottom"></span>
+              Bills And Payments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="PatientAddFam.php">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Add Family Members
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="clock" class="align-text-bottom"></span>
+              View Time Slots
+            </a>
+          </li>
+        </ul>   
+      </div>
+    </nav>
+    <section style="background-color: #eee;">
 
 <form method="post">
 
@@ -108,52 +152,41 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
 
        <form method="post">
    <div class="col-md-7 col-lg-8">
-    <h4 class="mb-3">Add Treatment</h4>
+    <h4 class="mb-3">Book an appointment</h4>
     <form  method="post">
       <div class="row g-3">
         <div class="col-12">
-            <label for="treatmentName" class="form-label">Treatment Name</label>
-            <input type="text" name="treatmentName" class="form-control" id="treatmentName" >
+            <?php
+            $sql2="SELECT * FROM clinic WHERE clinicID=$clinicID";
+            $result2=mysqli_query($connection,$sql2);
+            foreach ($result2 as $clinic){
+                $clinicName=$clinic["nameClinic"];
+            }
+            ?>
+            <label for="clinicName" class="form-label">Clinic:</label>
+            <input type="text" readonly name="clinicName" class="form-control" id="clinicName" value="<?php echo $clinicName;?>">
         </div>
         <div class="col-12">
-            <label for="treatmentType" class="form-label">Treatment Type</label>
-            <select name="treatmentType" class="form-select" id="inputGroupSelect02">
-                <option value="General Checkup"> General Checkup </option> 
-                <option value="Wisdom Tooth"> Wisdom Tooth </option> 
-                <option value="Tooth Extraction"> Tooth Extraction </option> 
-                <option value="Root Canal"> Root Canal </option> 
-                <option value="Orthodontics(Braces)"> Orthodontics(Braces) </option> 
-                <option value="Crown and Bridges"> Crown and Bridges </option> 
-                <option value="Tooth Filling"> Tooth Filling </option> 
-                <option value="Tooth Implant"> Tooth Implant </option> 
-                <option value="Teeth Whitening"> Teeth Whitening </option> 
-                <option value="Teeth Cleaning"> Teeth Cleaning </option> 
-                <option value="X-ray"> X-ray </option>
-            </select>
+            <label for="treatmentName" class="form-label">Treatment:</label>
+            <input type="text" readonly name="treatmentName" class="form-control" id="treatmentName" value="<?php echo $treatmentName;?>">
         </div>
-        <div class="col-12">
-            <label for="clinicID" class="form-label">Clinic</label>
-            <select name="clinicID" class="form-select" id="inputGroupSelect04">
-                <?php
-                    $sql2="SELECT * FROM clinic";
-                    $result2=mysqli_query($connection,$sql2);
-                    foreach ($result2 as $clinic){
-                        $compare=$clinic["clinicID"];
-                        echo'<option value="'.$clinic["clinicID"].'">'.$clinic["nameClinic"].'</option>';
-                    }
-                ?>
-            </select>
+        <div class="col-6">
+            <label for="date" class="form-label">Date:</label><br>
+            <input type="date" id="date" name="date" min="2022-01-01" max="2023-12-31">
         </div>
-
+        <div class="col-6">
+            <label for="time" class="form-label">Time:</label><br>
+            <input type="time" id="time" name="time" min="9:00" max="17:30" step="1800">
+        </div>
         <div class="col-6">
           <label for="price" class="form-label">Price</label>
-          <input type="number" required name="price" class="form-control" id="price">
+          <input type="number" readonly required name="price" class="form-control" id="price" value="<?php echo $price;?>">
         </div>
         <div class="col-6">
-          <label for="availability" class="form-label">Availability</label>
-          <select name="status" class="form-select" id="inputGroupSelect04">
-            <option value='1'>Available</option>
-            <option value='0'>Not Available</option>
+          <label for="staffID" class="form-label">Dentist:</label>
+          <select name="staffID" class="form-select" id="inputGroupSelect04">
+            <option value='1'>Someone</option>
+            <option value='0'>Someone else</option>
           </select>
         </div>
         </div>
@@ -163,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
 
  
 
-      <button class="btn btn-sm btn-outline-secondary" type="submit">Add</button>
+      <button class="btn btn-sm btn-outline-secondary" type="submit">Book Appointment</button>
         </div>
       </div>
 

@@ -269,7 +269,7 @@ $result=mysqli_query($data,$sql);
                           <td>$row[phoneNum]</td>
                           <td>$row[rating]</td>
                           <td>$row[price]</td>
-                          <td><button>Book Now</button></td>
+                          <td><a class='btn btn-primary' href='PatientBookAppointment.php?clinicID=$row[clinicID]&tID=$row[treatmentID]&tName=$row[treatmentName]&price=$row[price]'>Book Now</button></td>
                       </tr>";
                     }
                     ?>
