@@ -36,7 +36,7 @@
           $sql2="INSERT INTO friend (oneFriendID, oneFriendemail, twoFriendID, twoFriendemail, `status`)
                   VALUES ($loginID, '".$email."', $friendID, '".$friendemail."', 'Pending')";
           mysqli_query($conn,$sql2);
-          echo "<script>alert('something')</script>";
+          echo "<script>alert('Request submitted successfully!')</script>";
   
       }while(false);
     

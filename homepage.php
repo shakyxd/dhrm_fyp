@@ -77,6 +77,11 @@
     <link href="carousel.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script>
+    function loginalert() {
+      alert("Please login to book an appointment");
+    }
+    </script>
     <link href="../carousel/carousel.rtl.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel-rtl/">
 
@@ -334,10 +339,11 @@
                           <td>$row[phoneNum]</td>
                           <td>$row[rating]</td>
                           <td>$row[price]</td>
-                          <td><button>Book Now</button></td>
+                          <td><button type='button' class='btn btn-primary' onclick='loginalert()'>Book Now</button></td>
                       </tr>";
                     }
                     ?>
+                    
                   </table>
                   </div>
                   <hr class="featurette-divider">
