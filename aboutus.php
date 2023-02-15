@@ -52,10 +52,10 @@
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1">About ToothScanner</h1>
         <p class="lead">ToothScanner is a one-stop solution to all your dental needs. We want you to have all the options at your fingertips. Therefore, we are here to provie you will all the dental options with best price and flexibility.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
           <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Login</button>
           <button type="button" class="btn btn-outline-secondary btn-lg px-4">Register</button>
-        </div>
+        </div> -->
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
           <img class="rounded-lg-3" src="images/aboutusdental.jpg" alt="" width="720">
