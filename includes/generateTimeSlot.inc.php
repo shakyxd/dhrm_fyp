@@ -1,10 +1,10 @@
 <?php
+session_start();
 
 if (isset($_POST["generate"])) {
 
 
-    $clinicID = 2;
-    // $_SESSION("userID");
+    $clinicID = $_SESSION["userID"];
     $date = $_POST["date"];
     $staffType = "Dentist";
 

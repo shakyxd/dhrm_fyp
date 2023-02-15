@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,6 +75,39 @@
     <!-- Custom styles for this template -->
     <link href="dist/css/dashboard.css" rel="stylesheet">
   </head>
+<?php
+
+$loginID = $_SESSION["userID"];
+
+// Create database connection
+
+$conn = new mysqli('localhost', 'root', '', 'fyp');
+
+if(! $conn ) {
+    die('Could not connect: ' . mysqli_error($conn));
+}
+
+$sql = "SELECT * FROM clinic WHERE clinicID = $loginID";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $column1 = $row["clinicID"];
+        $column2 = $row["emailClinic"];
+        $column3 = $row["passwordClinic"];
+        $column4 = $row["nameClinic"];
+        $column5 = $row["phoneNum"];
+        $column6 = $row["address"];
+        $column7 = $row["area"];
+        $column8 = $row["specialisation"];
+        $column9 = $row["rating"];
+    }
+} else {
+    echo "0 results";
+}
+
+?>
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -93,51 +129,27 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="ClinicDashboard.php">
               <span data-feather="home" class="align-text-bottom"></span>
-              Dentist Dashboard
+              Clinic Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="addStaff.php">
               <span data-feather="pie-chart" class="align-text-bottom"></span>
-              Visitation History
+              View Dentists/Add Staff
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="settings" class="align-text-bottom"></span>
-              Account Management
+              Clinic Management
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="thermometer" class="align-text-bottom"></span>
-              Treatments
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="dollar-sign" class="align-text-bottom"></span>
-              Bills And Payments
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="home" class="align-text-bottom"></span>
-              Clinic Information
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="clock" class="align-text-bottom"></span>
-              View Time Slots
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="plus" class="align-text-bottom"></span>
-              Register Clinic
+              Add Treatment
             </a>
           </li>
         </ul>   
@@ -158,10 +170,10 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
+                    <p class="mb-0">Name Of Clinic</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column4?></p>
                   </div>
                 </div>
                 <hr>
@@ -170,7 +182,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column2?></p>
                   </div>
                 </div>
                 <hr>
@@ -179,16 +191,7 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Mobile</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column5?></p>
                   </div>
                 </div>
                 <hr>
@@ -197,7 +200,34 @@
                     <p class="mb-0">Address</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder</p>
+                    <p class="text-muted mb-0"><?php echo $column6?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Area</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $column7?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Specialisation</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $column8?></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Rating</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $column9?></p>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +66,7 @@
 
     <tr>
         <td align="right"> Date Of Birth: </td>
-        <td align="left"><input type="text" name="dateOfBirthStaff" placeholder="YYYY-MM-DD"></td>
+        <td align="left"><input type="date" name="dateOfBirthStaff"></td>
 
         <td align="right"> Salary: $</td>
         <td align="left"><input type="text" name="salary"></td>
@@ -113,11 +119,13 @@
 
 <?php
 
+$clinicID = $_SESSION["userID"];
+
 $conn = new mysqli('localhost', 'root', '', 'fyp');
     if(!$conn) {
     die("Connection Error");
     }
-$query = 'select * from staff';
+$query = "select * from staff where clinicID = $clinicID ORDER BY staffID ASC";
 
 
 

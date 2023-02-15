@@ -8,7 +8,7 @@
 
 
 <?php
-
+session_start();
 
 ?>
 
@@ -72,11 +72,14 @@
 
 <?php
 
+$userID = $_SESSION["userID"];
+
 $conn = new mysqli('localhost', 'root', '', 'fyp');
     if(!$conn) {
     die("Connection Error");
     }
-$query = 'select * from timeslot';
+// $query = 'select * from timeslot ORDER BY date, time ASC ';
+$query = "select * from timeslot WHERE clinicID = $userID ORDER BY date, time ASC";
 
 
 
