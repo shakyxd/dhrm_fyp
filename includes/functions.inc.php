@@ -257,6 +257,22 @@ function loginClinic($conn, $email, $password) {
 
 }
 
+// GENERATE TIMESLOT
+
+function emptyInputGenerateTimeSlot($date) 
+{
+    $result = true;
+
+    if (empty($date)) 
+     {
+        $result = true;
+     }
+     else 
+     {
+        $result = false;
+     }
+    return $result;
+}
 
 
 ?>
