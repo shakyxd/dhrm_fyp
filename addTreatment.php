@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,11 +117,13 @@ $treatmentCat = array
 
 <?php
 
+$clinicID = $_SESSION["userID"];
+
 $conn = new mysqli('localhost', 'root', '', 'fyp');
     if(!$conn) {
     die("Connection Error");
     }
-$query = 'select * from treatment';
+$query = "select * from treatment where clinicID = $clinicID ";
 
 
 
