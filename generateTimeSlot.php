@@ -66,6 +66,7 @@ session_start();
 <th> Date </th>
 <th> Time </th>
 <th> Available Dentist </th>
+<th> Remove Dentist From List </th>
 <th> Remove </th>
 
 </tr>
@@ -92,7 +93,10 @@ if ($result = $conn->query($query)) {
         $column3 = $row["date"];
         $column4 = $row["time"];
         $column5 = $row["dentistList"];
-        $column6 = "Delete";
+        $column6 = json_decode($column5);
+        $column7 = "Delete";
+
+        $encode = json_encode($column5);
  
 
             echo '<tr>
@@ -101,12 +105,26 @@ if ($result = $conn->query($query)) {
                 <td>'.$column3.'</td>
                 <td>'.$column4.'</td>
                 <td>'.$column5.'</td>
-                <td>'.$column6.'</td>
+                <td> <select name="dentistName">';
+        
+             foreach($column6 as $value) {
+                   echo '<option value ="'.$value.'">' .$value.
+                    '</option>';
+
+                }
+                
+                
+                echo '</select>
+
+                
+                <td> <a href="includes/deleteDentist.inc.php?timeSlotID='.$column1.'&dentistName='.$value.'"> Remove </a> </td>
+                <td>'.$column7.'</td>
                 </tr>';
 
     }
     $result-> free();
 }
+
 
 ?>
 
