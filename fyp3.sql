@@ -298,13 +298,16 @@ DROP TABLE IF EXISTS `Friend`;
 CREATE TABLE IF NOT EXISTS `Friend` (
   `friendID` int NOT NULL AUTO_INCREMENT,
   `oneFriendID` int NOT NULL,
+  `oneFriendemail` varchar(100) NOT NULL,
   `twoFriendID` int NOT NULL,
+  `twoFriendemail` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
     CONSTRAINT PK_Friend PRIMARY KEY (`friendID`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
   
 
-
+INSERT INTO `friend` (`friendID`, `oneFriendID`, `oneFriendemail`, `twoFriendID`, `twoFriendemail`, `status`) VALUES
+(2, 1, 'amandachan@hotmail.com', 3, 'thomaslee@hotmail.com', 'Pending');
 -- DROP TABLE IF EXISTS `Service Plans`;
 -- CREATE TABLE IF NOT EXISTS `Service Plans` (
 --   `planID` int NOT NULL AUTO_INCREMENT,

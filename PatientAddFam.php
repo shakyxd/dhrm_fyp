@@ -9,10 +9,49 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
-    
+    <?php
+    session_start();
+    $conn = new mysqli('localhost', 'root', '', 'fyp');
 
+    if(! $conn ) {
+        die('Could not connect: ' . mysqli_error($conn));
+      }
+  
+    //$loginID = $_SESSION["userID"];
+    $loginID = 1;
+  
+    // if ($result->num_rows > 0) {
+    // // output data of each row
+    // while($row = $result->fetch_assoc()) {
+    //   $familyemail = $row["familyemail"];
+    // }
+    // } else {
+    // echo "0 results";
+    // }
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+      $familyemail = $_POST["familyemail"];
+      $sql="SELECT * FROM patient WHERE emailPatient='".$familyemail."'";
+      $result = $conn->query($sql);
+      while($row=mysqli_fetch_assoc($result)){
+        $friendID=$row["patientID"];
+        $friendemail=$row["emailPatient"];
+      }
+      $emailsql="SELECT * FROM patient WHERE patientID=$loginID";
+      $emailresult = $conn->query($emailsql);
+      while($emailrow=mysqli_fetch_assoc($emailresult)){
+        $email=$emailrow["emailPatient"];
+      }
+      do{
+          $sql2="INSERT INTO friend (oneFriendID, oneFriendemail, twoFriendID, twoFriendemail, `status`)
+                  VALUES ($loginID, '".$email."', $friendID, '".$friendemail."', 'Pending')";
+          mysqli_query($conn,$sql2);
+          echo "<script>alert('something')</script>";
+  
+      }while(false);
     
-
+    }
+    
+    ?>
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -153,23 +192,55 @@
         <div class="card mb-8">
          <div class="card-body">
           <div class="col-lg-12">
-              <form action="/action_page.php">
+              <form method="post">
                 <div class="row">
-                  <div class="col-sm-3">
-                    <h6>Family Member Email</h6>
-                  </div>
                   <div class="col-sm-7">
                     <label for="email">Enter your family member email:</label>
-                    <input type="email" id="email" name="email"><br><br> 
+                    <input type="email" id="email" name="familyemail" ><br><br> 
                   </div>
                 </div>                        
-                <hr>
                 <div class="row">
                   <div class="col-sm-12 d-flex justify-content-end align-items-center">
                     <button type="submit" class="btn btn-primary">Confirm</button>
                   </div>
                 </div>
               </form>
+              <hr>
+              <div class="container">
+                  <?php
+                  $sql3="SELECT * FROM friend 
+                        WHERE `status`='Pending'
+                        AND twoFriendID=$loginID";
+                  $result3=mysqli_query($conn,$sql3);
+                  while($row3=$result3->fetch_assoc()){
+                    echo"<div class='row'>";
+                    echo "<div class='col'><label class='lead'>Pending friend request from $row3[oneFriendemail]<label></div>";
+                    echo "<div class='col'><a type=button class='btn btn-success' href='PatientAcceptFam.php?friendID=$row3[friendID]'>Accept Request</a></div>";
+                    echo "</div>";
+                  }
+                  ?>
+              </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <h3>Family Members's History</h3>
+      <div class="card mb-8">
+        <div class="card-body">
+          <div class="col-lg-12">
+            <div class="row">
+               <?php
+               $sql4="SELECT * FROM friend 
+                    INNER JOIN patient 
+                    ON friend.oneFriendID=patient.patientID 
+                    WHERE friend.status='Friend' 
+                    AND (friend.twoFriendID=$loginID OR friend.oneFriendID=$loginID)";
+               $result4=mysqli_query($conn,$sql4);
+               while($row4=$result4->fetch_assoc()){ 
+
+              }
+               ?>   
+            </div>
           </div>
         </div>
       </div>

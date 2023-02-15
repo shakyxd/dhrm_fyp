@@ -79,12 +79,13 @@
   <?php
 
   $loginID = $_SESSION["userID"];
+
   // Create database connection
 
   $conn = new mysqli('localhost', 'root', '', 'fyp');
 
   if(! $conn ) {
-      die('Could not connect: ' . mysql_error());
+      die('Could not connect: ' . mysqli_error($conn));
    }
 
   $sql = "SELECT * FROM patient WHERE patientID = $loginID";
