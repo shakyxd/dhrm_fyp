@@ -121,7 +121,7 @@ function emptyInputLogin($email, $password)
 }
 
 function loginPatient($conn, $email, $password) {
-    $emailExists = emailExists($conn, $email);
+    $emailExists = emailExistsPatient($conn, $email);
 
     if($emailExists === false) {
 

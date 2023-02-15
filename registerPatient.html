@@ -1,128 +1,138 @@
-<!DOCTYPE HTML>
-<html>  
-<head>
+<!doctype html>
+<html lang="en">
 
-  <link rel="stylesheet" href="johan.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-<style>
-#allergies{
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>Signin Template · Bootstrap v5.3</title>
 
-  height:100px;
-  width:500px;
-  font-size:14pt;
-}
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
-</style>
+    
 
-<script>
+    
 
-    function togglePassword() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
+<link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
-function togglePassword2() {
-  var x = document.getElementById("password2");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="sign-in.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+<main class="form-signin w-100 m-auto">
+  <form action="registerPatient.php" method="post">
+    <img class="mb-4" src="images/aboutusdental.jpg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Patient Registration</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" name="email" required>
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+	<div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="password2" required>
+      <label for="floatingPassword">Confirm Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="mobileNum" required>
+      <label for="floatingPassword">Mobile Number</label>
+    </div>
+	<div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="fname" required>
+      <label for="floatingPassword">First Name</label>
+    </div>
+	<div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="lname" required>
+      <label for="floatingPassword">Last Name</label>
+    </div>
+	<div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="addressPatient" required>
+      <label for="floatingPassword">Address</label>
+    </div>
+	<div class="form-floating">
+      <input type="date" class="form-control" id="floatingDate" name="dateOfBirth" required>
+      <label for="floatingPassword">Date Of Birth</label>
+    </div>
+	<div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="nationality" required>
+      <label for="floatingPassword">Nationality</label>
+    </div>
+	<div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="allergies" required>
+      <label for="floatingPassword">Allergies</label>
+    </div>
+    <div class="radio mb-3">
+      <label>Gender
+        <input type="radio" id="floatingInput" name="gender" value="M" required>Male
+	    <input type="radio" id="floatingInput" name="gender" value="F" >Female
+      </label>
+    </div>
+    <input type="submit" value="Register Account" class="submitBtn" name="submit">
+    <p class="mt-5 mb-3 text-muted">ToothScanner &copy; 2020–2022</p>
+  </form>
+</main>
 
 
-</script>
-
-
-
-</head>
-
-<body style="background-color:#D3D3D3;">
-
-  <header>
-    <nav>
-        <div>
-            <h3><a href=index.php>Dental Health Record Management System</a></h3>
-        </div>
-    </nav>
-</header>
-<br>
-
-
-<div class ="container" align="center">
-
-  <h2 align = "center"> Register Patient Form! </h2>
-    <form action="registerPatient.php" method="post" >
-        <table>
-            <tr>    
-                <td align="right"> Email: </td>
-                <td align="left"><input type="text" name="email"></td>
-            </tr>
-
-            <tr>    
-                <td align="right"> Password: </td>
-                <td align="left"><input type="password" name="password" id="password"></td>
-                <td> <input type="checkbox" onclick="togglePassword()"> Show Password </td>
-            </tr>
-
-            <tr>    
-                <td align="right"> Confirm Password: </td>
-                <td align="left"><input type="password" name="password2" id="password2"></td>
-                <td> <input type="checkbox" onclick="togglePassword2()"> Show Password </td>
-            </tr>
-
-            <tr>
-                <td align="right"> Mobile Number: </td>
-                <td align="left"><input type="text" name="mobileNum"> </td>
-            </tr>
-
-            <tr>    
-                <td align="right"> First Name: </td>
-                <td align="left"><input type="text" name="fname"></td>
-                <td align="right"> Last Name: </td>
-                <td align="left"><input type="text" name="lname"></td>
-            </tr>
-
-            <tr>
-              <td align="right"> Address: </td>
-              <td align="left"><input type="text" name="addressPatient"> </td>
-              <td align="right"> Date Of Birth: </td>
-              <td align="left"><input type="text" name="dateOfBirth" placeholder="YYYY-MM-DD"> </td>
-            </tr>
-
-            <tr>
-                <td align="right"> Nationality: </td>
-                <td align="left"><input type="text" name="nationality"> </td>
-            </tr>    
-
-            <tr>
-              <td align="right"> Allergies: </td>
-              <td align="left" colspan="4"><input type="text" name="allergies" id="allergies"> </td>
-            </tr>
-
-            <tr>
-                <td align="right"> Type: </td>
-                <td>
-                <input type="radio" name="gender" value="M" required> Male </input>
-                <input type="radio" name="gender" value="F"> Female </input>
-                </td>
-            </tr>
-
-            <tr>
-                <td align="center" colspan="4"> <input type="submit" value="Register Account" class="submitBtn" name="submit"></td>
-
-            </tr>
-
-        </table>
-
-    </form>
-
-</div>
-
-</body>
-
+    
+  </body>
 </html>

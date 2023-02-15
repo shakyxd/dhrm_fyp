@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
     require_once 'includes/functions.inc.php';
 
     if(emptyInputLogin($email, $password) !== false) {
-        header("location: login.html?error=emptyinput");
+        header("location: loginPatient.html?error=emptyinput");
         exit();
       }
 
@@ -22,7 +22,7 @@ if (isset($_POST["submit"])) {
     else {
 
 
-        header("location: login.html");
+        header("location: loginPatient.html");
         exit();
       
       }

@@ -89,11 +89,25 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Register</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Clinic Register</a></li>
-                <li><a class="dropdown-item" href="#">Patient Register</a></li>
+                <li>
+                    <a class="dropdown-item" href="registerClinic.html">Clinic Register</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="registerPatient.html">Patient Register</a>
+                </li>
             </ul>
         </li>
-        <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Login</a>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a class="dropdown-item" href="loginPatient.html">Patient Login</a>
+                  </li>
+                  <li>
+                      <a class="dropdown-item" href="loginClinic.html">Clinic Login</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
       <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
