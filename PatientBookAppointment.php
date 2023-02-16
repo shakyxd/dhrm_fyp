@@ -46,11 +46,12 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
     
     echo "<script>alert('$chosenDentist and $dentistList')</script>";
     if(strstr($dentistList,$chosenDentist)){
-       $modDList=str_replace($chosenDentist,"",$dentistList);
+      //$modDList=str_replace($chosenDentist,"",$dentistList);
       // if (($key = array_search($chosenDentist, $dentistList)) !== false) {
       //   unset($dentistList[$key]);
       // }
-      $dremovesql="UPDATE timeslot REMOVE dentistList='".$dentistList."' WHERE timeSlotID=$timeSlotID";
+      // $dremovesql="UPDATE timeslot REMOVE dentistList='".$dentistList."' WHERE timeSlotID=$timeSlotID";
+      mysqli_query($connection,$dremovesql);
     }
     else{
       echo "<script>alert('Your chosen dentist is not available at this timeslot. Please choose another timeslot')</script>";
