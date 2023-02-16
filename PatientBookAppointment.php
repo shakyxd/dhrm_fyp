@@ -13,7 +13,6 @@ $clinicID=$_GET["clinicID"];
 $treatmentID=$_GET["tID"];
 $treatmentName=$_GET["tName"];
 $price=$_GET["price"];
-$dentistList="";
 
 if ($_SERVER['REQUEST_METHOD']== 'POST'){
   $staffID=$_POST["staffID"];
@@ -31,26 +30,29 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
     $fname=$patientrow["firstName"];
     $lname=$patientrow["lastName"];
   }
-  $chosenDentist=$fnamestaff." ".$lnamestaff;
   $timeslotsql="SELECT * FROM timeslot WHERE clinicID=$clinicID AND `date`='".$date."' AND `time`='".$time."'";
   $timeslotresult =$connection->query($timeslotsql);
   while($trow=$timeslotresult->fetch_assoc()){
     $timeSlotID=$trow["timeSlotID"];
-    $dentistList=$trow["dentistList"];
+    $dentistOneID=$trow["dentistOneID"];
+    $dentistTwoID=$trow["dentistTwoID"];
+    $dentistThreeID=$trow["dentistThreeID"];
+    $dentistFourID=$trow["dentistFourID"];
+    $dentistFiveID=$trow["dentistFiveID"];
   }
   do {
     if (empty($date) || empty($time)) {
       echo "<script>alert('Please select your preferred date and time')</script>";
       break;
     }
-    
-    echo "<script>alert('$chosenDentist and $dentistList')</script>";
-    if(strstr($dentistList,$chosenDentist)){
-      //$modDList=str_replace($chosenDentist,"",$dentistList);
-      // if (($key = array_search($chosenDentist, $dentistList)) !== false) {
-      //   unset($dentistList[$key]);
-      // }
-      // $dremovesql="UPDATE timeslot REMOVE dentistList='".$dentistList."' WHERE timeSlotID=$timeSlotID";
+    if(($dentistOneID==$staffID) || ($dentistTwoID==$staffID) || ($dentistThreeID==$staffID) || ($dentistFourID==$staffID) || ($dentistFiveID==$staffID)){
+      $dremovesql="UPDATE timeslot 
+      SET dentistOneID=(CASE WHEN dentistOneID=$staffID THEN 0 ELSE dentistOneID END),
+      dentistTwoID=(CASE WHEN dentistTwoID=$staffID THEN 0 ELSE dentistTwoID END),
+      dentistThreeID=(CASE WHEN dentistThreeID=$staffID THEN 0 ELSE dentistThreeID END),
+      dentistFourID=(CASE WHEN dentistFourID=$staffID THEN 0 ELSE dentistFourID END),
+      dentistFiveID=(CASE WHEN dentistFiveID=$staffID THEN 0 ELSE dentistFiveID END)
+      WHERE timeSlotID=$timeSlotID";
       mysqli_query($connection,$dremovesql);
     }
     else{
@@ -70,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
 
     echo "<script>alert('Booking Successful!')</script>";
       
-    //header("location:PatientVisitationHistory.php");
+    header("location:PatientVisitationHistory.php");
     exit;
 
   } while (false);
