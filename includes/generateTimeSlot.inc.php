@@ -8,11 +8,37 @@ if (isset($_POST["generate"])) {
     $date = $_POST["date"];
     $staffType = "Dentist";
 
-    $dentistOne = ["dentistOne"];
-    $dentistTwo = ["dentistTwo"];
-    $dentistThree = ["dentistThree"];
-    $dentistFour = ["dentistFour"];
-    $dentistFive = ["dentistFive"];
+    $dentistOne = $_POST["dentistOne"];
+    $dentistTwo = $_POST["dentistTwo"];
+    $dentistThree = $_POST["dentistThree"];
+    $dentistFour = $_POST["dentistFour"];
+    $dentistFive = $_POST["dentistFive"];
+
+    $dentistList = array($dentistOne, $dentistTwo, $dentistThree, $dentistFour, $dentistFive);
+
+    $del_value = 0;
+
+    //removes all empty dentist List
+    foreach ($dentistList as $key => $value) {
+        if ($value == $del_value) {
+            unset($dentistList[$key]);
+        }
+    }
+
+
+    function dupesExist(array $dentistList) {
+        $result = true;
+        if(count($dentistList) === count(array_unique($dentistList))){
+            $result = false;
+        }
+        else
+        {
+            $result = true;
+        }
+        return $result;
+    }
+
+
 
     
     $time = array(
@@ -41,6 +67,12 @@ if (isset($_POST["generate"])) {
 
     if(emptyInputGenerateTimeSlot($date) !== false) {
         header("location:../generateTimeSlot.php?error=emptyinput");
+        exit();
+      }
+
+
+      if(dupesExist($dentistList) !== false) {
+        header("location:../generateTimeSlot.php?error=duplicatesExist");
         exit();
       }
 

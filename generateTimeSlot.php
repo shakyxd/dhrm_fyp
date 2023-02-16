@@ -30,9 +30,14 @@ session_start();
     <h3> Genearate Time Slot </h3>
 </div>
 
+
+
 <div class ="container" align="center">
 
 <form method="post" action="includes\generateTimeSlot.inc.php">
+<!-- <form method="post" action="test.php"> -->
+
+<div class ="container" align="center">
 
 <table>
 
@@ -145,9 +150,11 @@ $conn = new mysqli('localhost', 'root', '', 'fyp');
 $query = "select * from staff WHERE clinicID = $userID AND staffType = 'Dentist' ORDER BY staffID ASC";
 
 
-echo '<td><select name=dentistOne>
-<option value="0">None</option>';
+
 if ($result = $conn->query($query)) {
+
+    echo '<td><select name="dentistOne">
+    <option value="0">None</option>';
 
          while ($row = $result->fetch_assoc()) {
 
@@ -157,7 +164,7 @@ if ($result = $conn->query($query)) {
         $column4 = $row["lastNameStaff"];
         $column5 = $row["genderStaff"];
        
-                echo '<option value ="'.$column1.'">' .$column3. ' '.$column4.
+                echo '<option value ="'.$row["staffID"].'">' .$column3. ' '.$column4.
                 '</option>';
                                  
                 }       
@@ -166,9 +173,11 @@ if ($result = $conn->query($query)) {
     $result-> free();
 
 
-    echo '<td><select name=dentistTwo>
-    <option value="0">None</option>';
+
     if ($result = $conn->query($query)) {
+
+        echo '<td><select name="dentistTwo">
+        <option value="0">None</option>';
  
              while ($row = $result->fetch_assoc()) {
     
@@ -178,7 +187,7 @@ if ($result = $conn->query($query)) {
             $column4 = $row["lastNameStaff"];
             $column5 = $row["genderStaff"];
            
-                    echo '<option value ="'.$column1.'">' .$column3. ' '.$column4.
+                    echo '<option value ="'.$row["staffID"].'">' .$column3. ' '.$column4.
                     '</option>';
                                      
                     }       
@@ -186,10 +195,12 @@ if ($result = $conn->query($query)) {
         }echo '</select></td>';
         $result-> free();
 
-        echo '<td><select name=dentistThree>
-        <option value="0">None</option>';
 
         if ($result = $conn->query($query)) {
+
+            
+        echo '<td><select name="dentistThree">
+        <option value="0">None</option>';
  
                  while ($row = $result->fetch_assoc()) {
         
@@ -199,7 +210,7 @@ if ($result = $conn->query($query)) {
                 $column4 = $row["lastNameStaff"];
                 $column5 = $row["genderStaff"];
                
-                        echo '<option value ="'.$column1.'">' .$column3. ' '.$column4.
+                        echo '<option value ="'.$row["staffID"].'">' .$column3. ' '.$column4.
                         '</option>';
                                          
                         }       
@@ -208,9 +219,11 @@ if ($result = $conn->query($query)) {
             $result-> free();
 
 
-            echo '<td><select name=dentistFour>
-            <option value="0">None</option>';
             if ($result = $conn->query($query)) {
+
+                
+            echo '<td><select name="dentistFour">
+            <option value="0">None</option>';
       
                      while ($row = $result->fetch_assoc()) {
             
@@ -220,7 +233,7 @@ if ($result = $conn->query($query)) {
                     $column4 = $row["lastNameStaff"];
                     $column5 = $row["genderStaff"];
                    
-                            echo '<option value ="'.$column1.'">' .$column3. ' '.$column4.
+                            echo '<option value ="'.$row["staffID"].'">' .$column3. ' '.$column4.
                             '</option>';
                                              
                             }       
@@ -229,9 +242,11 @@ if ($result = $conn->query($query)) {
                 $result-> free();
 
 
-                echo '<td><select name=dentistFive>
-                <option value="0">None</option>';
                 if ($result = $conn->query($query)) {
+
+                    
+                echo '<td><select name="dentistFive">
+                <option value="0">None</option>';
                
                          while ($row = $result->fetch_assoc()) {
                 
@@ -241,7 +256,7 @@ if ($result = $conn->query($query)) {
                         $column4 = $row["lastNameStaff"];
                         $column5 = $row["genderStaff"];
                        
-                                echo '<option value ="'.$column1.'">' .$column3. ' '.$column4.
+                                echo '<option value ="'.$row["staffID"].'">' .$column3. ' '.$column4.
                                 '</option>';
                                                  
                                 }       
@@ -251,20 +266,21 @@ if ($result = $conn->query($query)) {
 
 
 
-
-
-
 ?>
 
 </tr>
 
 </table>
 
+</div>
+
 
 </form>
 
-
 </div>
+
+
+
 
 
 <br>
