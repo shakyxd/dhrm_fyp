@@ -278,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `Appointment` (
   `treatmentName` varchar(100),
   `price` int,
   `paid` tinyint NOT NULL DEFAULT '0',
-  `rating` int DEFAULT '0',
+  `rating` int,
   CONSTRAINT PK_Appointment PRIMARY KEY (`appointmentID`,`timeSlotID`, `patientID`, `clinicID`, `staffID`, `treatmentID`),
   FOREIGN KEY (`timeSlotID`) REFERENCES Timeslot(`timeSlotID`),
   FOREIGN KEY (`patientID`) REFERENCES Patient(`patientID`),
