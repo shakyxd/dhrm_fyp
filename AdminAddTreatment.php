@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
   $treatmentType = $_POST["treatmentType"];
   $treatmentName = $_POST["treatmentName"];
   $price = $_POST["price"];
-  $availability = $_POST["status"];
+  $availability = 1;
 
   do {
       if ( empty($clinicID) || empty($treatmentType) || empty($treatmentName) || empty($price) || empty($availability) ) {
@@ -145,24 +145,13 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
             </select>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
           <label for="price" class="form-label">Price</label>
           <input type="number" required name="price" class="form-control" id="price">
-        </div>
-        <div class="col-6">
-          <label for="availability" class="form-label">Availability</label>
-          <select name="status" class="form-select" id="inputGroupSelect04">
-            <option value='1'>Available</option>
-            <option value='0'>Not Available</option>
-          </select>
         </div>
         </div>
       </div>
       <br>
-
-
- 
-
       <button class="btn btn-sm btn-outline-secondary" type="submit">Add</button>
         </div>
       </div>
