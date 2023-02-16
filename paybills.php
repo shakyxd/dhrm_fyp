@@ -11,15 +11,9 @@
     }
     if(isset($_GET["id"])){
         $id=$_GET["id"];
-        
+        $_SESSION["aid"]=$id;
         $sql="UPDATE appointment SET paid = 1 WHERE appointmentID = $id";
         $data->query($sql);
-    }
-    if ($_SERVER['REQUEST_METHOD']== 'POST'){
-        $rating=$_POST["rating"];
-        $insert=mysqli_query($data,"UPDATE appointment SET rating=$rating WHERE appointmentID=$id");
-
-        header("location:PatientVisitationHistory.php");
     }
 ?>
 <!doctype html>
@@ -36,7 +30,7 @@
         function change(id){
             var cname=document.getElementById(id).className;
             var ab=document.getElementById(id+"_hidden").value;
-            document.getElementById("rating").innerHTML=ab;
+            document.getElementById("rating").value=ab;
 
             for(var i=ab;i>=1;i--)
             {
@@ -196,7 +190,7 @@
          <div class="card-body">
           <div class="col-lg-12">
             <br>
-            <form method="post">
+            <form method="post" action="insert_rating.php">
               <div class="row">
                 <div class="d-flex justify-content-center">
                 <div>
@@ -217,7 +211,7 @@
               <br>
               <div clas="row">
                 <div class="d-flex justify-content-center">
-                  <button class="btn btn-primary" role="button" name="submit_rating">Submit</button>
+                  <input type="submit" class="btn btn-primary" name="submit_rating">
                 </div>
               </div>
             </form>
