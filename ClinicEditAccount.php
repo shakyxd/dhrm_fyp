@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -106,6 +106,28 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $column2= $_POST["email"];
+    $column5= $_POST["phone"];
+    $column6= $_POST["address"];
+    $column8= $_POST["specialisation"];
+    do{
+        if(empty($column2) or empty($column5) or empty($column6) or empty($column8)){
+            echo '<script>alert("Missing Fields")</script>';
+            break;
+        }
+            $sql="UPDATE clinic 
+                SET emailClinic='$column2',
+                    phoneNum='$column5',
+                    address='$column6',
+                    specialisation='$column8'
+                WHERE clinicID=$loginID";
+            mysqli_query($conn,$sql);
+            echo '<script>alert("Edit Success!")</script>';
+
+    }while(false);
+ 
+  }
 
 ?>
   <body>
@@ -129,7 +151,7 @@ if ($result->num_rows > 0) {
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="ClinicDashboard.php">
+            <a class="nav-link" aria-current="page" href="ClinicDashboard.php">
               <span data-feather="home" class="align-text-bottom"></span>
               Clinic Dashboard
             </a>
@@ -141,7 +163,7 @@ if ($result->num_rows > 0) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="ClinicEditAccount.php">
+            <a class="nav-link active" href="ClinicEditAccount.php">
               <span data-feather="settings" class="align-text-bottom"></span>
               Clinic Management
             </a>
@@ -161,6 +183,7 @@ if ($result->num_rows > 0) {
        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
+        <form method="post">
         <div class="row">
           <div class="col-lg-4">
             <img src="images/avatardentist.jpg" alt="Avatar" class="avatar">
@@ -182,7 +205,7 @@ if ($result->num_rows > 0) {
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $column2?></p>
+                    <input id="email" size="40" type="text" name="email" value="<?php echo $column2;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -191,7 +214,7 @@ if ($result->num_rows > 0) {
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $column5?></p>
+                    <input id="phone" type="text" name="phone" value="<?php echo $column5;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -200,7 +223,7 @@ if ($result->num_rows > 0) {
                     <p class="mb-0">Address</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $column6?></p>
+                    <input id="address" size="40" type="text" name="address" value="<?php echo $column6;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -218,7 +241,7 @@ if ($result->num_rows > 0) {
                     <p class="mb-0">Specialisation</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $column8?></p>
+                    <input id="specialisation" size="40" type="text" name="specialisation" value="<?php echo $column8;?>"></input>
                   </div>
                 </div>
                 <hr>
@@ -230,9 +253,19 @@ if ($result->num_rows > 0) {
                     <p class="text-muted mb-0"><?php echo $column9?></p>
                   </div>
                 </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-10">
+                    <p class="mb-0"></p>
+                  </div>
+                  <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
               </div>
             </div>   
           </div>
+          </form>
         </div>
       </div>
     </section>

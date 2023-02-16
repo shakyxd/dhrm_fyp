@@ -135,7 +135,7 @@ if ($result->num_rows > 0) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="addStaff.php">
+            <a class="nav-link" href="addStaff.php">
               <span data-feather="pie-chart" class="align-text-bottom"></span>
               View Dentists/Add Staff
             </a>
@@ -147,7 +147,7 @@ if ($result->num_rows > 0) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="ClinicAddTreatment.php">
+            <a class="nav-link active" href="ClinicAddTreatment.php">
               <span data-feather="thermometer" class="align-text-bottom"></span>
               Add Treatment
             </a>
@@ -161,100 +161,63 @@ if ($result->num_rows > 0) {
        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Lorem Ipsum</h1>     
         <div class="container py-5">
-        <h3>View Dentist / Add A Staff</h3> 
+        <h3>Add A Treatment</h3> 
         <div class="row">
           <div class="card mb-8">
             <div class="card-body">
              <div class="col-lg-12">
-                 <form method="post" action="includes\addStaff.inc.php">
+                 <form method="post" action="addTreatment.php">
                      <div class="row">
                         <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">Select Staff Type</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Select Treatment Type</label>
                         </div>
                         <div class="col-sm-10">
-                          <select name="staffType" class="form-select" id="inputGroupSelect01">
-                            <option value="Admin">Admin</option>
-                            <option value="Dentist">Dentist</option>
+                          <select name="treatmentType" class="form-select" id="inputGroupSelect01">
+                            <option value="Tooth Extraction">Tooth Extraction</option>
+                            <option value="General Checkup">General Checkup</option>
+                            <option value="Root Canal">Root Canal</option>
+                            <option value="Teeth Cleaning">Teeth Cleaning</option>
+                            <option value="Teeth Whitening">Teeth Whitening</option>
+                            <option value="Tooth Extraction">Tooth Extraction</option>
+                            <option value="Tooth Implant">Tooth Implant</option>
+                            <option value="Tooth Filling">Tooth Filling</option>
+                            <option value="X-ray">X-ray</option>
+                            <option value="Crown and Bridges">Crown and Bridges</option>
+                            <option value="Orthodontics(Braces)">Orthodontics(Braces)</option>
                           </select>
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">Staff Email</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Treatment Name</label>
                         </div>
                         <div class="col-sm-4">
-                          <input type="email" class="form-control" id="floatingInput" name="emailStaff" required>
+                          <input type="text" class="form-control" id="floatingInput" name="treatmentName" required>
                         </div>
                         <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">Staff Phone Number</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Price</label>
                         </div>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="floatingInput" name="phoneNumStaff" required>
+                          <input type="text" class="form-control" id="floatingInput" name="price" required>
                         </div>
                      </div>
                      <div class="row">
-                        <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">First Name</label>
-                        </div>
-                        <div class="col-sm-4">
-                          <input type="text" class="form-control" id="floatingInput" name="firstNameStaff" required>
-                        </div>
-                        <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">Last Name</label>
-                        </div>
-                        <div class="col-sm-4">
-                          <input type="text" class="form-control" id="floatingInput" name="lastNameStaff" required>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">Date Of Birth</label>
-                        </div>
-                        <div class="col-sm-4">
-                          <input type="date" class="form-control" id="floatingInput" name="dateOfBirthStaff" required>
-                        </div>
-                        <div class="col-sm-2">
-                          <label class="input-group-text" for="inputGroupSelect01">Salary</label>
-                        </div>
-                        <div class="col-sm-4">
-                          <input type="text" class="form-control" id="floatingInput" name="salary" required>
-                        </div>
-                     </div>
-                     <div class="row">
-                       <div class="col-sm-2"> 
-                           <label class="input-group-text" for="inputGroupSelect01">Gender</label>
-                       </div>
-                       <div class="col-sm-2">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="genderStaff" id="flexRadioDefault1" value="M" checked>
-                          <label class="form-check-label" for="flexRadioDefault1">Male</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="genderStaff" id="flexRadioDefault2" value="F">
-                          <label class="form-check-label" for="flexRadioDefault2">Female</label>
-                        </div>
-                       </div>
                        <div class="col-sm-1"> 
-                           <input type="submit" value="Add Staff" class="btn btn-primary" >
+                           <input type="submit" value="Add Treatment" class="btn btn-primary" >
                        </div>
                      </div>
                  </form>
                  <table class="table">
             <thead>
                 <tr>
-                    <th>Staff ID</th>
+                    <th>Treatment ID</th>
                     <th>Clinic ID</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Staff Type</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-				    <th>Gender</th>
-                    <th>D.O.B</th>
-                    <th>Salary</th>
-                    <th>Deactivated</th>
-                    <th>Active</th>
-                    <th>Remove</th>
+                    <th>Treatment Type</th>
+                    <th>Treatment Name</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Toggle Availability</th>
+                    <th>Remove Treatment?</th>
                 </tr>
             </thead>
             <tbody>
@@ -270,42 +233,33 @@ if ($result->num_rows > 0) {
                 if($data===false){
                     die("connection error");
                 }
- 
-                $query = "select * from staff where clinicID = $clinicID ORDER BY staffID ASC";
+                
+                $query = "select * from treatment where clinicID = $clinicID ORDER BY treatmentID ASC";
 
                 if ($result = $conn->query($query)) {
-                         while ($row = $result->fetch_assoc()) {
+                    while ($row = $result->fetch_assoc()) {
 
-                        $column1 = $row["staffID"];
+                        $column1 = $row["treatmentID"];
                         $column2 = $row["clinicID"];
-                        $column3 = $row["emailStaff"];
-                        $column4 = $row["phoneNumStaff"];
-                        $column5 = $row["staffType"];
-                        $column6 = $row["firstNameStaff"];
-                        $column7 = $row["lastNameStaff"];
-                        $column8 = $row["genderStaff"];
-                        $column9 = $row["dateOfBirthStaff"];
-                        $column10 = $row["salary"];
-                        $column11 = $row["deactivated"];
-                        $column12 = "Active";
-                        $column13 = "Delete";
- 
+                        $column3 = $row["treatmentType"];
+                        $column4 = $row["treatmentName"];
+                        $column5 = $row["price"];
+                        $column6 = $row["availability"];                  
 
-                            echo '<tr>
+                        echo '<tr>
                                 <td>'.$column1.'</td>
                                 <td>'.$column2.'</td>
                                 <td>'.$column3.'</td>
                                 <td>'.$column4.'</td>
-                                <td>'.$column5.'</td>
-                                <td>'.$column6.'</td>
-                                <td>'.$column7.'</td>
-                                <td>'.$column8.'</td>
-                                <td>'.$column9.'</td>
-                                <td>'.$column10.'</td>
-                                <td>'.$column11.'</td>
-                                <td>'.$column12.'</td>
-                                <td>'.$column13.'</td>
-                                </tr>';
+                                <td>'.$column5.'</td>';
+                                if ($column6 > 0){
+                                    echo" <td>Available</td>"; 
+                                }
+                                else{
+                                    echo" <td>Not Available</td>";
+                                }
+                                echo"<td><a class=my-button href=treatmentToggleAvail.php?id=$row[treatmentID]>Toggle</a></td>";
+                                echo"<td><a class=my-button href=dropTreatment.php?id=$row[treatmentID]>Drop</a></td>";
 
                     }
                     $result-> free();
@@ -326,5 +280,3 @@ if ($result->num_rows > 0) {
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dist/js/dashboard.js"></script>
   </body>
 </html>
-
-

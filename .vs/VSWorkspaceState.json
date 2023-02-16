@@ -3,9 +3,8 @@
     "",
     "\\dist",
     "\\dist\\css",
-    "\\dist\\js",
     "\\includes"
   ],
-  "SelectedNode": "\\PatientAddFam.php",
+  "SelectedNode": "\\PatientEditAccount.php",
   "PreviewInSolutionExplorer": false
 }
