@@ -8,6 +8,12 @@ if (isset($_POST["generate"])) {
     $date = $_POST["date"];
     $staffType = "Dentist";
 
+    $dentistOne = ["dentistOne"];
+    $dentistTwo = ["dentistTwo"];
+    $dentistThree = ["dentistThree"];
+    $dentistFour = ["dentistFour"];
+    $dentistFive = ["dentistFive"];
+
     
     $time = array(
         "09:00", 
@@ -46,24 +52,24 @@ if (isset($_POST["generate"])) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
+        // //Old way of getting dentistList with JSON
+        // $stmt = $conn->prepare("SELECT * FROM staff WHERE clinicID = ? AND staffType = ?");
+        // $stmt->bind_param("ss", $clinicID, $staffType);
+        // $stmt->execute();
 
-        $stmt = $conn->prepare("SELECT * FROM staff WHERE clinicID = ? AND staffType = ?");
-        $stmt->bind_param("ss", $clinicID, $staffType);
-        $stmt->execute();
-
-        $stmt_result = $stmt->get_result();
+        // $stmt_result = $stmt->get_result();
         
-        if ($stmt_result->num_rows > 0) {
-          while($row = $stmt_result->fetch_assoc()) {
-            $dentistList[] = $row["firstNameStaff"]. " " .$row["lastNameStaff"];
-            $dentistJSON = json_encode($dentistList);
-         } 
-         echo $date;
-         echo $dentistJSON;
+        // if ($stmt_result->num_rows > 0) {
+        //   while($row = $stmt_result->fetch_assoc()) {
+        //     $dentistList[] = $row["firstNameStaff"]. " " .$row["lastNameStaff"];
+        //     $dentistJSON = json_encode($dentistList);
+        //  } 
+        //  echo $date;
+        //  echo $dentistJSON;
         
-        } else {
-          echo "Error Retrieving Data";
-        }
+        // } else {
+        //   echo "Error Retrieving Data";
+        // }
         
         $stmt1 = $conn->prepare("DELETE FROM timeslot WHERE clinicID = ? AND date = ?");
         $stmt1->bind_param("is", $clinicID, $date);
@@ -73,9 +79,9 @@ if (isset($_POST["generate"])) {
 
         foreach ($time as $value) {
 
-            $stmt = $conn->prepare("INSERT INTO timeslot(clinicID, date, time, dentistList)
-            values(?, ?, ?, ?)");
-            $stmt->bind_param("isss", $clinicID, $date, $value, $dentistJSON);
+            $stmt = $conn->prepare("INSERT INTO timeslot(clinicID, date, time, dentistOneID, dentistTwoID, dentistThreeID, dentistFourID, dentistFiveID)
+            values(?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("issiiiii", $clinicID, $date, $value, $dentistOne, $dentistTwo, $dentistThree, $dentistFour, $dentistFive);
             $stmt->execute();    
 
         }
