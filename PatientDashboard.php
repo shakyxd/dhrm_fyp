@@ -3,7 +3,6 @@
     if(isset($_SESSION["treatmentID"])){
       header("location:PatientBookAppointment.php");
     }
-    echo "$_SESSION[treatmentID]";
 ?>
 
 <!doctype html>
