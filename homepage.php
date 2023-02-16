@@ -14,6 +14,7 @@
   $trtmnt="Any";
   $area="Any";
   $sort="none";
+  
   if(isset($_GET["clinic"])){
     //only clinic chosen
     if($_GET["clinic"]!="Any"&&$_GET["trtmnt"]=="Any"&&$_GET["area"]=="Any"){
@@ -318,6 +319,7 @@
                    <a class="btn btn-outline-secondary" href="homepage.php">Reset</a>
                   <br><br>
                   <div>
+                  <form action="loginPatient.php" method="post">
                   <table class='table table-bordered'>
                     <thead>
                       <tr>
@@ -340,12 +342,12 @@
                           <td>$row[phoneNum]</td>
                           <td>$row[rating]</td>
                           <td>$row[price]</td>
-                          <td><button type='button' class='btn btn-primary' onclick='loginalert()'>Book Now</button></td>
+                          <td><a href='redirect.php?cID=$row[clinicID]&tID=$row[treatmentID]&tName=$row[treatmentName]&price=$row[price]' class='btn btn-primary'>Book Now</button></td>
                       </tr>";
                     }
                     ?>
-                    
                   </table>
+                  </form>
                   </div>
                   <hr class="featurette-divider">
                 </form>

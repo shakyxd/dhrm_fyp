@@ -9,10 +9,19 @@ $database = "fyp";
 $connection = new mysqli($servername, $username, $password, $database);
 
 $loginID=$_SESSION["userID"];
-$clinicID=$_GET["clinicID"];
-$treatmentID=$_GET["tID"];
-$treatmentName=$_GET["tName"];
-$price=$_GET["price"];
+
+if(isset($_SESSION["treatmentID"])){
+  $treatmentName=$_SESSION["treatmentName"];
+  $clinicID=$_SESSION["clinicID"];
+  $price=$_SESSION["price"];
+  $treatmentID=$_SESSION["treatmentID"];
+}else{
+  $clinicID=$_GET["clinicID"];
+  $treatmentID=$_GET["tID"];
+  $treatmentName=$_GET["tName"];
+  $price=$_GET["price"];
+}
+
 
 if ($_SERVER['REQUEST_METHOD']== 'POST'){
   $staffID=$_POST["staffID"];
@@ -70,9 +79,10 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
       break;
     }
 
-    echo "<script>alert('Booking Successful!')</script>";
-      
     header("location:PatientVisitationHistory.php");
+    echo "<script>alert('Booking Successful!');</script>";
+    unset($_SESSION["treatmentID"]);
+    
     exit;
 
   } while (false);
