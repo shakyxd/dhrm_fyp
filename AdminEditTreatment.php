@@ -12,7 +12,6 @@ $clinicID = "";
 $treatmentType="";
 $treatmentName="";
 $price ="";
-$availability ="";
 
 $errorMessage ="";
 $successMessage="";
@@ -40,8 +39,6 @@ $successMessage="";
     $treatmentType = $row["treatmentType"];
     $treatmentName = $row["treatmentName"];
     $price = $row["price"];
-    $availability = $row["availability"];
-
   }
   else{
     //POST METHOD: Update the data 
@@ -51,10 +48,9 @@ $successMessage="";
     $treatmentType = $_POST["treatmentType"];
     $treatmentName = $_POST["treatmentName"];
     $price = $_POST["price"];
-    $availability = $_POST["availability"];
   
     do {
-        if ( empty($clinicID) || empty($treatmentType) || empty($treatmentName) || empty($price) || empty($availability) ) {
+        if ( empty($clinicID) || empty($treatmentType) || empty($treatmentName) || empty($price) ) {
           $errorMessage = "All the fields are required";
           break;
         }
@@ -62,8 +58,7 @@ $successMessage="";
                 SET clinicID='$clinicID',
                 treatmentType='$treatmentType',
                 treatmentName='$treatmentName',
-                price='$price',
-                `availability`='$availability' WHERE treatmentID=$treatmentID";
+                price='$price' WHERE treatmentID=$treatmentID";
         
         $result =$connection->query($sql);
   
@@ -179,17 +174,17 @@ $successMessage="";
             </select>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
           <label for="price" class="form-label">Price</label>
           <input type="number" required name="price" class="form-control" id="price" value="<?php echo $price; ?>">
         </div>
-        <div class="col-6">
+        <!-- <div class="col-6">
           <label for="availability" class="form-label">Availability</label>
           <select name="availability" class="form-select" id="inputGroupSelect04">
-            <option <?php if($availability==='1') {echo 'selected';}?> value='1'>Available</option>
-            <option <?php if($availability==='0') {echo 'selected';}?> value='0'>Not Available</option>
+            <option value='1'>Available</option>
+            <option value='0'>Not Available</option>
           </select>
-        </div>
+        </div> -->
         </div>
       </div>
       <br>

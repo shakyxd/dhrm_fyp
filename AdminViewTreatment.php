@@ -119,6 +119,7 @@ while($row = $result->fetch_assoc()){
     else{ echo "<td>Not Available</td>";}
     echo "<td>
             <a class='btn btn-sm btn-outline-secondary' href='AdminEditTreatment.php?trtmntID=$row[treatmentID]'>Edit</a>
+            <a class='btn btn-sm btn-outline-secondary' href='AdminUnavailTreatment.php?trtmntID=$row[treatmentID]'>Change</a>
             <a class='btn btn-sm btn-outline-secondary' href='AdminDeleteTreatment.php?trtmntID=$row[treatmentID]'>Delete</a>
         </td>";    
 }
