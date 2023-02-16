@@ -14,7 +14,26 @@
         $rating=$_POST['rating'];
         $insert=mysqli_query($data,"UPDATE appointment SET rating=$rating WHERE appointmentID=$aid");
     }
-    echo "$rating";
+
+    $clinicsql="SELECT rating FROM clinic WHERE clinicID=(SELECT clinicID FROM appointment WHERE appointmentID=$aid)";
+    $clinicresult=$data->query($clinicsql);
+    while($row=$clinicresult->fetch_assoc()){
+        $clinicrating=$row["rating"];
+    }
+
+    $ratingsql="SELECT rating FROM appointment WHERE clinicID=(SELECT clinicID FROM appointment WHERE appointmentID=$aid) AND rating IS NOT NULL";
+    $result=$data->query($ratingsql);
+    $total=(mysqli_num_rows($result))+1;
+    while($row=$result->fetch_assoc()){
+        $ratingarray[]=$row["rating"];
+    }
+
+    array_push($ratingarray,$clinicrating);
+    $finalrating=(array_sum($ratingarray)/$total);
+
+    $ratingupdatesql="UPDATE clinic SET rating=$finalrating WHERE clinicID=(SELECT clinicID FROM appointment WHERE appointmentID=$aid)";
+    mysqli_query($data,$ratingupdatesql);
+
     unset($_SESSION["aid"]);
-    // header("location:PatientVisitationHistory.php");
+    header("location:PatientVisitationHistory.php");
 ?>
