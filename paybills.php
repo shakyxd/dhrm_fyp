@@ -1,23 +1,26 @@
 <?php
     session_start();
-    if ($_SERVER['REQUEST_METHOD']== 'POST'){
-        
+    $host="localhost";
+    $user="root";
+    $password="";
+    $db="fyp";
+
+    $data=mysqli_connect($host,$user,$password,$db);
+    if($data===false){
+        die("connection error");
     }
     if(isset($_GET["id"])){
         $id=$_GET["id"];
-        $host="localhost";
-        $user="root";
-        $password="";
-        $db="fyp";
-
-        $data=mysqli_connect($host,$user,$password,$db);
-        if($data===false){
-            die("connection error");
-        }
+        
         $sql="UPDATE appointment SET paid = 1 WHERE appointmentID = $id";
         $data->query($sql);
     }
-    //exit;
+    if ($_SERVER['REQUEST_METHOD']== 'POST'){
+        $rating=$_POST["rating"];
+        $insert=mysqli_query($data,"UPDATE appointment SET rating=$rating WHERE appointmentID=$id");
+
+        header("location:PatientVisitationHistory.php");
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,15 +30,25 @@
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.108.0">
     <title>Patient dashboard</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        function change(id){
+            var cname=document.getElementById(id).className;
+            var ab=document.getElementById(id+"_hidden").value;
+            document.getElementById("rating").innerHTML=ab;
 
-    
-
-    
-
-<link href="dist/css/bootstrap.min.css" rel="stylesheet">
-
+            for(var i=ab;i>=1;i--)
+            {
+                document.getElementById(cname+i).src="images/star2.png";
+            }
+            var id=parseInt(ab)+1;
+            for(var j=id;j<=5;j++)
+            {
+                document.getElementById(cname+j).src="images/star1.png";
+            }
+        }
+    </script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -87,6 +100,14 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+      img
+      {
+        margin-top:10px;
+        width:50px;
+        height:50px;
+        float:left;
+      }
     </style>
 
     
@@ -120,7 +141,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link" href="#">
               <span data-feather="pie-chart" class="align-text-bottom"></span>
               Visitation History
             </a>
@@ -144,7 +165,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="PatientBills.php">
+            <a class="nav-link active" href="PatientBills.php">
               <span data-feather="dollar-sign" class="align-text-bottom"></span>
               Bills And Payments
             </a>
@@ -174,15 +195,29 @@
         <div class="card mb-8">
          <div class="card-body">
           <div class="col-lg-12">
+            <br>
             <form method="post">
               <div class="row">
                 <div class="d-flex justify-content-center">
-
+                <div>
+                    <input type="hidden" id="star1_hidden" value="1">
+                    <img src="images/star1.png" onmouseover="change(this.id);" id="star1" class="star">
+                    <input type="hidden" id="star2_hidden" value="2">
+                    <img src="images/star1.png" onmouseover="change(this.id);" id="star2" class="star">
+                    <input type="hidden" id="star3_hidden" value="3">
+                    <img src="images/star1.png" onmouseover="change(this.id);" id="star3" class="star">
+                    <input type="hidden" id="star4_hidden" value="4">
+                    <img src="images/star1.png" onmouseover="change(this.id);" id="star4" class="star">
+                    <input type="hidden" id="star5_hidden" value="5">
+                    <img src="images/star1.png" onmouseover="change(this.id);" id="star5" class="star">
+                </div>
+                <input type="hidden" name="rating" id="rating" value="0">
                 </div>
               </div>
+              <br>
               <div clas="row">
                 <div class="d-flex justify-content-center">
-                  <button class="btn btn-primary" role="button">Submit</button>
+                  <button class="btn btn-primary" role="button" name="submit_rating">Submit</button>
                 </div>
               </div>
             </form>
@@ -193,9 +228,8 @@
   </div>
 </div>
 
-
+    
     <script src="dist/js/bootstrap.bundle.min.js"></script>
-
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dist/js/dashboard.js"></script>
   </body>
 </html>
