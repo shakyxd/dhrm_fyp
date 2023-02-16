@@ -13,33 +13,66 @@ $clinicID=$_GET["clinicID"];
 $treatmentID=$_GET["tID"];
 $treatmentName=$_GET["tName"];
 $price=$_GET["price"];
+$dentistList="";
 
 if ($_SERVER['REQUEST_METHOD']== 'POST'){
-    $staffID=$_POST["staffID"];
-    $date=$_POST["date"];
-    $time=$_POST["time"];
+  $staffID=$_POST["staffID"];
+  $date=$_POST["date"];
+  $time=$_POST["time"];
+  $staffsql="SELECT firstNameStaff, lastNameStaff FROM staff WHERE staffID=$staffID";
+  $staffresult =$connection->query($staffsql);
+  while($staffrow=$staffresult->fetch_assoc()){
+    $fnamestaff=$staffrow["firstNameStaff"];
+    $lnamestaff=$staffrow["lastNameStaff"];
+  }
+  $patientsql="SELECT firstName, lastName FROM patient WHERE patientID=$loginID";
+  $patientresult =$connection->query($patientsql);
+  while($patientrow=$patientresult->fetch_assoc()){
+    $fname=$patientrow["firstName"];
+    $lname=$patientrow["lastName"];
+  }
+  $chosenDentist=$fnamestaff." ".$lnamestaff;
+  $timeslotsql="SELECT * FROM timeslot WHERE clinicID=$clinicID AND `date`='".$date."' AND `time`='".$time."'";
+  $timeslotresult =$connection->query($timeslotsql);
+  while($trow=$timeslotresult->fetch_assoc()){
+    $timeSlotID=$trow["timeSlotID"];
+    $dentistList=$trow["dentistList"];
+  }
   do {
-      if ( empty($date) || empty($time)) {
-        $errorMessage = "All the fields are required";
-        break;
-      }
+    if (empty($date) || empty($time)) {
+      echo "<script>alert('Please select your preferred date and time')</script>";
+      break;
+    }
+    
+    echo "<script>alert('$chosenDentist and $dentistList')</script>";
+    if(strstr($dentistList,$chosenDentist)){
+       $modDList=str_replace($chosenDentist,"",$dentistList);
+      // if (($key = array_search($chosenDentist, $dentistList)) !== false) {
+      //   unset($dentistList[$key]);
+      // }
+      $dremovesql="UPDATE timeslot REMOVE dentistList='".$dentistList."' WHERE timeSlotID=$timeSlotID";
+    }
+    else{
+      echo "<script>alert('Your chosen dentist is not available at this timeslot. Please choose another timeslot')</script>";
+      break;
+    }
 
-      $sql = "INSERT INTO appointment (timeSlotID, patientID, clinicID, staffID, treatmentID, firstName, lastName, firstNameStaff, lastNameStaff, `date`, `time`, treatmentName, price, paid)
-              VALUES ($timeSlotID, $loginID, $clinicID, $staffID, $treatmentID, '".$fname."', '".$lname."', '".$fnamestaff."', '".$lnamestaff."', '".$date."','".$time."','".$treatmentName."',$price, 0)"; 
-      $result =$connection->query($sql);
 
-      if(!$result){
-        $errorMessage = "Invalid query:  " . $connection->error;
-        break;
-      }
+    $sql = "INSERT INTO appointment (timeSlotID, patientID, clinicID, staffID, treatmentID, firstName, lastName, firstNameStaff, lastNameStaff, `date`, `time`, treatmentName, price, paid)
+            VALUES ($timeSlotID, $loginID, $clinicID, $staffID, $treatmentID, '".$fname."', '".$lname."', '".$fnamestaff."', '".$lnamestaff."', '".$date."','".$time."','".$treatmentName."',$price, 0)"; 
+    $result =$connection->query($sql);
 
-      echo "<script>alert('Booking Successful!')</script>";
-        
-      header("location:PatientVisitationHistory.php");
-      exit;
+    if(!$result){
+      $errorMessage = "Invalid query:  " . $connection->error;
+      break;
+    }
+
+    echo "<script>alert('Booking Successful!')</script>";
+      
+    //header("location:PatientVisitationHistory.php");
+    exit;
 
   } while (false);
-
 }
 ?>
 
@@ -87,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="#">
               <span data-feather="home" class="align-text-bottom"></span>
               Patient Dashboard
             </a>
@@ -111,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="PatientScheduleAppt.php">
+            <a class="nav-link active" href="PatientScheduleAppt.php">
               <span data-feather="book-open" class="align-text-bottom"></span>
               Schedule Appointment
             </a>
@@ -176,7 +209,26 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
         </div>
         <div class="col-6">
             <label for="time" class="form-label">Time:</label><br>
-            <input type="time" id="time" name="time" min="9:00" max="17:30" step="1800">
+            <select name="time" id="time">
+              <option value="09:00">09:00 - 09:29</option>
+              <option value="09:30">09:30 - 09:59</option>
+              <option value="10:00">10:00 - 10:29</option>
+              <option value="10:30">10:30 - 10:59</option>
+              <option value="11:00">11:00 - 11:29</option>
+              <option value="11:30">11:30 - 11:59</option>
+              <option value="12:00">12:00 - 12:29</option>
+              <option value="12:30">12:30 - 12:59</option>
+              <option value="13:00">13:00 - 13:29</option>
+              <option value="13:30">13:30 - 13:59</option>
+              <option value="14:00">14:00 - 14:29</option>
+              <option value="14:30">14:30 - 14:59</option>
+              <option value="15:00">15:00 - 15:29</option>
+              <option value="15:30">15:30 - 15:59</option>
+              <option value="16:00">16:00 - 16:29</option>
+              <option value="16:30">16:30 - 16:59</option>
+              <option value="17:00">17:00 - 17:29</option>
+              <option value="17:30">17:30 - 18:00</option>
+            </select>
         </div>
         <div class="col-6">
           <label for="price" class="form-label">Price</label>
@@ -184,9 +236,14 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
         </div>
         <div class="col-6">
           <label for="staffID" class="form-label">Dentist:</label>
-          <select name="staffID" class="form-select" id="inputGroupSelect04">
-            <option value='1'>Someone</option>
-            <option value='0'>Someone else</option>
+          <select name="staffID" class="form-select" id="inputGroupSelect01">
+            <?php
+            $sql3="SELECT * FROM staff WHERE clinicID=$clinicID AND staffType='Dentist'";
+            $result3=mysqli_query($connection,$sql3);
+            while($row3=$result3->fetch_assoc()){
+              echo "<option value=".$row3['staffID'].">".$row3['firstNameStaff']." ".$row3['lastNameStaff']."</option>";
+            }
+            ?>
           </select>
         </div>
         </div>
