@@ -26,7 +26,10 @@ if ($conn->connect_error) {
     $stmt->bind_param("isssi", $clinicID, $treatmentType, $treatmentName, $price, $availability);
     $stmt->execute();
 
-  header("location:../addTreatment.php");
+    echo '<script type="text/javascript">alert("Treatment added successful!");window.location.href="../addTreatment.php"
+    </script>';
+
+    // header("location:../addTreatment.php");
     
     }
 

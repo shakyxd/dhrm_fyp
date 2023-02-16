@@ -18,22 +18,30 @@ if (isset($_POST["submit"])) {
   require_once 'includes/functions.inc.php';
 
   if(emptyInputSignUpClinic($email, $password, $password2, $nameClinic, $phoneNum, $address, $area, $specialisation)  !== false) {
-    header("location: registerClinic.html?error=emptyinput");
+    echo '<script type="text/javascript">alert("Please fill in all fields!");window.location.href="registerClinic.html?error=emptyinput"
+    </script>';
+    // header("location: registerClinic.html?error=emptyinput");
     exit();
   }
 
   if(invalidEmail($email) !== false) {
-    header("location: registerClinic.html?error=invalidemail");
+    echo '<script type="text/javascript">alert("Email is invalid!");window.location.href="registerClinic.html?error=invalidemail"
+    </script>';
+    // header("location: registerClinic.html?error=invalidemail");
     exit();
   }
 
   if(passwordMatch($password, $password2) !== false) {
-    header("location: registerClinic.html?error=passwordsdontmatch");
+    echo '<script type="text/javascript">alert("Passwords do not match!");window.location.href="registerClinic.html?error=passwordsdontmatch"
+    </script>';
+    // header("location: registerClinic.html?error=passwordsdontmatch");
     exit();
   }
 
   if(emailExistsClinic($conn, $email) !== false) {
-    header("location:registerClinic.html?error=emailtaken");
+    echo '<script type="text/javascript">alert("Email already exists, please use another!");window.location.href="registerClinic.html?error=emailtaken"
+    </script>';
+    // header("location:registerClinic.html?error=emailtaken");
     exit();
   }
 

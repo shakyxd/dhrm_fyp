@@ -97,7 +97,9 @@ function registerPatient($conn, $email, $password, $mobileNum, $fname,
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
-    header("location:./registerPatient.html?error=noerror");
+    echo '<script type="text/javascript">alert("Registration successful!");window.location.href="./homepage.php"
+    </script>';
+    // header("location:./registerPatient.html?error=noerror");
     exit();
 }
 
@@ -221,7 +223,9 @@ function registerClinic($conn, $email, $password, $nameClinic, $phoneNum,
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
-    header("location:./registerclinic.html?error=noerror");
+    echo '<script type="text/javascript">alert("Registration successful!");window.location.href="./homepage.php"
+    </script>';
+    // header("location:./registerclinic.html?error=noerror");
     exit();
 }
 

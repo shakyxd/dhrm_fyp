@@ -34,7 +34,10 @@ if ($conn->connect_error) {
     $stmt->bind_param("ississsssi", $clinicID, $staffType, $emailStaff, $phoneNumStaff, $firstNameStaff, $lastNameStaff, $dateOfBirthStaff, $salary, $genderStaff, $deactivated);
     $stmt->execute();
 
-  header("location:../addStaff.php");
+    echo '<script type="text/javascript">alert("Staff added successful!");window.location.href="../addStaff.php"
+    </script>';
+
+  // header("location:../addStaff.php");
     
     }
 

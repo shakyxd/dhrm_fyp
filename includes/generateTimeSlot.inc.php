@@ -66,13 +66,18 @@ if (isset($_POST["generate"])) {
     require_once 'functions.inc.php';
 
     if(emptyInputGenerateTimeSlot($date) !== false) {
-        header("location:../generateTimeSlot.php?error=emptyinput");
+        // echo '<script>alert("Please select a date!")</script>';
+        echo '<script type="text/javascript">alert("Please select a date!");window.location.href="../generateTimeSlot.php?error=emptyinput"
+    </script>';
+        // header("location:../generateTimeSlot.php?error=emptyinput");
         exit();
       }
 
 
       if(dupesExist($dentistList) !== false) {
-        header("location:../generateTimeSlot.php?error=duplicatesExist");
+        echo '<script type="text/javascript">alert("There were two or more dentist per slot!");window.location.href="../generateTimeSlot.php?error=emptyinput"
+        </script>';
+        // header("location:../generateTimeSlot.php?error=duplicatesExist");
         exit();
       }
 
