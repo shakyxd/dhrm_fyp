@@ -261,7 +261,7 @@
                         <p class="lead">Fill Out The Form Below So That We Can Find The Best Price For Your Treatment</p>
                     </div>
                 </div>
-                <form action="homepage.php" method="get">
+                <form action="#searchnow" method="get">
                   <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect01">Choose a clinic</label>
                       
