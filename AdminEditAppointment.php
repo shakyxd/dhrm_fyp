@@ -16,14 +16,14 @@ $price ="";
 $errorMessage ="";
 $successMessage="";
 
+$appointmentID = $_GET["id"];
+
   if ($_SERVER['REQUEST_METHOD']== 'GET'){
     //GET method: show the data 
   
     if (!isset($_GET["id"])){
       header("location:AdminViewAppointment.php");
     }
-  
-    $appointmentID = $_GET["id"];
   
     //read the row of the selected clinic from db table
     $sql = "SELECT * FROM appointment WHERE appointmentID=$appointmentID";
@@ -47,6 +47,7 @@ $successMessage="";
     $staffID=$_POST["staffID"];
     $date=$_POST["date"];
     $time=$_POST["time"];
+    $clinicID=$_POST["clinicID"];
 
     $timeslotsql="SELECT * FROM timeslot WHERE clinicID=$clinicID AND `date`='".$date."' AND `time`='".$time."'";
     $timeslotresult =$connection->query($timeslotsql);
@@ -87,14 +88,12 @@ $successMessage="";
         $errorMessage = "Invalid query:  " . $connection->error;
         break;
       }
-
       $successMessage = "Appointment Information updated!";
       
       header("location:AdminViewAppointment.php");
       exit;
   
     } while (false);
-    echo "<script>alert('stupid')</script>";
   }
 ?>
 
@@ -175,18 +174,19 @@ $successMessage="";
             </select>
         </div>
         <div class="col-12">
-            <label for="staff" class="form-label">Staff:</label>
-            <select name="staff" class="form-select" id="inputGroupSelect04">
+            <label for="staffID" class="form-label">Staff:</label>
+            <select name="staffID" class="form-select" id="inputGroupSelect04">
                 <?php
                 $staffsql="SELECT * FROM staff WHERE clinicID=$clinicID";
                 $staffresult=mysqli_query($connection,$staffsql);
                 while($staffrow=$staffresult->fetch_assoc()){
-                    echo "<option value='".$staffrow['staffID']."' ".(($staffrow['staffID']==$staffID)?"selected":"").">".$staffrow['firstNameStaff']." ".$staffrow['lastNameStaff']."</option>";
+                    echo "<option value='".$staffrow['staffID']."' ".(($staffrow['staffID']=$staffID)?"selected":"").">".$staffrow['firstNameStaff']." ".$staffrow['lastNameStaff']."</option>";
                 }
                 ?>
             </select>
             
         </div>
+        <input type="hidden" name="clinicID" value=<?php echo $clinicID;?>>
         <div class="col-6">
             <label for="date" class="form-label">Date:</label><br>
             <input type="date" id="date" name="date" min="2022-01-01" max="2023-12-31" value="<?php echo $date;?>">
