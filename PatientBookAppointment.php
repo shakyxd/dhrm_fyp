@@ -218,7 +218,7 @@ if ($_SERVER['REQUEST_METHOD']== 'POST'){
         </div>
         <div class="col-6">
             <label for="date" class="form-label">Date:</label><br>
-            <input type="date" id="date" name="date" min="2022-01-01" max="2023-12-31" value="<?php echo $date->format('Y-m-d');?>">
+            <input type="date" id="date" name="date" min="2022-01-01" max="2023-12-31">
         </div>
         <div class="col-6">
             <label for="time" class="form-label">Time:</label><br>
