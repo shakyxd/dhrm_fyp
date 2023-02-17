@@ -207,6 +207,8 @@
               <div clas="row">
                 <div class="d-flex justify-content-center">
                   <input type="submit" class="btn btn-primary" name="submit_rating">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="PatientVisitationHistory.php" class="btn btn-danger">No Thanks</a>
                 </div>
               </div>
             </form>
