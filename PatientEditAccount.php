@@ -84,7 +84,7 @@
   $conn = new mysqli('localhost', 'root', '', 'fyp');
 
   if(! $conn ) {
-      die('Could not connect: ' . mysql_error());
+      die('Could not connect: ' . mysqli_error($conn));
    }
 
   $loginID = $_SESSION["userID"];
