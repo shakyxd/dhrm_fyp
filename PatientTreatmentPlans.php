@@ -134,12 +134,7 @@
               Add Family Members
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="clock" class="align-text-bottom"></span>
-              View Time Slots
-            </a>
-          </li>
+          
         </ul>   
       </div>
     </nav>
