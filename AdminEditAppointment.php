@@ -42,37 +42,59 @@ $successMessage="";
   }
   else{
     //POST METHOD: Update the data 
-  
-    $treatmentID = $_POST["treatmentID"];
-    $treatmentName = $_POST["treatmentName"];
+    $treatmentID=$_POST["treatmentID"];
+    $treatmentName=$_POST["treatmentName"];
     $staffID=$_POST["staffID"];
     $date=$_POST["date"];
     $time=$_POST["time"];
-    do {
-        if (empty($staffID)) {
-          $errorMessage = "All the fields are required";
-          break;
-        }
-          $sql = "UPDATE appointment 
-                SET clinicID='$clinicID',
-                treatmentType='$treatmentType',
-                treatmentName='$treatmentName',
-                price='$price' WHERE treatmentID=$treatmentID";
-        
-        $result =$connection->query($sql);
-  
-        if(!$result){
-          $errorMessage = "Invalid query:  " . $connection->error;
-          break;
-        }
 
-        $successMessage = "Treatment Information updated!";
-        
-        header("location:AdminViewTreatment.php");
-        exit;
+    $timeslotsql="SELECT * FROM timeslot WHERE clinicID=$clinicID AND `date`='".$date."' AND `time`='".$time."'";
+    $timeslotresult =$connection->query($timeslotsql);
+    while($trow=$timeslotresult->fetch_assoc()){
+      $timeSlotID=$trow["timeSlotID"];
+      $dentistOneID=$trow["dentistOneID"];
+      $dentistTwoID=$trow["dentistTwoID"];
+      $dentistThreeID=$trow["dentistThreeID"];
+      $dentistFourID=$trow["dentistFourID"];
+      $dentistFiveID=$trow["dentistFiveID"];
+    }
+    do {
+      if(($dentistOneID==$staffID) || ($dentistTwoID==$staffID) || ($dentistThreeID==$staffID) || ($dentistFourID==$staffID) || ($dentistFiveID==$staffID)){
+        $dremovesql="UPDATE timeslot 
+        SET dentistOneID=(CASE WHEN dentistOneID=$staffID THEN 0 ELSE dentistOneID END),
+        dentistTwoID=(CASE WHEN dentistTwoID=$staffID THEN 0 ELSE dentistTwoID END),
+        dentistThreeID=(CASE WHEN dentistThreeID=$staffID THEN 0 ELSE dentistThreeID END),
+        dentistFourID=(CASE WHEN dentistFourID=$staffID THEN 0 ELSE dentistFourID END),
+        dentistFiveID=(CASE WHEN dentistFiveID=$staffID THEN 0 ELSE dentistFiveID END)
+        WHERE timeSlotID=$timeSlotID";
+        mysqli_query($connection,$dremovesql);
+      }
+      else{
+        echo "<script>alert('Your chosen dentist is not available at this timeslot. Please choose another timeslot')</script>";
+        break;
+      }
+      $updatesql="UPDATE appointment 
+            SET treatmentID=$treatmentID,
+            treatmentName='$treatmentName',
+            staffID=$staffID,
+            firstNameStaff=(SELECT firstNameStaff FROM staff WHERE staffID=$staffID),
+            lastNameStaff=(SELECT lastNameStaff FROM staff WHERE staffID=$staffID),
+            timeSlotID=$timeSlotID,
+            `date`='$date',`time`='$time' WHERE appointmentID=$appointmentID";
+      $updateresult=$connection->query($updatesql);
+
+      if(!$updateresult){
+        $errorMessage = "Invalid query:  " . $connection->error;
+        break;
+      }
+
+      $successMessage = "Appointment Information updated!";
+      
+      header("location:AdminViewAppointment.php");
+      exit;
   
     } while (false);
-  
+    echo "<script>alert('stupid')</script>";
   }
 ?>
 
@@ -191,19 +213,6 @@ $successMessage="";
               <option <?php if($time=="17:00") {echo "selected";}?> value="17:00">17:00 - 17:29</option>
               <option <?php if($time=="17:30") {echo "selected";}?> value="17:30">17:30 - 18:00</option>
             </select>
-        </div>
-        <div class="col-12">
-            <?php
-                // $sql2="SELECT * FROM timeslot 
-                // INNER JOIN appointment 
-                // ON timeslot.clinicID=appointment.clinicID
-                // WHERE timeslot.clinicID=$clinicID";
-                // $result2=mysqli_query($connection,$sql2);
-                // foreach ($result2 as $slot){
-                //     $compare=$slot["clinicID"];
-                //     echo'<option '. (($compare==$clinicID)?'selected ':'').'value="'.$clinic["clinicID"].'">'.$clinic["nameClinic"].'</option>';
-                // }
-            ?>
         </div>
         </div>
       </div>
