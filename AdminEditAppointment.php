@@ -28,7 +28,7 @@ $successMessage="";
     //read the row of the selected clinic from db table
     $sql = "SELECT * FROM appointment WHERE appointmentID=$appointmentID";
     $result = $connection->query($sql);
-    
+
     while($row=$result->fetch_assoc()){
         $treatmentID = $row["treatmentID"];
         $clinicID=$row["clinicID"];
@@ -141,41 +141,70 @@ $successMessage="";
       <div class="row g-3">
         <div class="col-12">
             <label for="treatmentName" class="form-label">Treatment Name</label>
-            <select name="treatmentName" id="treatmentName">
+            <select name="treatmentName" class="form-select" id="inputGroupSelect04">
                 <?php
                 $sql3="SELECT * FROM treatment WHERE clinicID=$clinicID";
                 $result3=mysqli_query($connection,$sql3);
                 while($row3=$result3->fetch_assoc()){
-                echo "<option value=".$row3['treatmentID'].(($row3['treatmentID']=$treatmentID)?"selected":"").">".$row3['treatmentName']."</option>";
+                
+                echo "<option value='".$row3['treatmentID']."' ".(($row3['treatmentID']==$treatmentID)?"selected":"").">".$row3['treatmentName']."</option>";
                 }
                 ?>
             </select>
         </div>
         <div class="col-12">
-            <label for="clinicID" class="form-label">Staff:</label>
-            <select name="clinicID" class="form-select" id="inputGroupSelect04">
+            <label for="staff" class="form-label">Staff:</label>
+            <select name="staff" class="form-select" id="inputGroupSelect04">
                 <?php
-                    $sql2="SELECT * FROM timeslot WHERE clinic";
-                    $result2=mysqli_query($connection,$sql2);
-                    foreach ($result2 as $slot){
-                        $compare=$slot["clinicID"];
-                        echo'<option '. (($compare==$clinicID)?'selected ':'').'value="'.$clinic["clinicID"].'">'.$clinic["nameClinic"].'</option>';
-                    }
+                $staffsql="SELECT * FROM staff WHERE clinicID=$clinicID";
+                $staffresult=mysqli_query($connection,$staffsql);
+                while($staffrow=$staffresult->fetch_assoc()){
+                    echo "<option value='".$staffrow['staffID']."' ".(($staffrow['staffID']==$staffID)?"selected":"").">".$staffrow['firstNameStaff']." ".$staffrow['lastNameStaff']."</option>";
+                }
                 ?>
             </select>
+            
         </div>
-
+        <div class="col-6">
+            <label for="date" class="form-label">Date:</label><br>
+            <input type="date" id="date" name="date" min="2022-01-01" max="2023-12-31">
+        </div>
+        <div class="col-6">
+            <label for="time" class="form-label">Time:</label><br>
+            <select name="time" id="time">
+              <option value="09:00">09:00 - 09:29</option>
+              <option value="09:30">09:30 - 09:59</option>
+              <option value="10:00">10:00 - 10:29</option>
+              <option value="10:30">10:30 - 10:59</option>
+              <option value="11:00">11:00 - 11:29</option>
+              <option value="11:30">11:30 - 11:59</option>
+              <option value="12:00">12:00 - 12:29</option>
+              <option value="12:30">12:30 - 12:59</option>
+              <option value="13:00">13:00 - 13:29</option>
+              <option value="13:30">13:30 - 13:59</option>
+              <option value="14:00">14:00 - 14:29</option>
+              <option value="14:30">14:30 - 14:59</option>
+              <option value="15:00">15:00 - 15:29</option>
+              <option value="15:30">15:30 - 15:59</option>
+              <option value="16:00">16:00 - 16:29</option>
+              <option value="16:30">16:30 - 16:59</option>
+              <option value="17:00">17:00 - 17:29</option>
+              <option value="17:30">17:30 - 18:00</option>
+            </select>
+        </div>
         <div class="col-12">
-          <label for="price" class="form-label">Price</label>
-          <input type="number" required name="price" class="form-control" id="price" value="<?php echo $price; ?>">
+            <?php
+                // $sql2="SELECT * FROM timeslot 
+                // INNER JOIN appointment 
+                // ON timeslot.clinicID=appointment.clinicID
+                // WHERE timeslot.clinicID=$clinicID";
+                // $result2=mysqli_query($connection,$sql2);
+                // foreach ($result2 as $slot){
+                //     $compare=$slot["clinicID"];
+                //     echo'<option '. (($compare==$clinicID)?'selected ':'').'value="'.$clinic["clinicID"].'">'.$clinic["nameClinic"].'</option>';
+                // }
+            ?>
         </div>
-        <!-- <div class="col-6">
-          <label for="availability" class="form-label">Availability</label>
-          <select name="availability" class="form-select" id="inputGroupSelect04">
-            <option value='1'>Available</option>
-            <option value='0'>Not Available</option>
-          </select>
-        </div> -->
         </div>
       </div>
       <br>
