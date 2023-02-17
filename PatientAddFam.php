@@ -224,24 +224,29 @@
                $sql4="SELECT * FROM `appointment` 
                       JOIN `friend` 
                       ON IF(friend.oneFriendID=$loginID,friend.twoFriendID=appointment.patientID,friend.oneFriendID=appointment.patientID)
+                      JOIN `clinic`
+                      ON (appointment.clinicID = clinic.clinicID)
                       WHERE friend.status='Friend'
-                      AND (friend.twoFriendID=$loginID OR friend.oneFriendID=$loginID)";
+                      AND (friend.twoFriendID=$loginID OR friend.oneFriendID=$loginID)"
+                    ;
                $result4=mysqli_query($conn,$sql4);
                echo "<table class='table'>
                 <thead>
                   <tr>
                     <th scope='col'>Appointment ID</th>
+                    <th scope='col'>Clinic Name</th>
                     <th scope='col'>Date</th>
                     <th scope='col'>Time</th>
                     <th scope='col'>treatmentName</th>
-                    <th scope='col'>Patient Name</th>
                     <th scope='col'>Staff Name</th>
+                    <th scope='col'>Patient Name</th>
                   </tr>
                 </thead>
                 <tbody>";
                while($row4=$result4->fetch_assoc()){ 
                 echo "<tr>
                 <td>$row4[appointmentID]</td>
+                <td>$row4[nameClinic]</td>
                 <td>$row4[date]</td>
                 <td>$row4[time]</td>
                 <td>$row4[treatmentName]</td>

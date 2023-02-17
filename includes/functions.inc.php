@@ -126,8 +126,10 @@ function loginPatient($conn, $email, $password) {
     $emailExists = emailExistsPatient($conn, $email);
 
     if($emailExists === false) {
+        echo '<script type="text/javascript">alert("Wrong login!");window.location.href="./loginPatient.html?error=wronglogin"
+        </script>';
 
-        header("location:./loginPatient.html?error=wronglogin");
+        // header("location:./loginPatient.html?error=wronglogin");
         exit();
     }
 
@@ -135,8 +137,10 @@ function loginPatient($conn, $email, $password) {
     // $passwordCheck = password_verify($password, $passwordGet);
 
     if ($password !== $passwordGet) {
+        echo '<script type="text/javascript">alert("Wrong Password!");window.location.href="./loginPatient.html?error=passwordwrong"
+        </script>';
 
-        header("location:./loginPatient.html?error=passwordwrong");
+        // header("location:./loginPatient.html?error=passwordwrong");
         exit();
     }
     else if($password === $passwordGet){
@@ -237,7 +241,9 @@ function loginClinic($conn, $email, $password) {
 
     if($emailExists === false) {
 
-        header("location:./loginClinic.html?error=wronglogin");
+        echo '<script type="text/javascript">alert("Wrong login!");window.location.href="./loginClinic.html?error=wronglogin"
+        </script>';
+        // header("location:./loginClinic.html?error=wronglogin");
         exit();
     }
 
@@ -246,7 +252,9 @@ function loginClinic($conn, $email, $password) {
 
     if ($password !== $passwordGet) {
 
-        header("location:./loginClinic.html?error=passwordwrong");
+        echo '<script type="text/javascript">alert("Wrong password!");window.location.href="./loginClinic.html?error=passwordwrong"
+        </script>';
+        // header("location:./loginClinic.html?error=passwordwrong");
         exit();
     }
     else if($password === $passwordGet){
