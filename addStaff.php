@@ -302,11 +302,12 @@ if ($result->num_rows > 0) {
                                 <td>'.$column8.'</td>
                                 <td>'.$column9.'</td>
                                 <td>'.$column10.'</td>
-                                <td>'.$column11.'</td>
-                                <td>'.$column12.'</td>
-                                <td>'.$column13.'</td>
-                                </tr>';
-
+                                <td>'.$column11.'</td>';
+                                echo"<td><a class=my-button href=staffToggleAvail.php?id=$row[staffID]>Toggle</a></td>";
+                                echo"<td><a class=my-button href=dropStaff.php?id=$row[staffID]>Drop</a></td>";
+                              
+                                '</tr>';
+                         
                     }
                     $result-> free();
                 }?>
