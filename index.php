@@ -154,7 +154,7 @@
                 </a>
 
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="homepage.php" class="nav-link active" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
                     <li class="nav-item"><a href="aboutus.php" class="nav-link">About Us</a></li>
                     <li class="nav-item"><a href="contactus.php" class="nav-link">Contact Us</a></li>
                     <li class="nav-item dropdown">
@@ -316,7 +316,7 @@
                       </select>
                   </div>
                   <button class="btn btn-outline-secondary" type="submit" Value="Submit">Search</button>
-                   <a class="btn btn-outline-secondary" href="homepage.php">Reset</a>
+                   <a class="btn btn-outline-secondary" href="index.php">Reset</a>
                   <br><br>
                   <div>
                   <form action="loginPatient.php" method="post">

@@ -205,9 +205,11 @@
                   $result3=mysqli_query($conn,$sql3);
                   while($row3=$result3->fetch_assoc()){
                     echo"<div class='row'>";
-                    echo "<div class='col'><label class='lead'>Pending friend request from $row3[oneFriendemail]<label></div>";
-                    echo "<div class='col'><a type=button class='btn btn-success' href='PatientAcceptFam.php?friendID=$row3[friendID]'>Accept Request</a></div>";
-                    echo "</div>";
+                    echo "<div class='col-8'><label class='lead'>Pending friend request from $row3[oneFriendemail]<label></div>";
+                    echo "<div class='col-4'><a type=button class='btn btn-success' href='PatientAcceptFam.php?friendID=$row3[friendID]'>Accept Request</a>";
+                    echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+                    echo "<a type=button class='btn btn-danger' href='PatientDeclineFam.php?friendID=$row3[friendID]'>Decline Request</a></div></div>";
+                    echo "<br>";
                   }
                   ?>
               </div>
@@ -237,7 +239,7 @@
                     <th scope='col'>Clinic Name</th>
                     <th scope='col'>Date</th>
                     <th scope='col'>Time</th>
-                    <th scope='col'>treatmentName</th>
+                    <th scope='col'>Treatment Name</th>
                     <th scope='col'>Staff Name</th>
                     <th scope='col'>Patient Name</th>
                   </tr>

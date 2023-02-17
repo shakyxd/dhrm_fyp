@@ -5,5 +5,5 @@
     session_unset();
     session_destroy();
     $_SESSION = array();
-    header("location:http://localhost/dhrm_fyp/homepage.php");
+    header("location:http://localhost/dhrm_fyp/index.php");
 ?>
