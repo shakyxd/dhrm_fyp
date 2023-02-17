@@ -172,24 +172,24 @@ $successMessage="";
         <div class="col-6">
             <label for="time" class="form-label">Time:</label><br>
             <select name="time" id="time">
-              <option <?php if($date=="09:00") {echo "selected";}?> value="09:00">09:00 - 09:29</option>
-              <option <?php if($date=="09:30") {echo "selected";}?> value="09:30">09:30 - 09:59</option>
-              <option <?php if($date=="10:00") {echo "selected";}?> value="10:00">10:00 - 10:29</option>
-              <option <?php if($date=="10:30") {echo "selected";}?> value="10:30">10:30 - 10:59</option>
-              <option <?php if($date=="11:00") {echo "selected";}?> value="11:00">11:00 - 11:29</option>
-              <option <?php if($date=="11:30") {echo "selected";}?> value="11:30">11:30 - 11:59</option>
-              <option <?php if($date=="12:00") {echo "selected";}?> value="12:00">12:00 - 12:29</option>
-              <option <?php if($date=="12:30") {echo "selected";}?> value="12:30">12:30 - 12:59</option>
-              <option <?php if($date=="13:00") {echo "selected";}?> value="13:00">13:00 - 13:29</option>
-              <option <?php if($date=="13:30") {echo "selected";}?> value="13:30">13:30 - 13:59</option>
-              <option <?php if($date=="14:00") {echo "selected";}?> value="14:00">14:00 - 14:29</option>
-              <option <?php if($date=="14:30") {echo "selected";}?> value="14:30">14:30 - 14:59</option>
-              <option <?php if($date=="15:00") {echo "selected";}?> value="15:00">15:00 - 15:29</option>
-              <option <?php if($date=="15:30") {echo "selected";}?> value="15:30">15:30 - 15:59</option>
-              <option <?php if($date=="16:00") {echo "selected";}?> value="16:00">16:00 - 16:29</option>
-              <option <?php if($date=="16:30") {echo "selected";}?> value="16:30">16:30 - 16:59</option>
-              <option <?php if($date=="17:00") {echo "selected";}?> value="17:00">17:00 - 17:29</option>
-              <option <?php if($date=="17:30") {echo "selected";}?> value="17:30">17:30 - 18:00</option>
+              <option <?php if($time=="09:00") {echo "selected";}?> value="09:00">09:00 - 09:29</option>
+              <option <?php if($time=="09:30") {echo "selected";}?> value="09:30">09:30 - 09:59</option>
+              <option <?php if($time=="10:00") {echo "selected";}?> value="10:00">10:00 - 10:29</option>
+              <option <?php if($time=="10:30") {echo "selected";}?> value="10:30">10:30 - 10:59</option>
+              <option <?php if($time=="11:00") {echo "selected";}?> value="11:00">11:00 - 11:29</option>
+              <option <?php if($time=="11:30") {echo "selected";}?> value="11:30">11:30 - 11:59</option>
+              <option <?php if($time=="12:00") {echo "selected";}?> value="12:00">12:00 - 12:29</option>
+              <option <?php if($time=="12:30") {echo "selected";}?> value="12:30">12:30 - 12:59</option>
+              <option <?php if($time=="13:00") {echo "selected";}?> value="13:00">13:00 - 13:29</option>
+              <option <?php if($time=="13:30") {echo "selected";}?> value="13:30">13:30 - 13:59</option>
+              <option <?php if($time=="14:00") {echo "selected";}?> value="14:00">14:00 - 14:29</option>
+              <option <?php if($time=="14:30") {echo "selected";}?> value="14:30">14:30 - 14:59</option>
+              <option <?php if($time=="15:00") {echo "selected";}?> value="15:00">15:00 - 15:29</option>
+              <option <?php if($time=="15:30") {echo "selected";}?> value="15:30">15:30 - 15:59</option>
+              <option <?php if($time=="16:00") {echo "selected";}?> value="16:00">16:00 - 16:29</option>
+              <option <?php if($time=="16:30") {echo "selected";}?> value="16:30">16:30 - 16:59</option>
+              <option <?php if($time=="17:00") {echo "selected";}?> value="17:00">17:00 - 17:29</option>
+              <option <?php if($time=="17:30") {echo "selected";}?> value="17:30">17:30 - 18:00</option>
             </select>
         </div>
         <div class="col-12">
