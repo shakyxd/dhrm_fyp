@@ -186,7 +186,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <form method="post">
         <div class="row">
           <div class="col-lg-4">
-            <img src="images/avatardentist.jpg" alt="Avatar" class="avatar">
+            <!-- <img src="images/avatardentist.jpg" alt="Avatar" class="avatar"> -->
           </div>
           <div class="col-lg-8">
             <div class="card mb-4">

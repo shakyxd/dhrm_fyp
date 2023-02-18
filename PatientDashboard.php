@@ -256,10 +256,10 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Family Members</p>
+                    <!-- <p class="mb-0">Family Members</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder, Placeholder</p>
+                    <p class="text-muted mb-0">Placeholder, Placeholder</p> -->
                   </div>
                 </div>
               </div>
