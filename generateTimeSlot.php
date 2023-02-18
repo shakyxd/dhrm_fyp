@@ -347,7 +347,7 @@ if ($result = $conn->query($query2)) {
                 <td>'.$column7.'</td>
                 <td>'.$column8.'</td>
                 <td>'.$column9.'</td>
-                <td>'.$column10.'</td>
+                echo"<td><a class=my-button href=dropTimeSlot.php?id=$row[timeSlotID]>Toggle</a></td>";
                 </tr>';
 
     }
