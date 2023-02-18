@@ -186,7 +186,7 @@
         <div class="container py-5">
         <div class="row">
           <div class="col-lg-4">
-            <img src="images/patient1.jpg" alt="Avatar" class="avatar">
+            <!-- <img src="images/patient1.jpg" alt="Avatar" class="avatar"> -->
           </div>
           <div class="col-lg-8">
             <div class="card mb-4">
@@ -256,10 +256,10 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Family Members</p>
+                    <!-- <p class="mb-0">Family Members</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Placeholder, Placeholder</p>
+                    <p class="text-muted mb-0">Placeholder, Placeholder</p> -->
                   </div>
                 </div>
               </div>
