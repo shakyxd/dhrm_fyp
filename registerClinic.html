@@ -69,6 +69,17 @@
       }
     </style>
 
+<script>
+
+function togglePassword() {
+      var x = document.getElementById("floatingPassword");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+}
+</script>
     
     <!-- Custom styles for this template -->
     <link href="sign-in.css" rel="stylesheet">
@@ -118,8 +129,13 @@
       <input type="text" class="form-control" id="floatingInput" name="specialisation" required>
       <label for="floatingInput">Specialisation</label>
     </div>
+    <br>
+    
     <input type="submit" value="Register Clinic" class="submitBtn" name="submit">
+    <br>
+    <td><a class=my-button href=index.php>Back to Home</a></td>
     <p class="mt-5 mb-3 text-muted">ToothScanner &copy; 2020�2022</p>
+   
   </form>
 </main>
 

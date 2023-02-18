@@ -69,7 +69,17 @@
     </style>
 
 
+    <script>
 
+    function togglePassword() {
+      var x = document.getElementById("floatingPassword");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+}
+    </script>
 
 
 
@@ -97,6 +107,7 @@
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
       <label for="floatingPassword">Password</label>
+      <input type="checkbox" onclick="togglePassword()">Show Password </input>
     </div>
 
     <div class="checkbox mb-3">
@@ -105,6 +116,8 @@
       </label>
     </div>
     <input type="submit" value="Login" class="submitBtn" name="submit">
+    <br>
+    <td><a class=my-button href=index.php>Back to Home</a></td>
     <p class="mt-5 mb-3 text-muted">ToothScanner &copy; 2020�2022</p>
   </form>
 </main>
@@ -113,3 +126,4 @@
     
   </body>
 </html>
+

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Signin Template · Bootstrap v5.3</title>
+    <title>Signin Template ï¿½ Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
@@ -68,11 +68,24 @@
       }
     </style>
 
+<script>
+
+  function togglePassword() {
+    var x = document.getElementById("floatingPassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+}
+  </script>
+
     
     <!-- Custom styles for this template -->
     <link href="sign-in.css" rel="stylesheet">
   </head>
   <body class="text-center">
+    
     
 <main class="form-signin w-100 m-auto">
   <form action="loginClinic.php" method="post">
@@ -86,6 +99,7 @@
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
       <label for="floatingPassword">Password</label>
+      <input type="checkbox" onclick="togglePassword()">Show Password </input>
     </div>
 
     <div class="checkbox mb-3">
@@ -94,7 +108,9 @@
       </label>
     </div>
     <input type="submit" value="Login" class="submitBtn" name="submit">
-    <p class="mt-5 mb-3 text-muted">ToothScanner &copy; 2020–2022</p>
+    <br>
+    <td><a class=my-button href=index.php>Back to Home</a></td>
+    <p class="mt-5 mb-3 text-muted">ToothScanner &copy; 2020ï¿½2022</p>
   </form>
 </main>
 

@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `Clinic` (
   `address` varchar(100), 
   `area` varchar(100),
   `specialisation` varchar(100),
-  `rating` float NOT NULL DEFAULT '0', 
+  `rating` float(3,1) NOT NULL DEFAULT '0', 
   `deactivated` int NOT NULL DEFAULT '0',
   CONSTRAINT PK_Clinic PRIMARY KEY (`clinicID`, `emailClinic`),
   CONSTRAINT UK_Clinic UNIQUE (`phoneNum`, `nameClinic`)
