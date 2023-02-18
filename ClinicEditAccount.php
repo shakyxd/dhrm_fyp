@@ -174,6 +174,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               Add Treatment
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="generateTimeSlots.php">
+              <span data-feather="thermometer" class="align-text-bottom"></span>
+              Generate Timeslots
+            </a>
+          </li>
         </ul>   
       </div>
     </nav>

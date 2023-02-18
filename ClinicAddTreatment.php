@@ -152,6 +152,12 @@ if ($result->num_rows > 0) {
               Add Treatment
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="generateTimeSlots.php">
+              <span data-feather="thermometer" class="align-text-bottom"></span>
+              Generate Timeslots
+            </a>
+          </li>
         </ul>   
       </div>
     </nav>

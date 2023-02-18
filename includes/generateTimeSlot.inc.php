@@ -67,7 +67,7 @@ if (isset($_POST["generate"])) {
 
     if(emptyInputGenerateTimeSlot($date) !== false) {
         // echo '<script>alert("Please select a date!")</script>';
-        echo '<script type="text/javascript">alert("Please select a date!");window.location.href="../generateTimeSlot.php?error=emptyinput"
+        echo '<script type="text/javascript">alert("Please select a date!");window.location.href="../generateTimeSlots.php?error=emptyinput"
     </script>';
         // header("location:../generateTimeSlot.php?error=emptyinput");
         exit();
@@ -75,7 +75,7 @@ if (isset($_POST["generate"])) {
 
 
       if(dupesExist($dentistList) !== false) {
-        echo '<script type="text/javascript">alert("There were two or more dentist per slot!");window.location.href="../generateTimeSlot.php?error=emptyinput"
+        echo '<script type="text/javascript">alert("There were two or more dentist per slot!");window.location.href="../generateTimeSlots.php?error=emptyinput"
         </script>';
         // header("location:../generateTimeSlot.php?error=duplicatesExist");
         exit();
@@ -123,7 +123,7 @@ if (isset($_POST["generate"])) {
 
         }
        
-        header("location:../generateTimeSlot.php?error=noerror");
+        header("location:../generateTimeSlots.php?error=noerror");
     
     }
 
@@ -132,7 +132,7 @@ else {
 
 
 
-    header("location: generateTimeSlot.html");
+    header("location: generateTimeSlots.php");
     exit();
     
     }
