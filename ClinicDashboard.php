@@ -163,7 +163,7 @@ if ($result->num_rows > 0) {
         <div class="container py-5">
         <div class="row">
           <div class="col-lg-4">
-            <img src="images/avatardentist.jpg" alt="Avatar" class="avatar">
+            <!-- <img src="images/avatardentist.jpg" alt="Avatar" class="avatar"> -->
           </div>
           <div class="col-lg-8">
             <div class="card mb-4">

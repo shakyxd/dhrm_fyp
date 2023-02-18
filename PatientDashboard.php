@@ -186,7 +186,7 @@
         <div class="container py-5">
         <div class="row">
           <div class="col-lg-4">
-            <img src="images/patient1.jpg" alt="Avatar" class="avatar">
+            <!-- <img src="images/patient1.jpg" alt="Avatar" class="avatar"> -->
           </div>
           <div class="col-lg-8">
             <div class="card mb-4">
