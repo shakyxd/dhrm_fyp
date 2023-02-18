@@ -306,7 +306,6 @@ if ($result = $conn->query($query)) {
 <th> Dentist Three </th>
 <th> Dentist Four </th>
 <th> Dentist Five </th>
-<th> Remove Dentist From List </th>
 <th> Delete </th>
 
 </tr>
@@ -346,9 +345,9 @@ if ($result = $conn->query($query2)) {
                 <td>'.$column6.'</td>
                 <td>'.$column7.'</td>
                 <td>'.$column8.'</td>
-                <td>'.$column9.'</td>
-                echo"<td><a class=my-button href=dropTimeSlot.php?id=$row[timeSlotID]>Toggle</a></td>";
-                </tr>';
+                <td>'.$column9.'</td>';
+                echo "<td><a class=my-button href=dropTimeSlot.php?id=$row[timeSlotID]>Delete</a></td>";
+                '</tr>';
 
     }
     $result-> free();

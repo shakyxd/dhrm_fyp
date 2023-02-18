@@ -13,6 +13,6 @@ if(isset($_GET["id"])){
     $sql="DELETE FROM timeslot WHERE timeSlotID = $id";
     $data->query($sql);
 }
-header("location:addStaff.php");
+header("location:generateTimeSlot.php");
 exit;
 ?>
