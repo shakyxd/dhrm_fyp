@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Staff` (
   `emailStaff` varchar(100) NOT NULL,
   `phoneNumStaff` int NOT NULL,
   `staffType` varchar(100) NOT NULL,
-  `dateJoined` date NOT NULL,
+  `dateJoined` date NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `dateLeft` date,
   `salary` float NOT NULL,
   `firstNameStaff` varchar(100),
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `Staff` (
   `deactivated` int NOT NULL DEFAULT '0',
   CONSTRAINT PK_Staff PRIMARY KEY (`staffID`, `clinicID`),
   CONSTRAINT UK_Staff UNIQUE (`emailStaff`, `phoneNumStaff`),
-  CONSTRAINT FK_Staff FOREIGN KEY (`clinicID`) 
+  CONSTRAINT FK_Staff FOREIGN KEY (`clinicID`)
   REFERENCES Clinic(`clinicID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
