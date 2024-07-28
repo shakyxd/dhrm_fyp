@@ -1,9 +1,9 @@
 <?php
 session_start();
 $host="localhost";
-$user="root";
-$password="";
-$db="fyp";
+$user="id20359512_root";
+$password="!wd!9J>f#!%lO}a$";
+$db="id20359512_fyp";
 
 $data=mysqli_connect($host,$user,$password,$db);
 if($data===false){

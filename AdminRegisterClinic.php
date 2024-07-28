@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "All fields are required.";
   } else {
     // Connect to the database
-    $conn = mysqli_connect("localhost", "root", "", "fyp");
+    $conn = mysqli_connect('localhost', 'id20359512_root', '!wd!9J>f#!%lO}a$', 'id20359512_fyp');
 
     // Check if the connection is successful
     if (!$conn) {

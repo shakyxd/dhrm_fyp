@@ -81,7 +81,7 @@ $loginID = $_SESSION["userID"];
 
 // Create database connection
 
-$conn = new mysqli('localhost', 'root', '', 'fyp');
+$conn = new mysqli('localhost', 'id20359512_root', '!wd!9J>f#!%lO}a$', 'id20359512_fyp');
 
 if(! $conn ) {
     die('Could not connect: ' . mysqli_error($conn));
@@ -217,11 +217,6 @@ if ($result->num_rows > 0) {
                     <?php
 
                     $userID = $_SESSION["userID"];
-
-                    $conn = new mysqli('localhost', 'root', '', 'fyp');
-                    if(!$conn) {
-                        die("Connection Error");
-                    }
 
                     $query = "select * from staff WHERE clinicID = $userID AND staffType = 'Dentist' ORDER BY staffID ASC";
 
@@ -446,13 +441,7 @@ if ($result->num_rows > 0) {
 
                 $userID = $_SESSION["userID"];
 
-                $conn = new mysqli('localhost', 'root', '', 'fyp');
-                if(!$conn) {
-                    die("Connection Error");
-                }
                 $query2 = "select * from timeslot WHERE clinicID = $userID ORDER BY date, time ASC";
-
-
 
                 if ($result = $conn->query($query2)) {
                     while ($row = $result->fetch_assoc()) {

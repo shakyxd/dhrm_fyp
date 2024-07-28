@@ -81,7 +81,7 @@ $loginID = $_SESSION["userID"];
 
 // Create database connection
 
-$conn = new mysqli('localhost', 'root', '', 'fyp');
+$conn = new mysqli('localhost', 'id20359512_root', '!wd!9J>f#!%lO}a$', 'id20359512_fyp');
 
 if(! $conn ) {
     die('Could not connect: ' . mysqli_error($conn));
@@ -228,18 +228,6 @@ if ($result->num_rows > 0) {
             </thead>
             <tbody>
                 <?php
-                $host="localhost";
-                $user="root";
-                $password="";
-                $db="fyp";
-                
-                $clinicID = $_SESSION["userID"];
-
-                $data=mysqli_connect($host,$user,$password,$db);
-                if($data===false){
-                    die("connection error");
-                }
-                
                 $query = "select * from treatment where clinicID = $clinicID ORDER BY treatmentID ASC";
 
                 if ($result = $conn->query($query)) {

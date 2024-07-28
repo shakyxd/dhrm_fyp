@@ -85,7 +85,7 @@
 
   // Create database connection
 
-  $conn = new mysqli('localhost', 'root', '', 'fyp');
+  $conn = new mysqli('localhost', 'id20359512_root', '!wd!9J>f#!%lO}a$', 'id20359512_fyp');
 
   if(! $conn ) {
       die('Could not connect: ' . mysqli_error($conn));

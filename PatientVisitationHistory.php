@@ -184,9 +184,9 @@ session_start();
             <tbody>
                 <?php
                 $host="localhost";
-                $user="root";
-                $password="";
-                $db="fyp";
+                $user="id20359512_root";
+                $password="!wd!9J>f#!%lO}a$";
+                $db="id20359512_fyp";
                 
                 $loginID = $_SESSION["userID"];
 
